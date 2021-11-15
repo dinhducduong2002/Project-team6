@@ -56,7 +56,7 @@
     <img src="./mvc/Views/images/90rx4f9oeG_1623147714.jpg" alt="350" height="350">
   </div>
   <div class="col m-4">
-    <h4 class="btn btn-primary">MUA NGAY</h4>
+    <a class="btn btn-primary">MUA NGAY</a>
   </div>
 </div>
 <?php endforeach;?>

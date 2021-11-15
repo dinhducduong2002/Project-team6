@@ -3,16 +3,19 @@
 class DB{
 
     public $conn;
-    protected $servername = "localhost";
-    protected $dbname = "project_team6";
-    protected $username = "root";
-    protected $password = "";
+    protected $servername = "103.75.185.14";
+    protected $dbname = "donjfhrmhosting_dbteam6";
+    protected $username = "donjfhrmhosting_dbteam6";
+    protected $password = "Duong2002@";
 
     function __construct(){
         
     try{
         $this->conn = new PDO("mysql:host=$this->servername; dbname=$this->dbname", $this->username, $this->password);
         $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $this->conn -> exec('SET NAMES utf8'); // METHOD #3 
+        $this->conn -> exec('SET CHARACTER SET utf8'); // METHOD #4 
+        
     } catch (PDOException $e) {
         echo "lỗi không thể kết nối dự liệu<br>";
         echo "thông tin lỗi" . $e->getMessage();
