@@ -33,7 +33,7 @@ class DB{
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function command_execution($sql)
+    public function QueryExe($sql)
     {
         $stmt = $this-> conn->prepare($sql);
         return $stmt->execute();
