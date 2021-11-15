@@ -1,6 +1,10 @@
 <?php
 class HomeController extends Controller{
-    
+    public $GetProduct;
+    public function __construct()
+    {
+        $this->GetProduct = $this->model("ProductModel");
+    }
     public function Home(){
 
         $this->view("HomeViews", [
@@ -9,7 +13,8 @@ class HomeController extends Controller{
     }
     public function ShowProduct(){
         $this->view("ProductViews", [
-            "pages" => "ProductPage"
+            "pages" => "ProductPage",
+            "Product"=>$this-> GetProduct->GetProduct(),
         ]);
     }
     public function DetailProduct(){
