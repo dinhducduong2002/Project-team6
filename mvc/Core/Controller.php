@@ -9,5 +9,9 @@ class Controller{
         require_once "./mvc/Models/" . $model . ".php";
         return new $model;
     }
+    public function GetData_url($url)
+    {
+        return $url;
+    }
 }
 ?>

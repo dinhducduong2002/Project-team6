@@ -1,11 +1,14 @@
+
+<?php foreach($data["DetailProduct"] as $cate):?>
 <div class="row d-flex p-4">
   <div class="col">
     <div class="col">
-      <span class="">Mã số:000000</span>
+      <span class="">Mã số:<?= $cate['id']?></span>
+      
     </div>
   </div>
   <div class="col text-danger">
-    <h4>giá: 1.000.000Đ</h4>
+    <h4><?php echo number_format($cate['price'], 0, '', '.'); ?>đ</h4>
   </div>
   <div class="col">
     <div class="col">
@@ -19,21 +22,20 @@
 </div>
 <div class="row">
   <div class="col fs-6">
-    <h5>HÀNH TINH: <h5 class="text-danger">XAYDA</h5>
+    <h5>HÀNH TINH: <h5 class="text-danger"><?= $cate['planet']?></h5>
     </h5>
-    <h5>SERVER: <h5 class="text-danger">1</h5>
+    <h5>SERVER: <h5 class="text-danger"><?= $cate['server']?></h5>
     </h5>
-    <h5>BÔNG TAI: <h5 class="text-danger">CÓ</h5>
-    </h5>
-  </div>
-  <div class="col">
-    <h5>SƠ SINH CÓ ĐỆ: <h5 class="text-danger">KHÔNG</h5>
-    </h5>
-    <h5>ĐĂNG KÍ: <h5 class="text-danger">ĐĂNG KÍ ẢO</h5>
+    <h5>BÔNG TAI: <h5 class="text-danger"><?php if($cate['porata'] == 0){echo "Không";}else if($cate['porata']==1){echo "Có";}?></h5>
     </h5>
   </div>
   <div class="col">
-    <h5>NỔI BẬT: <h5 class="text-danger">NICK CÓ BÔNG TAI ĐỆ SKILL 4</h5>
+    </h5>
+    <h5>ĐĂNG KÍ: <h5 class="text-danger"><?php if($cate['type_register'] == 0){echo "Đăng kí ảo";}else if($cate['type_register']==1){echo "Đăng kí thật";}?></h5>
+    </h5>
+  </div>
+  <div class="col">
+    <h5>NỔI BẬT: <h5 class="text-danger"><?= $cate['description']?></h5>
     </h5>
   </div>
 </div>
@@ -57,6 +59,7 @@
     <h4 class="btn btn-primary">MUA NGAY</h4>
   </div>
 </div>
+<?php endforeach;?>
 <div class="title text-center">
   <h3>TÀI KHOẢN LIÊN QUAN</h3>
 </div>

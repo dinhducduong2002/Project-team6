@@ -38,7 +38,7 @@
             <img src="./mvc/Views/images/Sbcs9ooDuN_1623164443.gif" class="card-img-top" alt="...">
             <div class="card-body text-center">
                 <h5 class="card-title">DANH MỤC GAME NGỌC RỒNG</h5>
-                <p class="card-text">Số tài khoản: 0</p>
+                <p class="card-text">Số tài khoản: <?php $soluong=count($data); echo $soluong;?></p>
                 <a href="HomeController/ShowProduct" class=" btn btn-danger">MUA NGAY1</a>
             </div>
         </div>

@@ -1,9 +1,11 @@
 <?php
 class HomeController extends Controller{
     public $GetProduct;
+    public $GetDetailProduct;
     public function __construct()
     {
         $this->GetProduct = $this->model("ProductModel");
+        $this->GetDetailProduct = $this->model("ProductModel");
     }
     public function Home(){
 
@@ -17,9 +19,11 @@ class HomeController extends Controller{
             "Product"=>$this-> GetProduct->GetProduct(),
         ]);
     }
-    public function DetailProduct(){
+    public function DetailProduct($id){
         $this->view("ProductViews", [
-            "pages" => "DetailPage"
+            "pages" => "DetailPage",
+            "Get_id"=>$id,
+            "DetailProduct"=>$this-> GetDetailProduct->GetDetailProduct($id)
         ]);
     }
     public function login(){
@@ -32,5 +36,6 @@ class HomeController extends Controller{
             "pages" => "register"
         ]);
     }
+    
 }
 ?>

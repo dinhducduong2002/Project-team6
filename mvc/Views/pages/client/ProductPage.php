@@ -59,17 +59,17 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col">
-                        Hành tinh: <span class="text-danger">XAYDA</span><br>
-                        Bông tai: <span class="text-danger">Có</span><br>
-                        Server: <span class="text-danger">1</span><br>
-                        Sơ Sinh Có Đệ: <span class="text-danger">Không</span>
+                        <span class="text-danger">#<?= $cate['id']?></span><br>
+                        Hành tinh: <span class="text-danger"><?= $cate['planet']?></span><br>
+                        Bông tai: <span class="text-danger"><?php if($cate['porata'] == 0){echo "Không";}else if($cate['porata']==1){echo "Có";}?></span><br>
+                        Server: <span class="text-danger"><?= $cate['server']?></span>
                     </div>
                 </div>
                 <div class="btn border-danger">
-                    <strike>10000đ</strike>
-                    <p class="card-text"><?= $cate['price']?></p>
+                    <strike><?php echo number_format($cate['price_old'], 0, '', '.'); ?>đ</strike>
+                    <p class="card-text"><?php echo number_format($cate['price'], 0, '', '.'); ?>đ</p>
                 </div>
-                <a href="HomeController/DetailProduct" class="border border-white btn btn-primary">CHI TIẾT1</a>
+                <a href="HomeController/DetailProduct/<?php echo $cate['id'] ?>" class="border border-white btn btn-primary">CHI TIẾT</a>
             </div>
         </div>
         <?php endforeach;?>
