@@ -4,8 +4,8 @@ class DB{
 
     public $conn;
     protected $servername = "103.75.185.14";
-    protected $dbname = "donjfhrmhosting_dbteam6";
-    protected $username = "donjfhrmhosting_dbteam6";
+    protected $dbname = "donjfhrmhosting_slot6";
+    protected $username = "donjfhrmhosting_admin";
     protected $password = "Duong2002@";
 
     function __construct(){
