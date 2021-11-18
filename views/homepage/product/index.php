@@ -63,13 +63,13 @@
             <div class="row">
                 <div class="col">
                     <span class="text-danger">#<?= $pro['id']?></span><br>
-                    Hành tinh: <span class="text-danger"><?= $pro['name']?></span><br>
-                    Bông tai: <span class="text-danger"><?= $pro['detail']?></span><br>
-                    Server: <span class="text-danger"><?= $pro['quantity']?></span>
+                    Hành tinh: <span class="text-danger"><?= $pro['planet']?></span><br>
+                    Bông tai: <span class="text-danger"><?= $pro['porata']?></span><br>
+                    Server: <span class="text-danger"><?= $pro['server']?></span>
                 </div>
             </div>
             <div class="btn border-danger">
-                <strike><?php echo number_format($pro['price'], 0, '', '.'); ?>đ</strike>
+                <strike><?php echo number_format($pro['price_old'], 0, '', '.'); ?>đ</strike>
                 <p class="card-text"><?php echo number_format($pro['price'], 0, '', '.'); ?>đ</p>
             </div>
             <a href="<?= CLIENT_URL . 'san-pham/detail?id=' . $pro['id'] ?>"

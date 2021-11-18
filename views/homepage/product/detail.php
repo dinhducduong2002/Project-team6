@@ -21,23 +21,23 @@
 </div>
 <div class="row">
     <div class="col fs-6">
-        <h5>HÀNH TINH: <h5 class="text-danger"><?= $pro['name']?></h5>
+        <h5>HÀNH TINH: <h5 class="text-danger"><?= $pro['planet']?></h5>
         </h5>
-        <h5>SERVER: <h5 class="text-danger"><?= $pro['quantity']?></h5>
+        <h5>SERVER: <h5 class="text-danger"><?= $pro['server']?></h5>
         </h5>
         <h5>BÔNG TAI: <h5 class="text-danger">
-                <?= $pro['detail']?></h5>
+                <?php if($pro['porata'] == 0){echo "Có";}else if($pro['porata']){echo "Không";}?></h5>
         </h5>
     </div>
     <div class="col">
         </h5>
         <h5>ĐĂNG KÍ: <h5 class="text-danger">
-                demo ???
+                <?php if($pro['type_register'] == 0){echo "Đăng kí ảo";}else if($pro['type_register']==1){echo "Đăng kí thật";}?>
             </h5>
         </h5>
     </div>
     <div class="col">
-        <h5>NỔI BẬT: <h5 class="text-danger">demo !!!</h5>
+        <h5>NỔI BẬT: <h5 class="text-danger"><?= $pro['description']?></h5>
         </h5>
     </div>
 </div>

@@ -1,7 +1,7 @@
 <?php
 
 function get_connect(){
-    $connect = new PDO("mysql:host=127.0.0.1;dbname=tes;charset=utf8", "root", "");
+    $connect = new PDO("mysql:host=103.75.185.14;dbname=donjfhrmhosting_slot6;charset=utf8", "donjfhrmhosting_admin", "Duong2002@");
     return $connect;
 }
 
