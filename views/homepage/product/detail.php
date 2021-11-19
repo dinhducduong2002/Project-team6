@@ -11,7 +11,7 @@
     </div>
     <div class="col">
         <div class="col">
-            <a href="" class="btn btn-primary me-2">Mua ngay</a>
+            <a href="<?= CLIENT_URL . 'san-pham/pay?id=' . $pro['id'] ?>" class="btn btn-primary me-2">Mua ngay</a>
             <a href="" class="btn btn-success me-2">Nạp thẻ cào</a>
         </div>
     </div>

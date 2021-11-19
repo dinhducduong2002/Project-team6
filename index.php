@@ -26,7 +26,10 @@ switch ($url) {
         require_once './business/auth.php';
         register();
         break;
-
+    case 'san-pham/pay':
+        require_once './business/pay.php';
+        pay();
+        break;
         ///////////////// ADMIN ///////////////////
     case 'cp-admin/dashboard':
         require_once './business/admin/dashboard.php';
