@@ -1,3 +1,12 @@
+<?php
+
+require_once './commons/app_config.php';
+require_once './commons/helpers.php';
+require_once './dao/system_dao.php';
+$user = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
+$msg = isset($_GET['msg']) ? $_GET['msg'] : "";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     
@@ -43,7 +52,11 @@
         <div class="limiter">
             <div class="container-login100">
                 <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-                    <form class="login100-form validate-form">
+                    <form class="login100-form validate-form"><?php if ($msg != ""): ?>
+                        <?php if ($msg != ""){ ?>
+                            <h5 style="color: red; text-align: center;"><?php echo $msg ?></h5>  
+                            <?php } ?>    
+                            <?php endif ;?>
                         <span class="login100-form-title p-b-49">
                             Đăng Nhập
                         </span>
