@@ -1,5 +1,5 @@
 <?php
-
+ob_start();
 require_once './commons/app_config.php';
 require_once './commons/helpers.php';
 require_once './dao/system_dao.php';
@@ -26,7 +26,22 @@ switch ($url) {
         require_once './business/auth.php';
         register();
         break;
+<<<<<<< Updated upstream
 
+=======
+    case 'logout':
+        require_once './business/auth.php';
+        logout();
+        break;
+    case 'profile':
+        require_once './business/auth.php';
+        profile();
+        break;
+    case 'san-pham/pay':
+        require_once './business/pay.php';
+        pay();
+        break;
+>>>>>>> Stashed changes
         ///////////////// ADMIN ///////////////////
     case 'cp-admin/dashboard':
         require_once './business/admin/dashboard.php';
