@@ -42,6 +42,7 @@ function login(){
     }
     client_render('/login.php');
 }
+
 function register(){
     if(isset($_POST['btnSub'])){
         $username = $_POST['username'];
@@ -52,4 +53,9 @@ function register(){
     }
     client_render('/register.php');
 }
-
+function logout(){
+    client_render('/logout.php');
+}
+function profile(){
+    echo "thông tin ca nhân";
+}

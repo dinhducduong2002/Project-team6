@@ -1,5 +1,5 @@
 <?php
-
+ob_start();
 require_once './commons/app_config.php';
 require_once './commons/helpers.php';
 require_once './dao/system_dao.php';
@@ -25,6 +25,10 @@ switch ($url) {
     case 'register':
         require_once './business/auth.php';
         register();
+        break;
+    case 'logout':
+        require_once './business/auth.php';
+        logout();
         break;
     case 'san-pham/pay':
         require_once './business/pay.php';
