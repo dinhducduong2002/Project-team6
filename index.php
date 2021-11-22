@@ -26,7 +26,7 @@ switch ($url) {
         require_once './business/auth.php';
         register();
         break;
-
+    
         ///////////////// ADMIN ///////////////////
     case 'cp-admin/dashboard':
         require_once './business/admin/dashboard.php';
