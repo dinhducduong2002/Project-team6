@@ -5,3 +5,4 @@ function login(){
 function register(){
     client_render('/register.php');
 }
+
