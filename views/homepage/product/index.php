@@ -58,7 +58,7 @@
 <div class="container d-flex flex-wrap gap-4 p-3">
     <?php foreach($dsSanPham as $pro):?>
     <div class="card" style="width: 18rem;">
-        <img src="./mvc/Views/images/Sbcs9ooDuN_1623164443.gif" class="card-img-top" alt="...">
+        <img src="<?=PUBLIC_ASSETS. $pro['images']?>" class="card-img-top" alt="...">
         <div class="card-body">
             <div class="row">
                 <div class="col">

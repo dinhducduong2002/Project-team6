@@ -1,8 +1,4 @@
 <?php
-session_start();
-require_once './commons/app_config.php';
-require_once './commons/helpers.php';
-require_once './dao/system_dao.php';
 
 function login(){
     if(isset($_POST['btnSub'])){

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,10 +61,26 @@
                                 <a class="nav-link active" href="#">TIN TỨC</a>
                             </li>
                         </ul>
+                        <?php if(isset($_SESSION['admin'])):?>
                         <div class="account">
+                            <a href="<?= BASE_URL .'login' ?>" class="btn border border-secondary me-2">TRANG QUẢN TRỊ</a>
+                            <a href="<?= BASE_URL .'logout' ?>" class="btn border border-secondary me-2">XIN CHÀO ADMIN: <?php echo $_SESSION['admin'];?></a>
+                        </div>
+                        <?php elseif(isset($_SESSION['client'])):?>
+                            <div class="account">
+                            <a href="<?= BASE_URL .'profile' ?>" class="btn border border-secondary me-2">XIN CHÀO KHÁCH: <?php echo $_SESSION['client'];?></a>
+                        </div>
+                        <?php elseif(isset($_SESSION['ctv'])):?>
+                            <div class="account">
+                            <a href="<?= BASE_URL .'login' ?>" class="btn border border-secondary me-2">TRANG QUẢN TRỊ</a>
+                            <a href="<?= BASE_URL .'logout' ?>" class="btn border border-secondary me-2">XIN CHÀO CTV: <?php echo $_SESSION['ctv'];?></a>
+                        </div>
+                        <?php else:?>
+                            <div class="account">
                             <a href="<?= BASE_URL .'login' ?>" class="btn border border-secondary me-2">ĐĂNG NHẬP</a>
                             <a href="<?= BASE_URL .'register' ?>" class="btn border border-secondary me-2">ĐĂNG KÍ</a>
                         </div>
+                        <?php endif;?>
                     </div>
                 </div>
             </nav>

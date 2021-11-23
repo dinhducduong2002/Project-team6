@@ -13,23 +13,23 @@
                     <button class="tablinks" onclick="openCity(event, 'sign-in')">Tài Khoản</button>
                 </div>
             </div>
-            <form class="form-detail" action="#" method="post">
+            <form class="form-detail" method="post">
                 <div class="tabcontent" id="sign-up">
                     <?php foreach($data_pay as $cate):?>
                     <?php foreach($sql_data_products as $cate1):?>
                     <div class="form_acc">
-                        <span>Tài khoản: </span><b><?=$cate['username']?></b><br>
+                        <span>Tài khoản: </span><b name="username"><?=$cate['username']?></b><br>
                         <hr>
-                        <span>Số dư: </span><b><?php echo number_format($cate['balance'], 0, '', '.'); ?>đ</b><br>
+                        <span>Số dư: </span><b name="balance"><?php echo number_format($cate['balance'], 0, '', '.'); ?>đ</b><br>
                         <hr>
-                            <span>Giá tiền: </span><b><?php echo number_format($cate1['price'], 0, '', '.'); ?>đ</b><br>
+                            <span>Giá tiền: </span><b name="price"><?php echo number_format($cate1['price'], 0, '', '.'); ?>đ</b><br>
                         <hr>
-                        <span>Tổng tiền: </span><b>99.000đ</b><br><br>
+                        <span>Tổng tiền: </span><b><?php echo number_format($cate1['price'], 0, '', '.'); ?>đ</b><br><br>
                     </div>
                     
                     <div class="form-row">
                         <label class="form-row-inner">
-                            <input type="password" name="comfirm_password" id="comfirm_password" class="input-text" required>
+                            <input type="password" name="comfirm_password" id="comfirm_password" class="input-text" >
                             <span class="label">Nhập mã giảm giá: ( Nếu có )</span>
                             <span class="border"></span>
                         </label>
@@ -38,7 +38,7 @@
                         <input type="submit" name="register" class="register" value="Sử dụng"><br>
                         <hr>
                     </div>
-                    <?php if($cate['balance'] <= 0){ ?>
+                    <?php if($cate['balance'] <= $cate1['price']){ ?>
                     <div class="form-row-last">
                             <span class="label_1">Bạn không đủ số dư để mua tài khoản này. Bạn chọn hình thức nạp bằng cách click vào nút bên dưới.</span><br><br>
                         <hr>
@@ -54,16 +54,16 @@
                     <?php }else{ ?>
                     <div class="form-row-last">
                         <div class="row_top">
+                            <button class="form-row-last-close" name="btnAdd" type="submit">Thanh Toán</button>
                             <a class="form-row-last-close" href="<?= CLIENT_URL . 'san-pham/detail?id=' . $cate1['id'] ?>">Thoát</a>
-                            <a class="form-row-last-close" href="">Thanh Toán</a>
+                            
                         </div>
                     </div>
                     <?php } ?>
                     <?php endforeach;?>
                     <?php endforeach;?>
                 </div>
-            </form>
-            <form class="form-detail" action="#" method="post">
+            
                 <div class="tabcontent" id="sign-in">
                     <?php foreach($sql_data_products as $cate):?>
                     <div class="form_acc">
@@ -86,10 +86,11 @@
                                 </span><b>Tài khoản VIP</b><br>
                             <?php } ?>  
                         <hr>
-                        <span>Tổng tiền: </span><b>99.000đ</b><br><br> 
+                        <span>Tổng tiền: </span><b><?php echo number_format($cate1['price'], 0, '', '.'); ?>đ</b><br><br> 
                     </div>
                     <div class="form-row-last">
                         <div class="row_top">
+                            <button class="form-row-last-close" name="btnAdd" type="submit">Thanh Toán</button>
                             <a class="form-row-last-close" href="<?= CLIENT_URL . 'san-pham/detail?id=' . $cate['id'] ?>">Thoát</a>
                         </div>
                     </div>
