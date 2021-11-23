@@ -1,6 +1,4 @@
-<?php 
-session_start();
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,7 +69,7 @@ session_start();
                         </div>
                         <?php elseif(isset($_SESSION['client'])):?>
                             <div class="account">
-                            <a href="<?= BASE_URL .'profile' ?>" class="btn border border-secondary me-2">XIN CHÀO KHÁCH: <?php echo $_SESSION['client'];?></a>
+                            <a href="<?= BASE_URL .'logout' ?>" class="btn border border-secondary me-2">XIN CHÀO KHÁCH: <?php echo $_SESSION['client'];?></a>
                         </div>
                         <?php elseif(isset($_SESSION['ctv'])):?>
                             <div class="account">

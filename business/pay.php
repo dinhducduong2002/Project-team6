@@ -1,7 +1,7 @@
 <?php
 function pay(){
 
-    $sql_data_pay = "SELECT * FROM account WHERE id=4";
+    $sql_data_pay = "SELECT * FROM account WHERE id=1";
     $data_pay = executeQuery($sql_data_pay);
 
     $id = $_GET['id'];
