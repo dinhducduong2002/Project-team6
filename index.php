@@ -30,6 +30,10 @@ switch ($url) {
         require_once './business/auth.php';
         logout();
         break;
+    case 'profile':
+        require_once './business/auth.php';
+        profile();
+        break;
     case 'san-pham/pay':
         require_once './business/pay.php';
         pay();
