@@ -25,7 +25,6 @@ function login(){
                                 header("location: ".BASE_URL."");
                             }else if($key['permission'] == 1){
                                 $_SESSION['client'] = $_POST['username'];
-                                
                                 header("location: ".BASE_URL."");
                             }else if($key['permission'] == 1){
                                 $_SESSION['ctv'] = $_POST['username'];
