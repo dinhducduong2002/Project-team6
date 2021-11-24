@@ -1,0 +1,12 @@
+.ytb a:hover{
+    color: red;
+}
+.ytb a{
+    color: red;
+}
+.fb a:hover{
+    color: blue;
+}
+.account a:hover{
+    background: gray;
+}
