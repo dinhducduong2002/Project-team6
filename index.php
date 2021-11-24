@@ -30,13 +30,21 @@ switch ($url) {
         require_once './business/auth.php';
         logout();
         break;
-    case 'profile':
-        require_once './business/auth.php';
-        profile();
-        break;
     case 'san-pham/pay':
         require_once './business/pay.php';
         pay();
+        break;
+    case 'user/profile':
+        require_once './business/user.php';
+        index();
+        break;
+    case 'user/change-password':
+        require_once './business/user.php';
+        change_password();
+        break;
+    case 'user/history':
+        require_once './business/user.php';
+        history();
         break;
         ///////////////// ADMIN ///////////////////
     case 'cp-admin/dashboard':
@@ -68,8 +76,9 @@ switch ($url) {
         account_remove();
         break;
     default:
-        echo "Đường dẫn bạn đang truy cập chưa được định nghĩa";
-        break;
+        require_once "./business/error404.php";
+        index();
+    break;
 }
 
 ?>
