@@ -16,16 +16,12 @@ function login(){
                 foreach ($user as $key) {
                     if ($key['username']) {
                         if (password_verify($password, $key['password'])) {
-                            if($key['permission'] == 0){
-                                $_SESSION['admin'] = $_POST['username'];
-                                header("location: ".BASE_URL."");
-                            }else if($key['permission'] == 1){
-                                $_SESSION['client'] = $_POST['username'];
-                                header("location: ".BASE_URL."");
-                            }else if($key['permission'] == 1){
-                                $_SESSION['ctv'] = $_POST['username'];
-                                header("location: ".BASE_URL."");
-                            }
+                            $_SESSION["user"] = [
+                                "id" => $key['id'],
+                                "username" => $key['username'],
+                                "permission" => $key['permission'],
+                            ];
+                            header("location: ".BASE_URL."");
                         } else {
                             $_SESSION['password'] = "Mật khẩu không đúng";
                         }

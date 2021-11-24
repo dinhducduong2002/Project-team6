@@ -1,5 +1,5 @@
 <div class="col-md-12">
-    <div class="text-center" style="">
+    <div class="text-center">
         <center>
             <!-- <img class="img-responsive img-thumbnail hidden-xs" width="256" height="256" src="/assets/frontend/images/unknown-avatar.jpg" alt=""> -->
             <h5 class="c-font-bold c-font-28">148680150817473@facebook.com</h5>
