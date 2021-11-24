@@ -51,27 +51,33 @@
                     </ul>
                     <div class="account">
 
-                        <?php if(isset($_SESSION['admin'])):?>
-                        <a href="<?= BASE_URL .'cp-admin/dashboard' ?>" class="btn border border-secondary me-2">
-                            <i class="fas fa-users-cog"></i>
-                            Quản trị </a>
-                        <a href="<?= BASE_URL .'user/profile' ?>" class="btn border border-secondary me-2">
-                            <i class="far fa-user"></i>
-                            <?php echo $_SESSION['admin'];?></a>
+                        <?php if(isset($_SESSION["user"])):?>
 
-                        <?php elseif(isset($_SESSION['client'])):?>
-                        <a href="<?= BASE_URL .'user/profile' ?>" class="btn border border-secondary me-2">XIN CHÀO
-                            KHÁCH: <?php echo $_SESSION['client'];?></a>
+                            <?php if($_SESSION['user']['permission'] == 0):?>
+                                <a href="<?= BASE_URL .'cp-admin/dashboard' ?>" class="btn border border-secondary me-2">
+                                <i class="fas fa-users-cog"></i>
+                                Quản trị </a>
+                                <a href="<?= BASE_URL .'user/profile' ?>" class="btn border border-secondary me-2">
+                                <i class="far fa-user"></i>
+                                <?php echo $_SESSION["user"]['username'];?></a>
+                                
+                            <?php elseif($_SESSION['user']['permission'] == 2):?>
+                                <a href="<?= BASE_URL .'user/profile' ?>" class="btn border border-secondary me-2">
+                                <i class="far fa-user"></i>
+                                <?php echo $_SESSION["user"]['username'];?></a>
 
-                        <?php elseif(isset($_SESSION['ctv'])):?>
-                        <a href="<?= BASE_URL .'login' ?>" class="btn border border-secondary me-2">TRANG QUẢN TRỊ</a>
-                        <a href="<?= BASE_URL .'user/profile' ?>" class="btn border border-secondary me-2">XIN CHÀO CTV:
-                            <?php echo $_SESSION['ctv'];?></a>
+                            <?php elseif($_SESSION['user']['permission'] == 1):?>
+                                <a href="<?= BASE_URL .'login' ?>" class="btn border border-secondary me-2">QUẢN TRỊ</a>
+                                <a href="<?= BASE_URL .'user/profile' ?>" class="btn border border-secondary me-2">
+                                <i class="far fa-user"></i>
+                                <?php echo $_SESSION["user"]['username'];?></a>
+                            <?php endif;?>
 
                         <?php else:?>
-                        <a href="<?= BASE_URL .'login' ?>" class="btn border border-secondary me-2">ĐĂNG NHẬP</a>
-                        <a href="<?= BASE_URL .'register' ?>" class="btn border border-secondary me-2">ĐĂNG KÍ</a>
+                            <a href="<?= BASE_URL .'login' ?>" class="btn border border-secondary me-2">ĐĂNG NHẬP</a>
+                            <a href="<?= BASE_URL .'register' ?>" class="btn border border-secondary me-2">ĐĂNG KÍ</a>
                         <?php endif;?>
+
                     </div>
                 </div>
             </div>
