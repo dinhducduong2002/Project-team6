@@ -1,6 +1,6 @@
 <?php
 function pay(){
-    $sql_data_pay = "SELECT * FROM account WHERE username='".$_SESSION['client']."'";
+    $sql_data_pay = "SELECT * FROM account WHERE username='".$_SESSION["user"]['username']."'";
     $data_pay = executeQuery($sql_data_pay);
 
     $id = $_GET['id'];
