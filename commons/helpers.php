@@ -13,7 +13,12 @@ function client_render($viewpath, $data = []){
     $businessView = "./views/homepage/" .$viewpath;
     include_once './views/homepage/san-pham.php';
 }
-
+function errors_render($viewpath, $data = []){
+    
+    extract($data);
+    $businessView = "./views/homepage/" .$viewpath;
+    include_once './views/homepage/error404.php';
+}
 function dd(){
     echo "<pre>";
     $args = func_get_args();
