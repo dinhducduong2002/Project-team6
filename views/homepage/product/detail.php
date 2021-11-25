@@ -2,7 +2,7 @@
 <div class="row d-flex p-4">
     <div class="col">
         <div class="col">
-            <span class="">Mã số: <?= $pro['id']?></span>
+            <span class="">Mã số: #<?= $pro['id']?></span>
 
         </div>
     </div>

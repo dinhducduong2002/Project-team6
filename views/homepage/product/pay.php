@@ -48,15 +48,14 @@
                             <a class="form-row-last-close" href="">Thẻ Cào</a>
                             <a class="form-row-last-close" href="">MoMo</a>
                             <a class="form-row-last-close" href="">Ngân Hàng</a>
-                            <a class="form-row-last-close" href="<?= CLIENT_URL . 'san-pham/detail?id=' . $cate1['id'] ?>">Thoát</a>
+                            <a class="form-row-last-close" href="<?= CLIENT_URL . 'san-pham/detail?id=' . $cate1['id'] ?>" onclick="return confirm('Bạn chắc chắn muốn thoát không?')">Thoát</a>
                         </div>
                     </div>
                     <?php }else{ ?>
                     <div class="form-row-last">
                         <div class="row_top">
-                            <button class="form-row-last-close" name="btnAdd" type="submit">Thanh Toán</button>
-                            <a class="form-row-last-close" href="<?= CLIENT_URL . 'san-pham/detail?id=' . $cate1['id'] ?>">Thoát</a>
-                            
+                            <button class="form-row-last-close" name="btnAdd" type="submit" onclick="return confirm('Bạn chắc chắn muốn thoát không?')" >Thanh Toán</button>
+                            <a class="form-row-last-close" href="<?= CLIENT_URL . 'san-pham/detail?id=' . $cate1['id'] ?>" onclick="return confirm('Bạn chắc chắn muốn thoát không?')">Thoát</a>
                         </div>
                     </div>
                     <?php } ?>
