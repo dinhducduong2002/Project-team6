@@ -37,7 +37,7 @@
                                 <input type="submit" name="register" class="register" value="Sử dụng"><br>
                                 <hr>
                             </div>
-                            <?php if ($cate['balance'] <= $cate1['price']) { ?>
+                            <?php if ($cate['balance'] < $cate1['price']) { ?>
                                 <div class="form-row-last">
                                     <span class="label_1">Bạn không đủ số dư để mua tài khoản này. Bạn chọn hình thức nạp bằng cách click vào nút bên dưới.</span><br><br>
                                     <hr>
@@ -47,14 +47,13 @@
                                         <a class="form-row-last-close" href="">Thẻ Cào</a>
                                         <a class="form-row-last-close" href="">MoMo</a>
                                         <a class="form-row-last-close" href="">Ngân Hàng</a>
-                                        Vũ Công Toàn
                                         <a class="form-row-last-close" href="<?= CLIENT_URL . 'san-pham/detail?id=' . $cate1['id'] ?>" onclick="return confirm('Bạn chắc chắn muốn thoát không?')">Thoát</a>
                                     </div>
                                 </div>
                             <?php } else { ?>
                                 <div class="form-row-last">
                                     <div class="row_top">
-                                        <button class="form-row-last-close" name="btnAdd" type="submit" onclick="return confirm('Bạn chắc chắn muốn thoát không?')">Thanh Toán</button>
+                                        <button class="form-row-last-close" name="btnAdd" type="submit" onclick="return confirm('Bạn chắc chắn muốn thanh toán mã sản phẩm #<?= $cate1['id']?> không?')">Thanh Toán</button>
                                         <a class="form-row-last-close" href="<?= CLIENT_URL . 'san-pham/detail?id=' . $cate1['id'] ?>" onclick="return confirm('Bạn chắc chắn muốn thoát không?')">Thoát</a>
                                     </div>
                                 </div>
