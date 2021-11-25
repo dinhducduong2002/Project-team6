@@ -67,7 +67,7 @@
                                 <?php echo $_SESSION["user"]['username'];?></a>
 
                             <?php elseif($_SESSION['user']['permission'] == 1):?>
-                                <a href="<?= BASE_URL .'login' ?>" class="btn border border-secondary me-2">QUẢN TRỊ</a>
+                                <a href="<?= BASE_URL .'cp-admin/dashboard' ?>" class="btn border border-secondary me-2">QUẢN TRỊ</a>
                                 <a href="<?= BASE_URL .'user/profile' ?>" class="btn border border-secondary me-2">
                                 <i class="far fa-user"></i>
                                 <?php echo $_SESSION["user"]['username'];?></a>

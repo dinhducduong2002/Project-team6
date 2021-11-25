@@ -72,6 +72,11 @@ switch ($url) {
         delete_ctv();
         break;
     
+    case 'cp-admin/edit-ctv':
+        require_once "./business/admin/account.php";
+        edit_ctv();
+        break;
+    
     default:
         require_once "./business/error404.php";
         index();

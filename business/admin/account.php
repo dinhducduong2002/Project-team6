@@ -13,10 +13,17 @@ function delete_ctv(){
     executeQuery($sql);
     header("location: " . ADMIN_URL . 'manager-ctv');
 }
+function edit_ctv(){
+    $id = $_GET['id'];
+    $sql = "SELECT from account where id = $id";
+    $user = executeQuery($sql);
+    admin_render('account/edit-ctv.php', [
+        'user' => $user
+    ]);
+}
 function manager_client(){
 
     admin_render('account/manager-client.php');
-
 }
 
 // function account_remove(){
@@ -97,5 +104,3 @@ function manager_client(){
 //     executeQuery($sql);
 //     header("location: " . ADMIN_URL . 'tai-khoan');
 // }
-
-?>
