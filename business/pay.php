@@ -14,9 +14,5 @@ function pay(){
     ]
     );
 
-    if(isset($_POST['btnAdd'])){
-        $username = $_SESSION['client'];
-        $sql = "UPDATE account_purchase_history SET name_account='$username' WHERE $username='".$_SESSION['client']."'";
-        executeQuery($sql);
-    }
+   
 }

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include_once "./views/admin/layouts/style.php" ?>
+
 <body>
 
     <div id="wrapper">
@@ -20,7 +21,7 @@
             <?php include_once "./views/admin/layouts/nav-bar.php" ?>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <?php include_once "./views/admin/layouts/slide-bar.php" ?>
+                <?php include_once "./views/admin/layouts/slide-bar.php" ?>
             </div>
             <!-- /.navbar-collapse -->
         </nav>
@@ -43,9 +44,7 @@
                     </div>
                 </div>
                 <!-- /.row -->
-                <div class="row">
-                <?php include_once $businessView; ?>
-                </div>
+                
                 <!-- /.row -->
 
             </div>
@@ -58,6 +57,7 @@
     <!-- /#wrapper -->
 
     <?php include_once "./views/admin/layouts/scripts.php" ?>
+
 </body>
 
 </html>

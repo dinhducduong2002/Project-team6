@@ -19,15 +19,5 @@ function errors_render($viewpath, $data = []){
     $businessView = "./views/homepage/" .$viewpath;
     include_once './views/homepage/error404.php';
 }
-function dd(){
-    echo "<pre>";
-    $args = func_get_args();
-    foreach($args as $item){
-        var_dump($item);
-    }
-    
-    echo "</pre>";
-    die;
-}
 
 ?>
