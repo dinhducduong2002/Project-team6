@@ -51,30 +51,27 @@ switch ($url) {
         require_once './business/admin/dashboard.php';
         dashboard_info();
         break;
-    case 'cp-admin/tai-khoan':
+    
+    case 'cp-admin/manager-ctv':
         require_once "./business/admin/account.php";
-        account_index();
+        manager_ctv();
         break;
-    case 'cp-admin/tai-khoan/tao-moi':
+    
+    case 'cp-admin/manager-client':
         require_once "./business/admin/account.php";
-        account_add_form();
+        manager_client();
         break;
-    case 'cp-admin/tai-khoan/luu-tao-moi':
+    
+    case 'cp-admin/chart':
+        require_once "./business/admin/chart.php";
+        chart();
+        break;
+    
+    case 'cp-admin/delete-ctv':
         require_once "./business/admin/account.php";
-        account_save_add();
+        delete_ctv();
         break;
-    case 'cp-admin/tai-khoan/sua':
-        require_once "./business/admin/account.php";
-        account_edit_form();
-        break;
-    case 'cp-admin/tai-khoan/luu-sua':
-        require_once "./business/admin/account.php";
-        account_save_edit();
-        break;
-    case 'cp-admin/tai-khoan/xoa':
-        require_once "./business/admin/account.php";
-        account_remove();
-        break;
+    
     default:
         require_once "./business/error404.php";
         index();
