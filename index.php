@@ -76,7 +76,22 @@ switch ($url) {
         require_once "./business/admin/account.php";
         edit_ctv();
         break;
-    
+    case 'cp-admin/sp-index':
+        require_once "./business/admin/product.php";
+        sp_index();
+        break;
+    case 'cp-admin/sp-remove':
+        require_once "./business/admin/product.php";
+        sp_remove();
+        break;
+    case 'cp-admin/sp-add':
+        require_once "./business/admin/product.php";
+        sp_save_add();
+        break;
+    case 'cp-admin/sp-edit':
+        require_once "./business/admin/product.php";
+        sp_save_edit();
+        break;
     default:
         require_once "./business/error404.php";
         index();
