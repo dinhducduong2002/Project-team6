@@ -27,8 +27,8 @@
                                 else if($key['status'] == 1){echo "Hoạt động";}?></td>
                                 <td><?php if($key['permission'] == 0){echo "Admin";}else if($key['permission'] == 1){echo "Cộng tác viên";}?></td>
                                 <td><?= $key['create_at']?></td>
-                                <td><a href="<?= ADMIN_URL . 'delete-ctv?id=' . $key['id'] ?>">Sửa</a></td>
-                                <td>xóa</td>
+                                <td><a href="<?= ADMIN_URL . 'edit-ctv?id=' . $key['id'] ?>">Sửa</a></td>
+                                <td><a href="<?= ADMIN_URL . 'delete-ctv?id=' . $key['id'] ?>">Xóa</a></td>
                             </tr>
                     <?php endforeach;?>
                         </tbody>
