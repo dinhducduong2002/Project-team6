@@ -80,13 +80,21 @@ switch ($url) {
         require_once "./business/admin/product.php";
         sp_index();
         break;
-    case 'cp-admin/sp-remove':
+    case 'cp-admin/delete-sp':
         require_once "./business/admin/product.php";
         sp_remove();
+        break;
+    case 'cp-admin/sp-add-form':
+        require_once "./business/admin/product.php";
+        sp_add_form();
         break;
     case 'cp-admin/sp-add':
         require_once "./business/admin/product.php";
         sp_save_add();
+        break;
+    case 'cp-admin/sp-edit':
+        require_once "./business/admin/product.php";
+        sp_edit_form();
         break;
     case 'cp-admin/sp-edit':
         require_once "./business/admin/product.php";

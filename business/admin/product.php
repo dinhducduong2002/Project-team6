@@ -14,8 +14,6 @@ function sp_remove(){
     // thực thi câu lệnh xóa dựa vào id
     $sql = "delete from products where id = $id";
     executeQuery($sql);
-    var_dump( $sql);
-    die;
     header("location: " . ADMIN_URL . 'sp-index');
 }
 
@@ -25,10 +23,20 @@ function sp_add_form(){
 }
 function sp_save_add(){
     // nhận dữ liệu từ form gửi lên
-    $name = $_POST['name'];
+    $username = $_POST['username'];
     $password = $_POST['password'];
+    $nameproduct = $_POST['name_product'];
+    $price = $_POST['price'];
+    $sever = $_POST['server'];
+    $planet = $_POST['planet'];
+    $category = $_POST['category'];
+    $porata = $_POST['porata'];
+    $cpCTV = $_POST['cp_ctv'];
+    $description = $_POST['description'];
+    $status = $_POST['status'];
+    $create = $_POST['create_at'];
     // lưu ảnh vào thư mục public/uploads
-    $file = $_FILES['avatar'];
+    $file = $_FILES['image_thumnail'];
     $avatar = "";
     // Lưu ảnh
     if($file['size'] > 0){
@@ -38,10 +46,10 @@ function sp_save_add(){
     }
 
     // tạo ra câu sql insert tài khoản mới
-    $sql = "insert into users 
-                (name, email, password, avatar) 
+    $sql = "insert into products 
+                (username, password, name_product, price, server, planet, category, image_thumnail, porata, cp_ctv, description, status, create_at) 
             values 
-                ('$name', '$email', '$passwordHash', '$avatar')";
+                ('$username', '$password', '$nameproduct', '$price', '$sever', '$planet', '$category', '$avatar', '$porata', '$cpCTV', '$description', '$status', '$create')";
     // Thực thi câu sql với db
     executeQuery($sql);
     header("location: " . ADMIN_URL . 'sp-index');
