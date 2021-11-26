@@ -92,7 +92,7 @@ switch ($url) {
         require_once "./business/admin/product.php";
         sp_save_add();
         break;
-    case 'cp-admin/sp-edit':
+    case 'cp-admin/sp-edit-form':
         require_once "./business/admin/product.php";
         sp_edit_form();
         break;

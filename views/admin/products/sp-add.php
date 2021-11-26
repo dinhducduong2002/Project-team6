@@ -1,4 +1,4 @@
-<form action="<?= ADMIN_URL . ''?>"  method="post" enctype="multipart/form-data">
+<form action="<?= ADMIN_URL . 'sp-add'?>"  method="post" enctype="multipart/form-data">
 <div class="row">
     <div class="col-lg-6">
 
@@ -30,47 +30,44 @@
             </div>
 
             <div class="form-group">
-                <label>Loại Nick</label>
+                <label>Hành Tinh</label>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="category" id="category1" value="0" checked>Nick Tầm Trung
+                        <input type="radio" name="planet" id="planet1" value="0" checked>NAMEC
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="category" id="category2" value="1">Nick Vip
+                        <input type="radio" name="planet" id="planet2" value="1">Trái Đất
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="category" id="category3" value="2">Nick Vip PRO
+                        <input type="radio" name="planet" id="planet3" value="2">XAYDA
                     </label>
                 </div>
             </div>
+
+            <div class="form-group">
+            <label>Danh mục sản phẩm</label>
+            <? var_dump($ds_cate);
+            die;?>
+            <select name="category" class="form-control">
+            <?php foreach($ds_cate as $cate):?>
+                <option value="<?=$cate['id_cate']?>"><?=$cate['name_cate']?></option> <br>
+            <?php endforeach;?>
+            </select>
+        </div>
 
             <div class="form-group">
                 <label>Ảnh Đại Diện</label>
                 <input class="form-control" type="file" name="image_thumnail" id="" placeholder="">
             </div>
+            <?php if(isset($_SESSION['image'])) echo $_SESSION['image']?>
 
             <div class="form-group">
-                <label>Ảnh 1</label>
-                <input class="form-control" type="file" name="image1l" id="" placeholder="">
-            </div>
-
-            <div class="form-group">
-                <label>Ảnh 2</label>
-                <input class="form-control" type="file" name="image2" id="" placeholder="">
-            </div>
-
-            <div class="form-group">
-                <label>Ảnh 3</label>
-                <input class="form-control" type="file" name="image3" id="" placeholder="">
-            </div>
-
-            <div class="form-group">
-                <label>Ảnh 4</label>
-                <input class="form-control" type="file" name="image4" id="" placeholder="">
+                <label>Ảnh chi tiết</label>
+                <input class="form-control" type="file" name="file[]" multiple/>
             </div>
 
             <div class="form-group">
@@ -96,24 +93,10 @@
                 <input class="form-control" type="text" name="description" id="" placeholder="">
             </div>
 
-            <div class="form-group">
-                <label>Trạng Thái</label>
-                <div class="radio">
-                    <label>
-                        <input type="radio" name="status" id="status1" value="0" checked>Đang Giao Bán
-                    </label>
-                </div>
-                <div class="radio">
-                    <label>
-                        <input type="radio" name="status" id="status2" value="1">Đã Bán
-                    </label>
-                </div>
-            </div>
-
             <div class="d-flex justify-content-center">
-                <a href="<?= ADMIN_URL . 'sp'?>" class="btn btn-sm btn-danger">Hủy</a>
+                <a href="<?= ADMIN_URL . 'sp-index'?>" class="btn btn-sm btn-danger">Hủy</a>
                 &nbsp;
-                <button type="button" class="btn btn-primary btn-sm">Lưu</button>
+                <button name="btn"  class="btn btn-primary btn-sm">Lưu</button>
             </div>
 
         </form>

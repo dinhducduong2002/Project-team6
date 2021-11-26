@@ -15,10 +15,7 @@
                 <a href="<?= ADMIN_URL . 'sp-index' ?>">Danh sách sản phẩm</a>
             </li>
             <li>
-                <a href="<?= ADMIN_URL . 'sp-add' ?>">Thêm sản phẩm</a>
-            </li>
-            <li>
-                <a href="<?= ADMIN_URL . 'sp-edit' ?>">Cập nhật sản phẩm</a>
+                <a href="<?= ADMIN_URL . 'sp-add-form' ?>">Thêm sản phẩm</a>
             </li>
         </ul>
     </li>
