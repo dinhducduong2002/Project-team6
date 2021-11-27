@@ -35,11 +35,11 @@
 
                     <div class="c-content-ver-nav">
                         <ul class="c-menu c-arrow-dot c-square c-theme">
-                            <li><a href="<?= CLIENT_URL . 'user/profile?id=' . $_SESSION['user']['id'] ?> "
+                            <li><a href="<?= CLIENT_URL . 'user/profile' ?> "
                                     class="active">Thông tin tài khoản</a></li>
-                            <li><a href="<?= CLIENT_URL . 'user/change-password?id='. $_SESSION['user']['id'] ?>"
+                            <li><a href="<?= CLIENT_URL . 'user/change-password' ?>"
                                     class="">Đổi mật khẩu</a></li>
-                            <li><a href="<?= CLIENT_URL . 'user/history?id=' . $_SESSION['user']['id'] ?>" class="">Lịch
+                            <li><a href="<?= CLIENT_URL . 'user/history' ?>" class="">Lịch
                                     sử giao dịch</a></li>
                         </ul>
                     </div>
