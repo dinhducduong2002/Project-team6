@@ -109,6 +109,7 @@
                         <th>ID</th>
                         <th>Tài khoản</th>
                         <th>Mật khẩu</th>
+                        <th>Server</th>
                         <th>Số tiền</th>
                         <th>Số dư cuối</th>
                         <th>Nội dung</th>
@@ -121,16 +122,18 @@
                     <td><?= $aph['id']?></td>
                     <td><?= $aph['name_account']?></td>
                     <td><?= $aph['password_account']?></td>
+                    <td><?= $aph['server']?></td>
                     <td><?= $aph['price']?></td>
                     <td><?= $aph['surplus']?></td>
                     <td><?= $aph['content']?></td>
-                    <td><?php if($aph['status']== 0) {
-                                    echo 'Đã thanh toán';
-                    } 
-                             elseif($aph['status']==1) {
-                                    echo 'Hoàn lại tiền';
-                     }
-                      ?></td>
+                    <td>
+                        <?php if($aph['status'] == 0):?>
+                            <span style="color: green;"><?php echo "Đã thanh toán";?></span>
+                        <?php elseif($aph['status'] == 1):?>
+                            <span style="color: red;"><?php echo "Hoàn lại tiền";?></span>
+                        <?php endif;?>
+                    
+                    </td>
                 </tr>
                 <?php endforeach; ?>
                 <tbody>

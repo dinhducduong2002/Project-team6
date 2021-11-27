@@ -6,10 +6,10 @@
     <div class="product-device shadow-sm d-none d-md-block"></div>
     <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
 </div>
-<div class="container d-flex flex-wrap gap-lg-5">
+<div" class="container d-flex flex-wrap gap-lg-5">
     <?php foreach($ser as $key):?>
         <a href="">
-        <div class="card" style="width: 18rem;">
+        <div class="card " style="width: 18rem;">
         
         <img src="<?= CLIENT_ASSETS ?>images/i7QQlLPxod_1624873611.jpg" class="card-img-top" alt="...">
         </div>

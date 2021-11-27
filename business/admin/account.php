@@ -31,7 +31,6 @@ function delete_ctv(){
 }
 function edit_ctv(){
     $id = $_GET['id'];
-<<<<<<< Updated upstream
     $sql = "SELECT * from account where id = $id";
     $user = executeQuery($sql);
     admin_render('account/edit-ctv.php', [
@@ -47,11 +46,6 @@ function edit_ctv(){
         $_SESSION['success'] = "Cập nhật thành công";
         header("location: ".ADMIN_URL."manager-ctv");
     }
-=======
-    $sql = "SELECT from account where id='$id'";
-    $user = executeQuery($sql);
-    admin_render('account/edit-ctv.php');
->>>>>>> Stashed changes
 }
 function manager_client(){
     $sql = "SELECT * FROM account where permission=2";

@@ -27,13 +27,14 @@ function pay(){
         $content = $sql_data_products[0]['category'];
         $id_ctv = $sql_data_products[0]['cp_ctv'];
         $name_product = $sql_data_products[0]['name_product'];
+        $server_tk = $sql_data_products[0]['server'];
         $id_product = $sql_data_products[0]['id'];
 
         $price_ctv = $sql_data_ctv[0]['balance'] + $sql_data_products[0]['price'];
 
         $id_user = $_SESSION['user']['id'];
         $sql = "INSERT INTO account_purchase_history SET id_user='$id_user', price='$price', name_account='$name_account', password_account='$password_account', surplus='$surplus',
-                content='$content', id_ctv='$id_ctv', name_product='$name_product', id_product='$id_product'";
+                content='$content', id_ctv='$id_ctv', name_product='$name_product', id_product='$id_product',server='$server_tk'";
         executeQuery($sql);
         
         $sql = "UPDATE account SET balance='$surplus' WHERE id='$id_user'";

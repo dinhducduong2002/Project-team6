@@ -22,7 +22,9 @@
                         <th>Giá</th>
                         <th>Trạng thái</th>
                         <th>Ngày tạo</th>
+                        <?php if($_SESSION['user']['permission'] == 0):?>
                         <th>Chức năng</th>
+                        <?php endif;?>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,14 +38,15 @@
                         <td><?= $cate['name_product']?></td>
                         <td><?php echo number_format($cate['price'], 0, '', '.'); ?>đ</td>
                         <td>
-                        <?php if($cate['status'] == 0){ ?>Hoàn thành<?php } ?>
-                        <?php if($cate['status'] == 1){ ?>Hoàn lại tiền<?php } ?>
+                        <?php if($cate['status'] == 0){ ?><span style="color: green;"><?php echo "Hoàn thành";?></span><?php } ?>
+                        <?php if($cate['status'] == 1){ ?><span style="color: red;"><?php echo "Hoàn lại tiền";?></span><?php } ?>
                         </td>
                         <td><?= $cate['updated_at']?></td>
                         <td>
-                            <?php if($cate['status'] == 0){ ?><button type="submit" class="btn btn-success" value="<?=$cate['id']?>" name="btn_update" >Hoàn lại tiền</button><?php } ?>
-                           
-                            <a href="" onclick="return confirm('<?= ADMIN_URL ?>delete-bill?id=<?= $cate['id'] ?>','<?= $cate['id_product'] ?>')"> <button class="btn btn-danger">Xóa</button></a>
+                            <?php if($_SESSION['user']['permission'] == 0):?>
+                                <?php if($cate['status'] == 0){ ?><button type="submit" class="btn btn-success" value="<?=$cate['id']?>" name="btn_update" >Hoàn lại tiền</button><?php } ?>
+                                <a href="" onclick="return confirm('<?= ADMIN_URL ?>delete-bill?id=<?= $cate['id'] ?>','<?= $cate['id_product'] ?>')"> <button class="btn btn-danger">Xóa</button></a>
+                            <?php endif;?>
                         </td>
                         
                     </tr>

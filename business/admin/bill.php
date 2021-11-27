@@ -1,14 +1,25 @@
 <?php
     function bill(){
+        if($_SESSION['user']['permission'] == 0){
+            $sql = "SELECT * FROM account_purchase_history";
+            $data_bill = executeQuery($sql);
+    
+            admin_render('bill/manager-bill.php',[
+    
+                'data_bill' => $data_bill,
+    
+            ]);
+        }else if($_SESSION['user']['permission'] == 1){
+            $sql = "SELECT * FROM account_purchase_history where id_ctv='".$_SESSION['user']['id']."'";
+            $data_bill = executeQuery($sql);
+    
+            admin_render('bill/manager-bill.php',[
+    
+                'data_bill' => $data_bill,
+    
+            ]);
+        }
         
-        $sql = "SELECT * FROM account_purchase_history";
-        $data_bill = executeQuery($sql);
-
-        admin_render('bill/manager-bill.php',[
-
-            'data_bill' => $data_bill,
-
-        ]);
 
         if(isset($_POST['btn_update'])){
 

@@ -17,19 +17,23 @@
                         <th class="col-lg-1">id</th>
                         <th>Tên dịch vụ</th>
                         <th>ảnh dịch vụ</th>
+                        <th>Chức năng</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($ds_service as $index => $key) : ?>
+                    <?php foreach($ds_service as $key):?>
                         <tr>
-                            <td><?php echo $index + 1; ?></td>
+                            <td><?= $key['id_service'] ?></td>
                             <td><?= $key['name_service'] ?></td>
-                            <td><img src="<?=PUBLIC_ASSETS. $pro['image']?>"></td>
+                            <td><img src="<?=PUBLIC_ASSETS. $key['image_service']?>" width="100"></td>
                             <td><?= $key['created_at'] ?></td>
-                            <td><a href="<?= ADMIN_URL . 'edit-service?id=' . $key['id'] ?>">Sửa</a></td>
-                            <td><a href="<?= ADMIN_URL . 'delete-service?id=' . $key['id'] ?>">Xóa</a></td>
+                            <td>
+                                <a class="btn btn-primary" href="<?= ADMIN_URL . 'edit-service?id=' . $key['id'] ?>">Sửa</a>
+                                <a class="btn btn-danger" href="<?= ADMIN_URL . 'delete-service?id=' . $key['id'] ?>">Xóa</a>
+                            </td>
+                            <td></td>
                         </tr>
-                    <?php endforeach; ?>
+                    <?php endforeach;?>
                 </tbody>
             </table>
 

@@ -12,7 +12,7 @@
         <div class="card-body text-center">
             <h5 class="card-title"><?= $key['name_cate']?></h5>
             <p class="card-text">Số tài khoản: 0</p>
-            <a href="<?= CLIENT_URL . 'san-pham'?>" class=" btn btn-danger">MUA NGAY</a>
+            <a href="<?= CLIENT_URL . 'san-pham?id=' . $key['id'] ?>" class=" btn btn-danger">MUA NGAY</a>
         </div>
     </div>
     <?php endforeach;?>

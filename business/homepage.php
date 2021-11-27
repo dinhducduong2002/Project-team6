@@ -1,5 +1,6 @@
 <?php
 function index(){
+    
     $sql = "SELECT * FROM service";
     $services = executeQuery($sql);
     $sql = "SELECT * FROM categorys";

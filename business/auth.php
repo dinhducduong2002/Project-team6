@@ -20,7 +20,12 @@ function login(){
                                 $_SESSION["user"] = [
                                     "id" => $key['id'],
                                     "username" => $key['username'],
+                                    "password" => $key['password'],
+                                    "email" => $key['email'],
+                                    "balance" => $key['balance'],
+                                    "status" => $key['status'],
                                     "permission" => $key['permission'],
+                                    "create_at" => $key['create_at'],
                                 ];
                                 header("location: ".BASE_URL."");
                             }else{

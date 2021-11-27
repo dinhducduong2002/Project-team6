@@ -21,6 +21,7 @@
                         <th>Trạng thái</th>
                         <th>Loại tài khoản</th>
                         <th>Ngày tham gia</th>
+                        <th>Chức năng</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,8 +42,11 @@
                                     echo "Cộng tác viên";
                                 } ?></td>
                             <td><?= $key['create_at'] ?></td>
-                            <td><a href="<?= ADMIN_URL . 'edit-ctv?id=' . $key['id'] ?>">Sửa</a></td>
-                            <td><a href="<?= ADMIN_URL . 'delete-ctv?id=' . $key['id'] ?>">Xóa</a></td>
+                            <td>
+                            <a class="btn btn-primary" href="<?= ADMIN_URL . 'edit-ctv?id=' . $key['id'] ?>">Sửa</a>
+                            <a class="btn btn-danger" href="<?= ADMIN_URL . 'delete-ctv?id=' . $key['id'] ?>">Xóa</a>
+                            </td>
+                            <td></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

@@ -66,7 +66,7 @@
                     </tr>
                     <tr>
                         <th scope="row">Số dư tài khoản:</th>
-                        <td><b class="text-danger"><?= $ac['balance']?> đ</b></td>
+                        <td><b class="text-danger"><?php echo number_format($ac['balance'], 0, '', '.'); ?> đ</b></td>
                     </tr>
                     <!--                <tr>
                     <th scope="row">Địa chỉ Email:</th>
