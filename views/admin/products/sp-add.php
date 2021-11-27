@@ -67,7 +67,7 @@
 
             <div class="form-group">
                 <label>Ảnh chi tiết</label>
-                <input class="form-control" type="file" name="file[]" multiple/>
+                <input class="form-control" type="file" name="galery[]" multiple/>
             </div>
 
             <div class="form-group">
