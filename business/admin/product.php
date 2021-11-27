@@ -19,8 +19,10 @@ function sp_remove(){
 }
 
 function sp_add_form(){
+    $sqla = "SELECT * FROM products";
+    $catea = executeQuery($sqla);
     $sql = "SELECT * FROM categorys";
-    $cate = executeQuery($sql);
+    $ds_cate = executeQuery($sql);
     admin_render('products/sp-add.php',[
         'ds_cate' => $cate, 
     ]);

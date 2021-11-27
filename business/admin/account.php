@@ -15,11 +15,28 @@ function delete_ctv(){
 }
 function edit_ctv(){
     $id = $_GET['id'];
+<<<<<<< Updated upstream
     $sql = "SELECT from account where id = $id";
+=======
+    $sql = "SELECT * from account where id = $id";
+>>>>>>> Stashed changes
     $user = executeQuery($sql);
     admin_render('account/edit-ctv.php', [
         'user' => $user
     ]);
+<<<<<<< Updated upstream
+=======
+    if(isset($_POST['btnEdit'])){
+        $balance = $_POST['balance'];
+        $status = $_POST['status'];
+        $permission = $_POST['permission'];
+
+        $sql = "UPDATE account set balance='$balance', status='$status', permission='$permission' where id='$id'";
+        executeQuery($sql);
+        $_SESSION['success'] = "Cập nhật thành công";
+        header("location: ".ADMIN_URL."manager-ctv");
+    }
+>>>>>>> Stashed changes
 }
 function manager_client(){
 
