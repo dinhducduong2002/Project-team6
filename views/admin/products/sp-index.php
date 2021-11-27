@@ -49,7 +49,7 @@
                                 else if($key['category']==2){echo"Nick VIP PRO";}
                                 ?></td>
                                 <td><img style="padding: 10px" width="80" height="80" src="<?=PUBLIC_ASSETS. $key['image_thumnail']?> " alt=""></td>
-                                <td></td>
+                                <td><img style="padding: 10px" width="80" height="80" src="<?=PUBLIC_ASSETS. $key['image']?>" alt=""></td>
                                 <td><?php if($key['porata'] == 0){echo "Không có bông tai";}else if($key['porata'] == 1){echo "Có bông tai";}?></td>
                                 <td><?= $key['cp_ctv']?> </td>
                                 <td><?= $key['description']?> </td>
