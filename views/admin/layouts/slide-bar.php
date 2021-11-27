@@ -12,10 +12,10 @@
         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Quản lý sản phẩm <i class="fa fa-fw fa-caret-down"></i></a>
         <ul id="demo" class="collapse">
             <li>
-                <a href="<?= ADMIN_URL . 'sp-index' ?>">Danh sách sản phẩm</a>
+                <a href="#">Danh sách sản phẩm</a>
             </li>
             <li>
-                <a href="<?= ADMIN_URL . 'sp-add-form' ?>">Thêm sản phẩm</a>
+                <a href="#">Thêm sản phẩm</a>
             </li>
         </ul>
     </li>
