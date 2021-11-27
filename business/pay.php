@@ -46,5 +46,7 @@ function pay(){
         $sql = "UPDATE products SET status='1' WHERE id='$id'";
         executeQuery($sql);
         
+        $_SESSION['success'] = "Thanh toán thành công";
+        header("location: " . CLIENT_URL . 'user/history');
     }
 }

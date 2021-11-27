@@ -49,19 +49,15 @@
                     <?php endforeach; ?>
                 </tbody>
             </table>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <?php for ($i = 1; $i <= $page; $i++) : ?>
-                            <?php if ($i != $page) : ?>
-                                <a class="page-link" href="http://localhost/Project-team6/cp-admin/manager-ctv?page=<?= $i ?>"><?= $i ?></a>
-                            <?php else : ?>
-                                <a class="page-link" href="http://localhost/Project-team6/cp-admin/manager-ctv?page=<?= $i ?>"><?= $i ?></a>
-                            <?php endif; ?>
-                        <?php endfor; ?>
-                    </li>
-                </ul>
-            </nav>
         </div>
     </div>
 </div>
+<nav aria-label="...">
+  <ul class="pagination pagination-sm">
+    <li class="page-item">
+      <a class="page-link" href="#" tabindex="-1">1</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+  </ul>
+</nav>

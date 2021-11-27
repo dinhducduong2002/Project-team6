@@ -86,6 +86,17 @@ switch ($url) {
         require_once "./business/admin/account.php";
         edit_ctv();
         break;
+    
+    case 'cp-admin/delete-client':
+        require_once "./business/admin/account.php";
+        delete_client();
+        break;
+    
+    case 'cp-admin/edit-client':
+        require_once "./business/admin/account.php";
+        edit_client();
+        break;
+            
     case 'cp-admin/manager-bill':
         require_once "./business/admin/bill.php";
         bill();
@@ -106,6 +117,26 @@ switch ($url) {
         edit_service();
         break;
     
+    case 'cp-admin/manager-service':
+        require_once "./business/admin/service.php";
+        service();
+        break;
+    
+    case 'cp-admin/edit-service':
+        require_once "./business/admin/service.php";
+        edit_service();
+        break;
+    
+    case 'cp-admin/delete-service':
+        require_once "./business/admin/service.php";
+        delete_service();
+        break;
+    
+    case 'cp-admin/add-service':
+        require_once "./business/admin/service.php";
+        add_service();
+        break;
+        
     default:
         require_once "./business/error404.php";
         index();

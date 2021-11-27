@@ -43,10 +43,9 @@
                                 } ?></td>
                             <td><?= $key['create_at'] ?></td>
                             <td>
-                            <a class="btn btn-primary" href="<?= ADMIN_URL . 'edit-ctv?id=' . $key['id'] ?>">Sửa</a>
-                            <a class="btn btn-danger" href="<?= ADMIN_URL . 'delete-ctv?id=' . $key['id'] ?>">Xóa</a>
+                                <a class="btn btn-primary" href="<?= ADMIN_URL . 'edit-client?id=' . $key['id'] ?>">Sửa</a>
+                                <a class="btn btn-danger" href="<?= ADMIN_URL . 'delete-client?id=' . $key['id'] ?>">Xóa</a>
                             </td>
-                            <td></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -55,3 +54,12 @@
         </div>
     </div>
 </div>
+<nav aria-label="...">
+  <ul class="pagination pagination-sm">
+    <li class="page-item">
+      <a class="page-link" href="#" tabindex="-1">1</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+  </ul>
+</nav>

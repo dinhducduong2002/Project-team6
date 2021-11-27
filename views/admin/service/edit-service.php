@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-lg-6">
 
-        <form  action="<?= ADMIN_URL . 'edit-service?id=' . $list_service['id'] ?>" method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label>Tên dịch vụ</label>
                 <input name="name_service" type="text" class="form-control" placeholder="Tên dịch vụ" value="<?= $list_service['name_service']?>">

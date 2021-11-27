@@ -44,8 +44,8 @@
                         <td><?= $cate['updated_at']?></td>
                         <td>
                             <?php if($_SESSION['user']['permission'] == 0):?>
-                                <?php if($cate['status'] == 0){ ?><button type="submit" class="btn btn-success" value="<?=$cate['id']?>" name="btn_update" >Hoàn lại tiền</button><?php } ?>
-                                <a href="" onclick="return confirm('<?= ADMIN_URL ?>delete-bill?id=<?= $cate['id'] ?>','<?= $cate['id_product'] ?>')"> <button class="btn btn-danger">Xóa</button></a>
+                                <?php if($cate['status'] == 0){ ?><button type="submit" class="btn btn-success" value="<?=$cate['id']?>" name="btn_update" onclick="return confirm('Bạn chắc chắn muốn hoàn lại tiền cho hóa đơn này không?')" >Hoàn lại tiền</button><?php } ?>
+                                <a class="btn btn-danger" href="<?= ADMIN_URL . 'delete-bill?id=' . $cate['id'] ?>" onclick="return confirm('Bạn chắc chắn muốn xóa hóa đơn này không?')">Xóa</a>
                             <?php endif;?>
                         </td>
                         

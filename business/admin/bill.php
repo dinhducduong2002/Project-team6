@@ -60,9 +60,10 @@
     function delete_bill(){
 
         $id = $_GET['id'];
-        $sql = "DELETE FROM account_purchase_history WHERE id = $id";
+        $sql = "DELETE FROM account_purchase_history WHERE id ='$id'";
         executeQuery($sql);
-
+        
+        $_SESSION['success'] = "Xóa thành công";
         header("location: " . ADMIN_URL . 'manager-bill');
 
     }
