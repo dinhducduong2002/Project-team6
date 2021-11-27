@@ -17,9 +17,6 @@
             <li>
                 <a href="#">Thêm sản phẩm</a>
             </li>
-            <li>
-                <a href="#">Cập nhật sản phẩm</a>
-            </li>
         </ul>
     </li>
     <li>
