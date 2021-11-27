@@ -26,7 +26,7 @@
 
             <div class="form-group">
                 <label>SEVER</label>
-                <input class="form-control" type="text" name="server" id="" placeholder="Enter text">
+                <input class="form-control" type="number" name="server" id="" placeholder="Enter text">
             </div>
 
             <div class="form-group">

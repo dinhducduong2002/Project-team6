@@ -26,7 +26,14 @@ function sp_add_form(){
     ]);
 }
 function sp_save_add(){
-    
+    $errors = [
+        'username'=>'',
+        'password'=>'',
+        'name_product'=>'',
+        'price'=>'',
+        'server'=>'',
+        'description'=>''
+    ];
     // nhận dữ liệu từ form gửi lên
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -43,15 +50,18 @@ function sp_save_add(){
     $file = $_FILES['image_thumnail'];
     $galery = $_FILES['galery'];
     $avatar = "";
+    $galery1=array();
 
     // hàm check up nhiều ảnh
     for ($i = 0; $i < count($galery['name']); $i++) {
         $name_img = stripslashes($galery['name'][$i]);
         $source_img = $galery['tmp_name'][$i];
         $path_img = "./public/uploads/avatars/" . $name_img;
-        move_uploaded_file($source_img, $path_img);
+        if(move_uploaded_file($source_img, $path_img)){
+            $galery1[]= $path_img;
+        }
     }
-    /* check
+    // check
     if(empty($username)){
         $errors['username'] = "Vui lòng nhập tên Nick";
     }
@@ -65,20 +75,11 @@ function sp_save_add(){
         $errors['price'] = "Vui lòng nhập giá sản phẩm";
     }
     if(empty($sever)){
-        $errors['server'] = "Vui lòng chọn sever";
-    }
-    if(empty($planet)){
-        $errors['planet'] = "Vui lòng chọn hành tinh";
-    }
-    if(empty($category)){
-        $errors['category'] = "Vui lòng chọn loại Nick";
-    }
-    if(empty($porata)){
-        $errors['porata'] = "Vui lòng chọn danh mục";
+        $errors['server'] = "Vui lòng nhập sever";
     }
     if(empty($description)){
         $errors['description'] = "Vui lòng nhập mô tả";
-    }*/
+    }
     // Lưu ảnh
     
     if($file['size'] > 0 && $file['size']<2000000){
@@ -95,19 +96,18 @@ function sp_save_add(){
     }
     // tạo ra câu sql insert tài khoản mới
     $sql = "insert into products 
-                (username, password, name_product, price, server, planet, category, image_thumnail, image, porata, cp_ctv, description) 
-            values 
-                ('$username', '$password', '$nameproduct', '$price', '$sever', '$planet', '$category', '$avatar', '$galery', '$porata', '$cpCTV', '$description')";
+                    (username, password, name_product, price, server, planet, category, image_thumnail, image, porata, cp_ctv, description) 
+                 values 
+                    ('$username', '$password', '$nameproduct', '$price', '$sever', '$planet', '$category', '$avatar', '$galery1', '$porata', '$cpCTV', '$description')";
     // Thực thi câu sql với db
     //if(!array_filter($errors)){
         executeQuery($sql);
-      //  move_uploaded_file($file['tmp_name'], './public/uploads/avatars/' . $filename);
-      //  $avatar = "uploads/avatars/" . $filename;
-       // $_SESSION['success'] = "Thêm sản phẩm thành công";
+       
+        $_SESSION['success'] = "Thêm sản phẩm thành công";
         header("location: " . ADMIN_URL . 'sp-index');
-    }
+    //}
    
-
+}
 /*
 function sp_edit_form(){
     $sql = "SELECT * FROM categorys";
