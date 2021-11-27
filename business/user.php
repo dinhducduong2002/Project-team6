@@ -1,13 +1,13 @@
 <?php
 function index(){
-    $id = $_GET['id'];
-    $sql = "SELECT * FROM account where id=$id";
+
+    $sql = "SELECT * FROM account where id='".$_SESSION['user']['id']."'";
     $acc = executeQuery($sql);
     client_render('user/index.php', ['acc' => $acc]);
 }
 function history(){
     $id = $_GET['id'];
-    $sql = "SELECT * FROM account_purchase_history where id_user=$id ";
+    $sql = "SELECT * FROM account_purchase_history where id_user='".$_SESSION['user']['id']."' ";
     $aph = executeQuery($sql);
     client_render('user/history.php', ['aph' => $aph]);
 }
