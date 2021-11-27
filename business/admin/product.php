@@ -20,9 +20,9 @@ function sp_remove(){
 
 function sp_add_form(){
     $sql = "SELECT * FROM categorys";
-    $cate = executeQuery($sql);
+    $ds_cate = executeQuery($sql);
     admin_render('products/sp-add.php',[
-        'ds_cate' => $cate, 
+        'ds_cate' => $ds_cate, 
     ]);
 }
 function sp_save_add(){
@@ -39,11 +39,18 @@ function sp_save_add(){
     $cpCTV = $_SESSION['user']['id'];
     $description = $_POST['description'];
     // lưu ảnh vào thư mục public/uploads
+    $file_img = ['jpg','PNG','gif','jpeg','JFIF'];
     $file = $_FILES['image_thumnail'];
-    $file1 = $_FILES['image1'];
+    $galery = $_FILES['galery'];
     $avatar = "";
- 
-    
+
+    // hàm check up nhiều ảnh
+    for ($i = 0; $i < count($galery['name']); $i++) {
+        $name_img = stripslashes($galery['name'][$i]);
+        $source_img = $galery['tmp_name'][$i];
+        $path_img = "./public/uploads/avatars/" . $name_img;
+        move_uploaded_file($source_img, $path_img);
+    }
     /* check
     if(empty($username)){
         $errors['username'] = "Vui lòng nhập tên Nick";
@@ -71,9 +78,9 @@ function sp_save_add(){
     }
     if(empty($description)){
         $errors['description'] = "Vui lòng nhập mô tả";
-    }
+    }*/
     // Lưu ảnh
-    $file_img = ['jpg','PNG','gif','jpeg','JFIF'];
+    
     if($file['size'] > 0 && $file['size']<2000000){
         $filename = uniqid() . '-' . $file['name'];
         $ext = pathinfo($filename, PATHINFO_EXTENSION);
@@ -85,12 +92,12 @@ function sp_save_add(){
         }
         move_uploaded_file($file['tmp_name'], './public/uploads/avatars/' . $filename);
         $avatar = "uploads/avatars/" . $filename;
-    }*/
+    }
     // tạo ra câu sql insert tài khoản mới
     $sql = "insert into products 
-                (username, password, name_product, price, server, planet, category, image_thumnail, porata, cp_ctv, description) 
+                (username, password, name_product, price, server, planet, category, image_thumnail, image, porata, cp_ctv, description) 
             values 
-                ('$username', '$password', '$nameproduct', '$price', '$sever', '$planet', '$category', '$avatar', '$porata', '$cpCTV', '$description')";
+                ('$username', '$password', '$nameproduct', '$price', '$sever', '$planet', '$category', '$avatar', '$galery', '$porata', '$cpCTV', '$description')";
     // Thực thi câu sql với db
     //if(!array_filter($errors)){
         executeQuery($sql);
