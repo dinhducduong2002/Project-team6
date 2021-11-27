@@ -1,5 +1,7 @@
 <?php
 ob_start();
+session_start();
+
 require_once './commons/app_config.php';
 require_once './commons/helpers.php';
 require_once './dao/system_dao.php';
@@ -10,6 +12,7 @@ switch ($url) {
         require_once './business/homepage.php';
         index();
         break;
+    
     case 'san-pham':
         require_once './business/products.php';
         products_index();
@@ -46,6 +49,13 @@ switch ($url) {
         require_once './business/user.php';
         history();
         break;
+    case 'tin-tuc':
+        require_once './business/news.php';
+        index();
+        break;
+    case 'tin-tuc/detail':
+        require_once './business/news.php';
+        detail();
         ///////////////// ADMIN ///////////////////
     case 'cp-admin/dashboard':
         require_once './business/admin/dashboard.php';
@@ -76,34 +86,28 @@ switch ($url) {
         require_once "./business/admin/account.php";
         edit_ctv();
         break;
-    case 'cp-admin/sp-index':
-        require_once "./business/admin/product.php";
-        sp_index();
+    case 'cp-admin/manager-bill':
+        require_once "./business/admin/bill.php";
+        bill();
         break;
-    case 'cp-admin/delete-sp':
-        require_once "./business/admin/product.php";
-        sp_remove();
+
+    case 'cp-admin/delete-bill':
+        require_once "./business/admin/bill.php";
+        delete_bill();
         break;
-    case 'cp-admin/sp-add-form':
-        require_once "./business/admin/product.php";
-        sp_add_form();
+
+    case 'cp-admin/manager-service':
+        require_once "./business/admin/service.php";
+        service();
         break;
-    case 'cp-admin/sp-add':
-        require_once "./business/admin/product.php";
-        sp_save_add();
+    
+    case 'cp-admin/edit-service':
+        require_once "./business/admin/service.php";
+        edit_service();
         break;
-    case 'cp-admin/sp-edit-form':
-        require_once "./business/admin/product.php";
-        sp_edit_form();
-        break;
-    case 'cp-admin/sp-edit':
-        require_once "./business/admin/product.php";
-        sp_save_edit();
-        break;
+    
     default:
         require_once "./business/error404.php";
         index();
     break;
 }
-
-?>

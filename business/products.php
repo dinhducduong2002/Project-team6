@@ -1,7 +1,9 @@
 <?php
 function products_index(){
-    $sql = "select * from products";
+    $id = $_GET['id'];
+    $sql = "SELECT * from products where status=0 and category='$id'";
     $products = executeQuery($sql);
+
 
     client_render('product/index.php', [
         'dsSanPham' => $products,

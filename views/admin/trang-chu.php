@@ -1,3 +1,12 @@
+<?php
+if (!isset($_SESSION['user'])) {
+    header("location: http://localhost/Project-team6/");
+}else if(isset($_SESSION['user'])){
+    if($_SESSION['user']['permission'] == 2){
+        header("location: http://localhost/Project-team6/");
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php include_once "./views/admin/layouts/style.php" ?>

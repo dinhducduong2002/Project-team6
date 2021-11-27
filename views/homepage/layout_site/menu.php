@@ -46,39 +46,42 @@
                         </li>
 
                         <li class="nav-item active">
-                            <a class="nav-link active" href="#">TIN TỨC</a>
+                            <a class="nav-link active" href="<?= BASE_URL . 'tin-tuc' ?>">TIN TỨC</a>
                         </li>
                     </ul>
-                    <div class="account">
 
+                    <div class="account">
                         <?php if(isset($_SESSION["user"])):?>
 
-                            <?php if($_SESSION['user']['permission'] == 0):?>
-                                <a href="<?= BASE_URL .'cp-admin/dashboard' ?>" class="btn border border-secondary me-2">
-                                <i class="fas fa-users-cog"></i>
-                                Quản trị </a>
-                                <a href="<?= BASE_URL .'user/profile' ?>" class="btn border border-secondary me-2">
-                                <i class="far fa-user"></i>
-                                <?php echo $_SESSION["user"]['username'];?></a>
-                                
-                            <?php elseif($_SESSION['user']['permission'] == 2):?>
-                                <a href="<?= BASE_URL .'user/profile' ?>" class="btn border border-secondary me-2">
-                                <i class="far fa-user"></i>
-                                <?php echo $_SESSION["user"]['username'];?></a>
+                        <?php if($_SESSION['user']['permission'] == 0):?>
+                        <a href="<?= BASE_URL .'cp-admin/dashboard' ?>" class="btn border border-secondary me-2">
+                            <i class="fas fa-users-cog"></i>
+                            Quản trị </a>
+                        <a href="<?= BASE_URL .'user/profile?id=' . $_SESSION['user']['id']?>"
+                            class="btn border border-secondary me-2">
+                            <i class="far fa-user"></i>
+                            <?php echo $_SESSION["user"]['username'];?><span>(<?php echo number_format( $_SESSION['user']['balance'], 0, '', '.'); ?> đ)</span></a>
 
-                            <?php elseif($_SESSION['user']['permission'] == 1):?>
-                                <a href="<?= BASE_URL .'cp-admin/dashboard' ?>" class="btn border border-secondary me-2">QUẢN TRỊ</a>
-                                <a href="<?= BASE_URL .'user/profile' ?>" class="btn border border-secondary me-2">
-                                <i class="far fa-user"></i>
-                                <?php echo $_SESSION["user"]['username'];?></a>
-                            <?php endif;?>
+                        <?php elseif($_SESSION['user']['permission'] == 2):?>
+                        <a href="<?= BASE_URL .'user/profile?id='  . $_SESSION['user']['id'] ?>"
+                            class="btn border border-secondary me-2">
+                            <i class="far fa-user"></i>
+                            <?php echo $_SESSION["user"]['username'];?><span>(<?php echo number_format( $_SESSION['user']['balance'], 0, '', '.'); ?> đ)</span></a>
 
-                        <?php else:?>
-                            <a href="<?= BASE_URL .'login' ?>" class="btn border border-secondary me-2">ĐĂNG NHẬP</a>
-                            <a href="<?= BASE_URL .'register' ?>" class="btn border border-secondary me-2">ĐĂNG KÍ</a>
+                        <?php elseif($_SESSION['user']['permission'] == 1):?>
+                        <a href="<?= BASE_URL .'cp-admin/dashboard' ?>" class="btn border border-secondary me-2">QUẢN TRỊ</a>
+                        <a href="<?= BASE_URL .'user/profile?id='  . $_SESSION['user']['id'] ?>"
+                            class="btn border border-secondary me-2">
+                            <i class="far fa-user"></i>
+                            <?php echo $_SESSION["user"]['username'];?><span>(<?php echo number_format( $_SESSION['user']['balance'], 0, '', '.'); ?> đ)</span></a>
                         <?php endif;?>
 
+                        <?php else:?>
+                        <a href="<?= BASE_URL .'login' ?>" class="btn border border-secondary me-2">ĐĂNG NHẬP</a>
+                        <a href="<?= BASE_URL .'register' ?>" class="btn border border-secondary me-2">ĐĂNG KÍ</a>
+                        <?php endif;?>
                     </div>
+
                 </div>
             </div>
         </nav>
