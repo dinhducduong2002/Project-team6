@@ -2,7 +2,7 @@
     <div class="col-lg-6">
 
         <form role="form" method="post">
-            <?php foreach($user as $key):?>
+            <?php foreach($user_client as $key):?>
             <div class="form-group">
                 <label>Số dư</label>
                 <input name="balance" type="number" class="form-control" placeholder="Số dư" value="<?= $key['balance']?>">
@@ -19,7 +19,6 @@
                         <option selected value="1">Hoạt động</option>
                         <option value="0">Khóa</option>
                     <?php endif;?>
-                    
                     
                 </select>
             </div>
@@ -40,11 +39,10 @@
                         <option value="1">Cộng tác viên</option>
                         <option selected value="2">Thành viên</option>
                     <?php endif;?>
-                    
-                    
                 </select>
             </div>
             <button type="submit" name="btnEdit" class="btn btn-success">Cập nhật</button>
+            <button type="reset" name="btnEdit" class="btn btn-danger">Hủy</button>
             <?php endforeach;?>
         </form>
 

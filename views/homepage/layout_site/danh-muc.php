@@ -6,36 +6,14 @@
     <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
 </div>
 <div class="container d-flex flex-wrap gap-lg-5 ">
+    <?php foreach($categorys as $key):?>
     <div class="card" style="width: 18rem;">
         <img src="<?= CLIENT_ASSETS ?>images/Sbcs9ooDuN_1623164443.gif" class="card-img-top" alt="...">
         <div class="card-body text-center">
-            <h5 class="card-title">DANH MỤC GAME NGỌC RỒNG</h5>
+            <h5 class="card-title"><?= $key['name_cate']?></h5>
             <p class="card-text">Số tài khoản: 0</p>
             <a href="<?= CLIENT_URL . 'san-pham'?>" class=" btn btn-danger">MUA NGAY</a>
         </div>
     </div>
-    <div class="card" style="width: 18rem;">
-        <img src="<?= CLIENT_ASSETS ?>images/Sbcs9ooDuN_1623164443.gif" class="card-img-top" alt="...">
-        <div class="card-body text-center">
-            <h5 class="card-title">DANH MỤC GAME NGỌC RỒNG</h5>
-            <p class="card-text">Số tài khoản: 0</p>
-            <a href="<?= CLIENT_URL . 'san-pham'?>" class=" btn btn-danger">MUA NGAY</a>
-        </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-        <img src="<?= CLIENT_ASSETS ?>images/Sbcs9ooDuN_1623164443.gif" class="card-img-top" alt="...">
-        <div class="card-body text-center">
-            <h5 class="card-title">DANH MỤC GAME NGỌC RỒNG</h5>
-            <p class="card-text">Số tài khoản: 0</p>
-            <a href="<?= CLIENT_URL . 'san-pham'?>" class=" btn btn-danger">MUA NGAY</a>
-        </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-        <img src="<?= CLIENT_ASSETS ?>images/Sbcs9ooDuN_1623164443.gif" class="card-img-top" alt="...">
-        <div class="card-body text-center">
-            <h5 class="card-title">DANH MỤC GAME NGỌC RỒNG</h5>
-            <p class="card-text">Số tài khoản: 0</p>
-            <a href="<?= CLIENT_URL . 'san-pham'?>" class=" btn btn-danger">MUA NGAY</a>
-        </div>
-    </div>
+    <?php endforeach;?>
 </div>

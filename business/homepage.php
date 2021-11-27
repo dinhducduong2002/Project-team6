@@ -1,5 +1,13 @@
 <?php
 function index(){
-    include_once './views/homepage/trang-chu.php';
+    $sql = "SELECT * FROM service";
+    $services = executeQuery($sql);
+    $sql = "SELECT * FROM categorys";
+    $category = executeQuery($sql);
+    client_render('trang-chu.php',[
+        'ser' => $services,
+        'categorys' => $category
+    ]);
 }
+
 ?>

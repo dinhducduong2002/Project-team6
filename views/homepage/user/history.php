@@ -11,9 +11,12 @@
 
                     <div class="c-content-ver-nav">
                         <ul class="c-menu c-arrow-dot c-square c-theme">
-                            <li><a href="<?= CLIENT_URL ?>user/profile" class="active">Thông tin tài khoản</a></li>
-                            <li><a href="<?= CLIENT_URL ?>user/change-password" class="">Đổi mật khẩu</a></li>
-                            <li><a href="<?= CLIENT_URL ?>user/history" class="">Lịch sử giao dịch</a></li>
+                            <li><a href="<?= CLIENT_URL . 'user/profile?id=' . $_SESSION['user']['id'] ?> "
+                                    class="active">Thông tin tài khoản</a></li>
+                            <li><a href="<?= CLIENT_URL . 'user/change-password?id='. $_SESSION['user']['id'] ?>"
+                                    class="">Đổi mật khẩu</a></li>
+                            <li><a href="<?= CLIENT_URL . 'user/history?id=' . $_SESSION['user']['id'] ?>" class="">Lịch
+                                    sử giao dịch</a></li>
                         </ul>
                     </div>
                 </div>
@@ -106,7 +109,6 @@
                         <th>ID</th>
                         <th>Tài khoản</th>
                         <th>Mật khẩu</th>
-                        <th>Giao dịch</th>
                         <th>Số tiền</th>
                         <th>Số dư cuối</th>
                         <th>Nội dung</th>
@@ -119,11 +121,16 @@
                     <td><?= $aph['id']?></td>
                     <td><?= $aph['name_account']?></td>
                     <td><?= $aph['password_account']?></td>
-                    <td><?= $aph['transaction']?></td>
                     <td><?= $aph['price']?></td>
                     <td><?= $aph['surplus']?></td>
                     <td><?= $aph['content']?></td>
-                    <td><?= $aph['status']?></td>
+                    <td><?php if($aph['status']== 0) {
+                                    echo 'Đã thanh toán';
+                    } 
+                             elseif($aph['status']==1) {
+                                    echo 'Hoàn lại tiền';
+                     }
+                      ?></td>
                 </tr>
                 <?php endforeach; ?>
                 <tbody>

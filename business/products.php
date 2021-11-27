@@ -1,6 +1,6 @@
 <?php
 function products_index(){
-    $sql = "select * from products";
+    $sql = "select * from products where status=0";
     $products = executeQuery($sql);
 
     client_render('product/index.php', [

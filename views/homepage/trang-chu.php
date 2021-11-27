@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +11,7 @@
 </head>
 
 <body>
+
     <?php include_once "./views/homepage/layout_site/menu.php" ?>
     <!-- /header -->
 
@@ -18,21 +20,16 @@
     <!-- /banner -->
     <main>
         <div class="dichvu">
+
             <?php include_once "./views/homepage/layout_site/dich-vu.php" ?>
+
         </div>
         <div class="danhmuc">
             <?php include_once "./views/homepage/layout_site/danh-muc.php" ?>
         </div>
     </main>
     <!--/main  -->
-    <footer class="p-5 bg-dark">
-        <div class="container">
-            <div class="row">
-                <h4 class="text-center text-white fs-6">Website bán nick game được vận hành bởi nhóm 6 dự án 1 FPOLY
-                </h4>
-            </div>
-        </div>
-    </footer>
+   
 </body>
 
 </html>

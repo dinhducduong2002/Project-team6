@@ -1,3 +1,11 @@
+<?php 
+if(!isset($_SESSION['user'])){
+    $_SESSION['error'] = "Vui lòng đăng nhập để tiếp tục";
+    header("location: ".BASE_URL."login");
+}else{
+    
+}
+?>
 <div class="page-content">
     <div class="form-v8-content">
         <div class="form-left">

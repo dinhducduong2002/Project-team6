@@ -16,12 +16,17 @@ function login(){
                 foreach ($user as $key) {
                     if ($key['username']) {
                         if (password_verify($password, $key['password'])) {
-                            $_SESSION["user"] = [
-                                "id" => $key['id'],
-                                "username" => $key['username'],
-                                "permission" => $key['permission'],
-                            ];
-                            header("location: ".BASE_URL."");
+                            if($key['status'] == 1){
+                                $_SESSION["user"] = [
+                                    "id" => $key['id'],
+                                    "username" => $key['username'],
+                                    "permission" => $key['permission'],
+                                ];
+                                header("location: ".BASE_URL."");
+                            }else{
+                                $_SESSION['status'] = "Tài khoản của bạn đã bị khóa do vi phạm tiêu chuẩn cộng đồng của chúng tôi";
+                            }
+                            
                         } else {
                             $_SESSION['password'] = "Mật khẩu không đúng";
                         }

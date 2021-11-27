@@ -2,7 +2,7 @@
     <div class="container-login100">
         <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
             <form class="login100-form validate-form" method="post">
-                <span class="login100-form-title p-b-49">
+                <span class="login100-form-title p-b-40">
                     Đăng Nhập
                 </span>
 
@@ -29,7 +29,10 @@
                         Quên Mật Khẩu
                     </a>
                 </div>
-
+                <span style="color: red;"><?php if(isset($_SESSION['error'])){echo $_SESSION['error'];} unset($_SESSION['error'])?></span><br>
+                <?php if(isset($_SESSION['status'])):?>
+                    <span style="color: red;"><?php echo $_SESSION['status']; unset($_SESSION['status'])?></span>
+                <?php endif;?>
                 <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
                         <div class="login100-form-bgbtn"></div>
@@ -52,7 +55,7 @@
                     <a href="" class="txt2" style="padding-left: 50px;">
                         <button
                             style="border: solid; border-radius: 10px; padding: 10px; background-color: rgb(219, 55, 55); color: white"><a
-                                style="padding-right: 50px; color: white;" href="">Tạo Tài
+                                style="padding-right: 50px; color: white;" href="register">Tạo Tài
                                 Khoản</a></button>
                     </a>
                 </div>
