@@ -55,7 +55,7 @@
                                 <td><?= $key['description']?> </td>
                                 <td><?= $key['status']?> </td>
                                 <td><?= $key['create_at']?></td>
-                                <td><a href="<?= ADMIN_URL . 'sp_edit?id=' . $key['id'] ?>">Sửa</a></td>
+                                <td><a href="<?= ADMIN_URL . 'sp-edit-form?id=' . $key['id'] ?>">Sửa</a></td>
                                 <td><a href="<?= ADMIN_URL . 'delete-sp?id=' . $key['id'] ?>">Xóa</a></td>
                             </tr>
                     <?php endforeach;?>
