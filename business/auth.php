@@ -45,14 +45,45 @@ function login(){
     client_render('/login.php');
 }
 
+function set_session($key, $value) {
+    $_SESSION[$key] = $value;
+}
 function register(){
     if(isset($_POST['btnSub'])){
+        $_SESSION = [];
         $username = $_POST['username'];
+        $email=$_POST['email'];
         $password = $_POST['password'];
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-        $sql = "INSERT into account SET username='$username',password='$passwordHash'";
-        executeQuery($sql);
+        $confirm_password = $_POST['pass1'];
+
+    if (empty($username)) {
+        $_SESSION['username'] = "Bạn cần nhập vào tài khoản";
     }
+    if (empty($email)) {
+        $_SESSION['email'] = 'Vui lòng điền thông tin';
+    } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $_SESSION['email'] = 'Email sai định dạng';
+    } else if (!empty($user)) {
+        $_SESSION['email'] = 'Email đã tồn tại';
+    }
+    if (empty($password)) {
+        $_SESSION['password'] = 'Vui lòng điền thông tin';
+    } else if (strlen($password) < 6) {
+        $_SESSION['password'] = 'Mật khẩu tối thiểu 6 ký tự';
+    }
+    if (empty($confirm_password)) {
+        $_SESSION['pass1'] = 'Vui lòng điền xác nhận mật khẩu';
+    } else if ($confirm_password != $password) {
+        $_SESSION['pass1'] = 'Xác nhận mật khẩu không khớp';
+    }
+    else {
+        $sql = "INSERT into account SET username='$username', email='$email', password='$passwordHash'";
+        executeQuery($sql);
+        $_SESSION['success'] = "thêm tài khoản thành công";
+        header("location: " . CLIENT_URL . 'login');
+    }
+    }    
     client_render('/register.php');
 }
 function logout(){

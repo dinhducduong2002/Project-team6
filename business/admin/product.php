@@ -14,7 +14,7 @@ function sp_remove(){
     // thực thi câu lệnh xóa dựa vào id
     $sql = "delete from products where id = $id";
     executeQuery($sql);
-    $_SESSION['success'] = "Thêm sản phẩm thành công";
+    $_SESSION['success'] = "xóa sản phẩm thành công";
     header("location: " . ADMIN_URL . 'sp-index');
 }
 

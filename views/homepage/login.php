@@ -1,11 +1,16 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+        <?php if (isset($_SESSION['success'])) : ?>
+                    <div class="alert alert-success" role="alert">
+                    <?php echo $_SESSION['success'];
+                        unset($_SESSION['success']); ?>
+                    </div>
+                <?php endif; ?>
             <form class="login100-form validate-form" method="post">
                 <span class="login100-form-title p-b-40">
                     Đăng Nhập
                 </span>
-
                 <div class="wrap-input100 m-b-23">
                     <span class="label-input100">Tài Khoản</span>
                     <input class="input100" type="text" name="username" placeholder="Tài Khoản Của Web"
