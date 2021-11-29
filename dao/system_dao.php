@@ -19,5 +19,4 @@ function executeQuery($sql, $getAll = true){
     }
 }
 
-
 ?>

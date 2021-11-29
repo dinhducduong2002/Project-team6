@@ -1,4 +1,4 @@
-<form action="<?= ADMIN_URL . 'sp-add'?>"  method="post" enctype="multipart/form-data">
+<form  method="post" enctype="multipart/form-data">
 <div class="row">
     <div class="col-lg-6">
 
@@ -8,6 +8,7 @@
                 <label>Tên Nick</label>
                 <input class="form-control" type="text" name="username" id="" placeholder="Enter text">
             </div>
+            <?php if(isset($_SESSION['username'])) echo $_SESSION['username']?>
 
             <div class="form-group">
                 <label>Pass Nick</label>
@@ -96,7 +97,7 @@
             <div class="d-flex justify-content-center">
                 <a href="<?= ADMIN_URL . 'sp-index'?>" class="btn btn-sm btn-danger">Hủy</a>
                 &nbsp;
-                <button name="btn"  class="btn btn-primary btn-sm">Lưu</button>
+                <button name="btn" class="btn btn-primary btn-sm">Lưu</button>
             </div>
 
         </form>
