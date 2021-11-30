@@ -116,6 +116,11 @@ switch ($url) {
         require_once "./business/admin/bill.php";
         delete_bill();
         break;
+    
+    case 'cp-admin/card':
+        require_once "./business/admin/card.php";
+        card();
+        break;
 
     case 'cp-admin/manager-service':
         require_once "./business/admin/service.php";
