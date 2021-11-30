@@ -1,4 +1,7 @@
 <?php
+require_once DIR_ROOT."/commons/mailer/mail.php";
+
+// login
 
 function login(){
     if(isset($_POST['btnSub'])){
@@ -44,6 +47,11 @@ function login(){
     }
     client_render('/login.php');
 }
+
+// đăng ký
+
+
+
 function set_session($key, $value) {
     $_SESSION[$key] = $value;
 }
@@ -85,15 +93,50 @@ function register(){
     else {   
         $sql = "INSERT into account SET username='$username', email='$email', password='$passwordHash'";
         executeQuery($sql);
-        $_SESSION['success'] = "Thêm tài khoản thành công";
+        $_SESSION['success'] = "Đăng Ký tài khoản thành công";
         header("location: " . CLIENT_URL . 'login');
     }
     }    
     client_render('/register.php');
 }
+// đăng xuất
 function logout(){
     client_render('/logout.php');
 }
 function profile(){
     echo "thông tin ca nhân";
+}
+
+// quên mật khẩu
+function reset_form() {
+    if(isset($_POST['btnSub'])){
+        $email = $_POST['email'];
+        $sql = "SELECT * FROM account WHERE email = '$email'";
+        $user = executeQuery($sql, false);
+        if (empty($email)) {
+            $_SESSION['email'] = 'Vui lòng điền thông tin';
+        } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $_SESSION['email'] = 'Email sai định dạng';
+        } else if (empty($user)) {
+            $_SESSION['email'] = 'Email không tồn tại trong hệ thống';
+            var_dump($_SESSION['email']);
+            die;
+        } else {
+            $token = base64_encode(uniqid().$email);
+            $user_id = $user['id'];
+            $start_time = date("Y-m-d H:i:s");
+            $end_time = date("Y-m-d H:i:s", strtotime("+60 minutes"));
+    
+            $sql = "INSERT INTO account_tokens (user_id, access_token, start_time, end_time) VALUES ('$user_id', '$token', '$start_time', '$end_time')";
+            executeQuery($sql);
+    
+            $verify_btn = 'Cập nhật mật khẩu';
+            $verify_url = BASE_URL.('quen-mat-khau/cap-nhat-mat-khau?token='.$token);
+            $mail_content = "Xin chào ".$user['username']."!.<br><br>Bạn đã đã có yêu cầu đổi mật khẩu. Bạn hãy bấm vào nút dưới đây để cập nhật lại mật khẩu cho tài khoản, liên kết có thời hạn 60 phút:";
+            $mail_subject = '[SHOP-NICK-CÙI] Quên mật khẩu';
+            sendEmail($email, $mail_subject, $mail_content, $verify_btn, $verify_url);
+            $_SESSION['success'] = "Một liên kết đã được gửi vào địa chỉ email bạn cung cấp"; 
+        }
+        }
+    client_render('/reset.php');
 }

@@ -6,7 +6,7 @@
                     Đăng Nhập
                 </span>
                 <?php if (isset($_SESSION['success'])) : ?>
-                    <div  role="alert">
+                    <div style="color:green;"  role="alert">
                     <?php echo $_SESSION['success'];
                         unset($_SESSION['success']); ?>
                     </div>
@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="text-right p-t-8 p-b-31">
-                    <a href="#">
+                    <a href="<?= CLIENT_URL . 'reset_form' ?>">
                         Quên Mật Khẩu
                     </a>
                 </div>

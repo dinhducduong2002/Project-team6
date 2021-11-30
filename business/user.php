@@ -21,8 +21,6 @@ function change_password(){
             
         if (empty($password)) {
             $_SESSION['password'] = "Bạn cần nhập vào mật khẩu cũ";
-        }else if (strlen($password) < 6) {
-            $_SESSION['password'] = 'Mật khẩu tối thiểu 6 ký tự';
         }
         if (empty($newpassword)) {
             $_SESSION['newpassword'] = 'Bạn cần nhập vào mật khẩu mới';
@@ -34,7 +32,8 @@ function change_password(){
         }else if ($confirmpassword != $newpassword) {
             $_SESSION['confirmpassword'] = 'Xác nhận mật khẩu không khớp';
         }
-        $sql="SELECT * FROM account where id = '".$_SESSION['user']['id']."' ";
+        else {
+            $sql="SELECT * FROM account where id = '".$_SESSION['user']['id']."' ";
             $check_user = executeQuery($sql);
             if($check_user){
                 if (password_verify($password, $check_user[0]['password']) != $password) {
@@ -44,10 +43,10 @@ function change_password(){
                 $sql = "UPDATE account SET password='$passwordHash' where id = '".$_SESSION['user']['id']."' ";
                 executeQuery($sql);
                 $_SESSION['success'] = "Đổi mật khẩu thành công";
-                header("location: " . CLIENT_URL . 'user/change-password');
             }
-            }
-        
+            }  
+        }
+       
         }  
     client_render('user/change-password.php');
 }
