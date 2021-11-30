@@ -33,6 +33,14 @@ switch ($url) {
         require_once './business/auth.php';
         logout();
         break;
+    case 'reset_form':
+        require_once "./business/auth.php";
+        reset_form();
+        break;
+    case 'reset_save':
+        require_once "./business/auth.php";
+        reset_save();
+        break;
     case 'san-pham/pay':
         require_once './business/pay.php';
         pay();
