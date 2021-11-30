@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-lg-6">
 
-        <form role="form" method="post" action="<?= ADMIN_URL . 'edit-ctv?id=' . $user['id'] ?>">
+        <form role="form" method="post">
             <div class="form-group">
                 <label>Số dư</label>
                 <input name="balance" type="number" class="form-control" placeholder="Số dư" value="<?= $user['balance']?>">

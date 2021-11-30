@@ -9,7 +9,9 @@ if(!isset($_SESSION['user'])){
 <div class="page-content">
     <div class="form-v8-content">
         <div class="form-left">
-            <img src="<?= CLIENT_ASSETS ?>images/form-v8.jpg" width="100%" height="100%" alt="form">
+        <?php foreach($sql_data_products as $key):?>
+            <img src="<?=PUBLIC_ASSETS. $key['image_thumnail']?>" width="450" height="300">
+            <?php endforeach;?>
         </div>
         <div class="form-right">
             <div class="tab">
@@ -52,7 +54,7 @@ if(!isset($_SESSION['user'])){
                                 </div>
                                 <div class="form-row-last">
                                     <div class="row_top">
-                                        <a class="form-row-last-close" href="">Thẻ Cào</a>
+                                        <a class="form-row-last-close" href="<?= CLIENT_URL . 'user/brickcard' ?>">Thẻ Cào</a>
                                         <a class="form-row-last-close" href="">MoMo</a>
                                         <a class="form-row-last-close" href="">Ngân Hàng</a>
                                         <a class="form-row-last-close" href="<?= CLIENT_URL . 'san-pham/detail?id=' . $cate1['id'] ?>" onclick="return confirm('Bạn chắc chắn muốn thoát không?')">Thoát</a>
@@ -81,15 +83,15 @@ if(!isset($_SESSION['user'])){
                             <hr>
                             <span>Danh mục:
                                 <?php if ($cate['category'] == 0) { ?>
-                            </span><b>Tài khoản sơ sinh</b><br>
+                            </span><b>Nick tầm trung</b><br>
                         <?php } ?>
 
                         <?php if ($cate['category'] == 1) { ?>
-                            </span><b>Tài khoản tầm trung</b><br>
+                            </span><b>Nick vip</b><br>
                         <?php } ?>
 
                         <?php if ($cate['category'] == 2) { ?>
-                            </span><b>Tài khoản VIP</b><br>
+                            </span><b>Nick siêu phẩm</b><br>
                         <?php } ?>
                         <hr>
                         <span>Tổng tiền: </span><b><?php echo number_format($cate1['price'], 0, '', '.'); ?>đ</b><br><br>
@@ -103,7 +105,7 @@ if(!isset($_SESSION['user'])){
                                 </div>
                                 <div class="form-row-last">
                                     <div class="row_top">
-                                        <a class="form-row-last-close" href="">Thẻ Cào</a>
+                                        <a class="form-row-last-close" href="<?= CLIENT_URL . 'user/brickcard' ?>">Thẻ Cào</a>
                                         <a class="form-row-last-close" href="">MoMo</a>
                                         <a class="form-row-last-close" href="">Ngân Hàng</a>
                                         <a class="form-row-last-close" href="<?= CLIENT_URL . 'san-pham/detail?id=' . $cate1['id'] ?>" onclick="return confirm('Bạn chắc chắn muốn thoát không?')">Thoát</a>

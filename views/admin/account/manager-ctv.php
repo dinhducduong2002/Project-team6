@@ -1,3 +1,4 @@
+
 <div class="row">
     <div class="col-lg-12">
         <h2>Danh sách cộng tác viên</h2>
@@ -43,7 +44,11 @@
                             <td><?= $key['create_at'] ?></td>
                             <td>
                                 <a class="btn btn-primary" href="<?= ADMIN_URL . 'edit-ctv?id=' . $key['id'] ?>">Sửa</a>
-                                <a class="btn btn-danger" href="<?= ADMIN_URL . 'delete-ctv?id=' . $key['id'] ?>">Xóa</a>
+
+                                <a onclick="confrim_remove('<?= ADMIN_URL . 'delete-ctv?id=' . $key['id'] ?>'
+                                ,'<?= $key['username'] ?>')" href="javascript:;"
+                                 class="btn btn-danger">Xóa</a>
+
                             </td>
                         </tr>
                     <?php endforeach; ?>

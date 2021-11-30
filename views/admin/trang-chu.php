@@ -1,3 +1,22 @@
+<script>
+$('.btn_remove_account').on('click', function(){
+    let username = $(this).data('username');
+    let redirectUrl = $(this).data('url');
+    Swal.fire({
+        title: `Bạn có chắc chắn muốn xóa tài khoản "${username}" hay không?`,
+        showCancelButton: true,
+        confirmButtonText: 'Có',
+        cancelButtonText: `Hủy`,
+    }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          window.location.href = redirectUrl;
+        }
+    })
+})
+
+
+</script>
 <?php
 if (!isset($_SESSION['user'])) {
     header("location: http://localhost/Project-team6/");

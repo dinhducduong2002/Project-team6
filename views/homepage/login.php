@@ -30,9 +30,7 @@
                     </a>
                 </div>
                 <span style="color: red;"><?php if(isset($_SESSION['error'])){echo $_SESSION['error'];} unset($_SESSION['error'])?></span><br>
-                <?php if(isset($_SESSION['status'])):?>
-                    <span style="color: red;"><?php echo $_SESSION['status']; unset($_SESSION['status'])?></span>
-                <?php endif;?>
+                
                 <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
                         <div class="login100-form-bgbtn"></div>

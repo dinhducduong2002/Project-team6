@@ -21,6 +21,7 @@ switch ($url) {
         require_once './business/products.php';
         products_detail();
         break;
+    
     case 'login':
         require_once './business/auth.php';
         login();
@@ -49,6 +50,14 @@ switch ($url) {
         require_once './business/user.php';
         history();
         break;
+    case 'user/history_card':
+        require_once './business/user.php';
+        history_card();
+        break;
+    case 'user/brickcard':
+        require_once './business/user.php';
+        post_card();
+        break;
     case 'tin-tuc':
         require_once './business/news.php';
         index();
@@ -56,6 +65,7 @@ switch ($url) {
     case 'tin-tuc/detail':
         require_once './business/news.php';
         detail();
+    break;
         ///////////////// ADMIN ///////////////////
     case 'cp-admin/dashboard':
         require_once './business/admin/dashboard.php';
@@ -136,7 +146,47 @@ switch ($url) {
         require_once "./business/admin/service.php";
         add_service();
         break;
-        
+    
+    case 'cp-admin/pay-banking':
+        require_once "./business/admin/pay_banking.php";
+        pay_banking();
+        break;
+    
+    case 'cp-admin/delete-pay-banking':
+        require_once "./business/admin/pay_banking.php";
+        delete_pay_banking();
+        break;
+
+    case 'cp-admin/add-pay-banking':
+        require_once "./business/admin/pay_banking.php";
+        add_pay_banking();
+        break;
+     //// quản trị tin tức ////
+     case 'cp-admin/news':
+        require_once "./business/admin/news.php";
+        index();
+        break;
+    case 'cp-admin/news/add':
+        require_once "./business/admin/news.php";
+        news_add();
+        break;
+    case 'cp-admin/news/save-add':
+        require_once "./business/admin/news.php";
+        news_save_add();
+        break;
+
+    case 'cp-admin/news/edit':
+        require_once "./business/admin/news.php";
+        news_edit();
+        break;
+    case 'cp-admin/news/save-edit':
+        require_once "./business/admin/news.php";
+        news_save_edit();
+        break;
+    case 'cp-admin/news/delete':
+        require_once "./business/admin/news.php";
+        news_delete();
+        break;
     default:
         require_once "./business/error404.php";
         index();

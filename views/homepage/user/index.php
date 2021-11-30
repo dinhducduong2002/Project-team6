@@ -1,3 +1,8 @@
+<?php
+if (!isset($_SESSION['user'])) {
+    header("location: http://localhost/Project-team6/");
+}
+?>
 <div class="col-md-12">
     <div class="text-center">
         <center>
@@ -7,7 +12,7 @@
                 if($ac['permission'] == 0) {
                     echo "Admin";
                 } else if($ac['permission'] == 1) {
-                    echo "Cổng tác viên";
+                    echo "Cộng tác viên";
                 } else if($ac['permission'] == 2) {
                     echo "Thành viên";
                 } 
@@ -41,6 +46,8 @@
                                     class="">Đổi mật khẩu</a></li>
                             <li><a href="<?= CLIENT_URL . 'user/history' ?>" class="">Lịch
                                     sử giao dịch</a></li>
+                            <li><a href="<?= CLIENT_URL . 'user/history_card' ?>" class="">Lịch
+                                    sử nạp thẻ</a></li>
                         </ul>
                     </div>
                 </div>
@@ -68,13 +75,9 @@
                         <th scope="row">Số dư tài khoản:</th>
                         <td><b class="text-danger"><?php echo number_format($ac['balance'], 0, '', '.'); ?> đ</b></td>
                     </tr>
-                    <!--                <tr>
-                    <th scope="row">Địa chỉ Email:</th>
-                    <td>Tanmk1191@gmail.com (<a href="/user/email.html">Cài đặt</a>)</td>
-                </tr>-->
                     <tr>
                         <th scope="row">Email:</th>
-                        <td><a href="/user/phone.html"><b><i class="text-danger"><?= $ac['email']?></i></b></a></td>
+                        <td><i class="text-danger"><?= $ac['email']?></i></b></a></td>
                     </tr>
                     <tr>
                         <th scope="row">Nhóm tài khoản:</th>

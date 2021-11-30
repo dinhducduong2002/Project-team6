@@ -22,7 +22,7 @@
 </div>
 <div class="row">
     <div class="col fs-6">
-        <h5>HÀNH TINH: <h5 class="text-danger"><?= $pro['planet']?></h5>
+        <h5>HÀNH TINH: <h5 class="text-danger"><?php if($pro['planet'] == 0){echo "NAMEC";}elseif($pro['planet'] == 1){echo "TRÁI ĐẤT";}elseif($pro['planet'] == 2){echo "XAYDA";}?></h5>
         </h5>
         <h5>SERVER: <h5 class="text-danger"><?= $pro['server']?></h5>
         </h5>
@@ -59,7 +59,7 @@
         <img src="<?= CLIENT_ASSETS ?>images/90rx4f9oeG_1623147714.jpg" alt="350" height="350">
     </div>
     <div class="col m-4">
-        <a class="btn btn-primary">MUA NGAY</a>
+    <a href="<?= CLIENT_URL . 'san-pham/pay?id=' . $pro['id'] ?>" class="btn btn-primary me-2">Mua ngay</a>
     </div>
 </div>
 <?php endforeach;?>
@@ -86,96 +86,7 @@
                 <a href="#" class="border border-white btn btn-primary">CHI TIẾT</a>
             </div>
         </div>
-        <div class="card" style="width: 18rem;">
-            <img src="<?= CLIENT_ASSETS ?>images/Sbcs9ooDuN_1623164443.gif" class="card-img-top" alt="...">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col">
-                        Hành tinh: <span class="text-danger">XAYDA</span><br>
-                        Bông tai: <span class="text-danger">Có</span><br>
-                        Server: <span class="text-danger">1</span><br>
-                        Sơ Sinh Có Đệ: <span class="text-danger">Không</span>
-                    </div>
-                </div>
-                <div class="btn border-danger">
-                    <strike>10000đ</strike>
-                    <p class="card-text">Giá: 100000Đ</p>
-                </div>
-                <a href="#" class="border border-white btn btn-primary">CHI TIẾT</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="<?= CLIENT_ASSETS ?>images/Sbcs9ooDuN_1623164443.gif" class="card-img-top" alt="...">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col">
-                        Hành tinh: <span class="text-danger">XAYDA</span><br>
-                        Bông tai: <span class="text-danger">Có</span><br>
-                        Server: <span class="text-danger">1</span><br>
-                        Sơ Sinh Có Đệ: <span class="text-danger">Không</span>
-                    </div>
-                </div>
-                <div class="btn border-danger">
-                    <strike>10000đ</strike>
-                    <p class="card-text">Giá: 100000Đ</p>
-                </div>
-                <a href="#" class="border border-white btn btn-primary">CHI TIẾT</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="<?= CLIENT_ASSETS ?>images/Sbcs9ooDuN_1623164443.gif" class="card-img-top" alt="...">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col">
-                        Hành tinh: <span class="text-danger">XAYDA</span><br>
-                        Bông tai: <span class="text-danger">Có</span><br>
-                        Server: <span class="text-danger">1</span><br>
-                        Sơ Sinh Có Đệ: <span class="text-danger">Không</span>
-                    </div>
-                </div>
-                <div class="btn border-danger">
-                    <strike>10000đ</strike>
-                    <p class="card-text">Giá: 100000Đ</p>
-                </div>
-                <a href="#" class="border border-white btn btn-primary">CHI TIẾT</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="<?= CLIENT_ASSETS ?>images/Sbcs9ooDuN_1623164443.gif" class="card-img-top" alt="...">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col">
-                        Hành tinh: <span class="text-danger">XAYDA</span><br>
-                        Bông tai: <span class="text-danger">Có</span><br>
-                        Server: <span class="text-danger">1</span><br>
-                        Sơ Sinh Có Đệ: <span class="text-danger">Không</span>
-                    </div>
-                </div>
-                <div class="btn border-danger">
-                    <strike>10000đ</strike>
-                    <p class="card-text">Giá: 100000Đ</p>
-                </div>
-                <a href="#" class="border border-white btn btn-primary">CHI TIẾT</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="<?= CLIENT_ASSETS ?>images/Sbcs9ooDuN_1623164443.gif" class="card-img-top" alt="...">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col">
-                        Hành tinh: <span class="text-danger">XAYDA</span><br>
-                        Bông tai: <span class="text-danger">Có</span><br>
-                        Server: <span class="text-danger">1</span><br>
-                        Sơ Sinh Có Đệ: <span class="text-danger">Không</span>
-                    </div>
-                </div>
-                <div class="btn border-danger">
-                    <strike>10000đ</strike>
-                    <p class="card-text">Giá: 100000Đ</p>
-                </div>
-                <a href="#" class="border border-white btn btn-primary">CHI TIẾT</a>
-            </div>
-        </div>
+        
     </div>
     <nav class="text-right" aria-label="Page navigation example">
         <ul class="pagination">

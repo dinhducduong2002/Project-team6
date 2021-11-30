@@ -14,6 +14,8 @@
                             <li><a href="<?= CLIENT_URL ?>user/profile" class="active">Thông tin tài khoản</a></li>
                             <li><a href="<?= CLIENT_URL ?>user/change-password" class="">Đổi mật khẩu</a></li>
                             <li><a href="<?= CLIENT_URL ?>user/history" class="">Lịch sử giao dịch</a></li>
+                            <li><a href="<?= CLIENT_URL . 'user/history_card' ?>" class="">Lịch
+                                    sử nạp tiền</a></li>
                         </ul>
                     </div>
                 </div>

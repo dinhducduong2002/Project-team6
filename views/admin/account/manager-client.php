@@ -44,7 +44,9 @@
                             <td><?= $key['create_at'] ?></td>
                             <td>
                                 <a class="btn btn-primary" href="<?= ADMIN_URL . 'edit-client?id=' . $key['id'] ?>">Sửa</a>
-                                <a class="btn btn-danger" href="<?= ADMIN_URL . 'delete-client?id=' . $key['id'] ?>">Xóa</a>
+                                <a onclick="confrim_remove('<?= ADMIN_URL . 'delete-client?id=' . $key['id'] ?>'
+                                ,'<?= $key['username'] ?>')" href="javascript:;"
+                                 class="btn btn-danger">Xóa</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

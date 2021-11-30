@@ -30,7 +30,9 @@
                             <td><?= $key['created_at'] ?></td>
                             <td>
                                 <a class="btn btn-primary" href="<?= ADMIN_URL . 'edit-service?id=' . $key['id'] ?>">Sửa</a>
-                                <a class="btn btn-danger" href="<?= ADMIN_URL . 'delete-service?id=' . $key['id'] ?>">Xóa</a>
+                                <a onclick="confrim_remove('<?= ADMIN_URL . 'delete-service?id=' . $key['id'] ?>'
+                                ,'<?= $key['name_service'] ?>')" href="javascript:;"
+                                 class="btn btn-danger">Xóa</a>
                             </td>
                             <td></td>
                         </tr>

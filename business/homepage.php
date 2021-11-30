@@ -7,7 +7,7 @@ function index(){
     $category = executeQuery($sql);
     client_render('trang-chu.php',[
         'ser' => $services,
-        'categorys' => $category
+        'categorys' => $category,
     ]);
 }
 

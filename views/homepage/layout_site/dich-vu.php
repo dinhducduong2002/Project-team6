@@ -11,7 +11,7 @@
         <a href="">
         <div class="card " style="width: 18rem;">
         
-        <img src="<?= CLIENT_ASSETS ?>images/i7QQlLPxod_1624873611.jpg" class="card-img-top" alt="...">
+        <img src="<?=PUBLIC_ASSETS. $key['image_service']?>" class="card-img-top" alt="...">
         </div>
         </a>
     <?php endforeach;?>

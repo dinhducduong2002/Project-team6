@@ -32,7 +32,7 @@
                             <a class="nav-link active" href="#">DỊCH VỤ GAME</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">MUA THẺ</a>
+                            <a class="nav-link active" href="">MUA THẺ</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -40,7 +40,7 @@
                                 NẠP TIỀN
                             </a>
                             <ul class="dropdown-menu active" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">NẠP TIỀN TỰ ĐỘNG</a></li>
+                                <li><a class="dropdown-item" href="<?= BASE_URL .'user/brickcard' ?>">NẠP TIỀN TỰ ĐỘNG</a></li>
                                 <li><a class="dropdown-item" href="#">NẠP TIỀN TỪ ATM/VÍ ĐIỆN TỬ</a></li>
                             </ul>
                         </li>

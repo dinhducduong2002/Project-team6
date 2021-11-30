@@ -5,7 +5,7 @@
             <div class="a-item">
                 <div class="thumbnail-image img-thumbnail">
                     <a href="<?= CLIENT_URL . 'tin-tuc/detail?id=' . $n['id'] ?>">
-                        <img src="<?=PUBLIC_ASSETS. 'uploads/avatars/'. $n['image']?>" alt="" width="200" height="120">
+                        <img src="<?=PUBLIC_ASSETS. $n['image']?>" alt="" width="200" height="120">
                     </a>
                 </div>
                 <div class="info">
@@ -38,12 +38,12 @@
                 <div class="c-line-left c-theme-bg"></div>
             </div>
             <ul class="c-menu c-arrow-dot1 c-theme">
-                <li><a href="/blog">Tất cả (16)</a></li>
-                <li><a href="/blog/uu-dai-cua-shop7saocom">Ưu Đãi Của Shop7Sao.Com (1)</a></li>
-                <li><a href="/blog/do-uy-tin-cua-shop7saocom">Độ Uy Tín Của Shop7Sao.Com (4)</a></li>
-                <li><a href="/blog/xem-them-video-tham-gia-su-kien">Xem thêm video tham gia sự kiện (11)</a>
+                <li><a href="">Tất cả (16)</a></li>
+                <li><a href="">Ưu Đãi Của Shop7Sao.Com (1)</a></li>
+                <li><a href="">Độ Uy Tín Của Shop7Sao.Com (4)</a></li>
+                <li><a href="">Xem thêm video tham gia sự kiện (11)</a>
                 </li>
-                <li><a href="/blog/su-kien-tai-shop7sao">Sự Kiện Tại Shop7sao (0)</a></li>
+                <li><a href="">Sự Kiện Tại Shop7sao (0)</a></li>
             </ul>
         </div>
     </div>
