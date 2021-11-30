@@ -44,7 +44,6 @@ function login(){
     }
     client_render('/login.php');
 }
-
 function set_session($key, $value) {
     $_SESSION[$key] = $value;
 }
@@ -62,11 +61,7 @@ function register(){
     }
     if (empty($email)) {
         $_SESSION['email'] = 'Vui lòng điền thông tin';
-    } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $_SESSION['email'] = 'Email sai định dạng';
-    } else if (!empty($user)) {
-        $_SESSION['email'] = 'Email đã tồn tại';
-    }
+    }  
     if (empty($password)) {
         $_SESSION['password'] = 'Vui lòng điền thông tin';
     } else if (strlen($password) < 6) {
@@ -77,10 +72,20 @@ function register(){
     } else if ($confirm_password != $password) {
         $_SESSION['pass1'] = 'Xác nhận mật khẩu không khớp';
     }
-    else {
+    $sql="SELECT * FROM account where username = '$username' ";
+        $check_user = executeQuery($sql, $getAll = true);
+        if ($check_user == $username) {
+            $_SESSION['username'] = "Tên tài khoản đã tồn tại";
+          }
+    $sql="SELECT * FROM account where email = '$email' ";
+        $check_email = executeQuery($sql, $getAll = true);
+        if ($check_email) {
+            $_SESSION['email'] = "Email đã tồn tại";
+          }
+    else {   
         $sql = "INSERT into account SET username='$username', email='$email', password='$passwordHash'";
         executeQuery($sql);
-        $_SESSION['success'] = "thêm tài khoản thành công";
+        $_SESSION['success'] = "Thêm tài khoản thành công";
         header("location: " . CLIENT_URL . 'login');
     }
     }    
