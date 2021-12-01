@@ -20,12 +20,5 @@
 			'card' => $card,
 			'pagea' => $pagea,
 		]);
-		$sql = "SELECT * FROM loadcard ";
-        $card = executeQuery($sql);
-
-		admin_render('card/card.php',[
-    
-            'card' => $card,
-
-        ]);
+		
 	}

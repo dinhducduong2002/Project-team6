@@ -129,6 +129,16 @@ switch ($url) {
         service();
         break;
     
+    case 'cp-admin/card':
+        require_once "./business/admin/card.php";
+        card();
+        break;
+
+    case 'cp-admin/manager-service':
+        require_once "./business/admin/service.php";
+        service();
+        break;
+    
     case 'cp-admin/edit-service':
         require_once "./business/admin/service.php";
         edit_service();
