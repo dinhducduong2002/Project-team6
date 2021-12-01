@@ -28,13 +28,12 @@
                             <td><?= $key['name_service'] ?></td>
                             <td><img src="<?=PUBLIC_ASSETS. $key['image_service']?>" width="100"></td>
                             <td><?= $key['created_at'] ?></td>
-                            <td>
+                            <td class="text-center">
                                 <a class="btn btn-primary" href="<?= ADMIN_URL . 'edit-service?id=' . $key['id'] ?>">Sửa</a>
                                 <a onclick="confrim_remove('<?= ADMIN_URL . 'delete-service?id=' . $key['id'] ?>'
                                 ,'<?= $key['name_service'] ?>')" href="javascript:;"
                                  class="btn btn-danger">Xóa</a>
                             </td>
-                            <td></td>
                         </tr>
                     <?php endforeach;?>
                 </tbody>
@@ -43,3 +42,12 @@
         </div>
     </div>
 </div>
+<nav aria-label="...">
+    <ul class="pagination pagination-sm">
+        <?php for ($i = 1; $i <= $pagea; $i++) : ?>
+            <li class="page-item">
+                <a class="page-link" href="manager-service?page=<?= $i ?>"><?= $i ?></a>
+            </li>
+        <?php endfor; ?>
+    </ul>
+</nav>

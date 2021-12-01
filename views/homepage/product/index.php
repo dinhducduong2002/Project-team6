@@ -10,41 +10,16 @@
                 </div>
                 <input type="text" class="form-control" placeholder="Tìm kiếm" name="keyword" aria-label="Tìm kiếm" aria-describedby="basic-addon1">
             </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Mã số</span>
-                </div>
-                <input name="keyword_id" type="text" class="form-control" placeholder="Mã số" aria-label="Mã số" aria-describedby="basic-addon1">
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" type="button">Server</span>
-                </div>
-                <select class="custom-select" name="keyword_sv" id="inputGroupSelect03">
-                    <option selected>Server</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="2">2</option>
-                </select>
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" type="button">Giá tiền</span>
-                </div>
-                <select name="keyword_mon" class="custom-select" id="inputGroupSelect03">
-                    <option selected>Giá tiền</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                </select>
-            </div>
+            
 
         </div>
         <div class="">
-            <button href="" name="btnSearch" class="btn btn-danger me-2">Tìm kiếm</button>
-            <button href="" name="btnSearchAll" class="btn btn-success me-2">Tất cả</button>
+            <button type="submit" name="btnSearch" class="btn btn-danger me-2">Tìm kiếm</button>
+            <button type="submit" name="btnSearchAll" class="btn btn-success me-2">Tất cả</button>
         </div>
     </form>
 </div>
+<span style="color: red;">Hiện đang có <?php echo count($dsSanPham);?> tài khoản</span>
 <div class="container d-flex flex-wrap gap-4 p-3">
     <?php foreach ($dsSanPham as $pro) : ?>
         <div class="card" style="width: 18rem;">

@@ -1,5 +1,8 @@
 <?php
 function pay(){
+
+    extract($_POST);
+
     $sql = "SELECT * FROM account WHERE username='".$_SESSION["user"]['username']."'";
     $data_pay = executeQuery($sql);
 
@@ -11,19 +14,82 @@ function pay(){
     $sql = "SELECT * FROM account WHERE id='$cp_ctv'";
     $sql_data_ctv = executeQuery($sql);
 
+
+    if(!empty($discount_code)){
+
+        $sql = "SELECT * FROM code WHERE discount_code='$discount_code'";
+        $data_code = executeQuery($sql);
+    }
+
+    
+    $sql = "SELECT * FROM code_details WHERE name_account='".$_SESSION['user']['username']."'";
+    $data_code_details = executeQuery($sql); 
+
     client_render('product/pay.php',[
 
         'data_pay' => $data_pay,
-        'sql_data_products' => $sql_data_products,
+        'sql_data_products' => $sql_data_products,  
+
     ]
     );
 
+    $regex = "/[\@\#\$\%\^\&\*\(\)\_\+\!\,\=\-\?]/";
+
+    if(isset($_POST['btn_code'])){   
+
+        if(empty($discount_code)){  
+
+            $_SESSION['error'] = "Bạn chưa nhập mã giảm giá";
+
+        }else if(preg_match($regex, $discount_code)){
+
+            $_SESSION['error'] = "Mã giảm giá không chứa kí tự đặc biệt";
+
+        }else{
+    
+            if($discount_code != $data_code[0]['discount_code']){
+
+                $_SESSION['error'] = "Mã giảm giá không tồn tại";
+
+            }else if($data_code[0]['quantity'] <= 0){
+
+                $_SESSION['error'] = "Mã giảm giá đã hết lượt sử dụng";
+    
+            }else if($data_code_details[0]['name_account'] == $_SESSION['user']['username'] && $data_code[0]['id'] == $data_code_details[0]['id_code']){
+
+                $_SESSION['error'] = "Bạn đã sử dụng mã 1 lần";
+    
+            }else{
+
+                $price_code = ($sql_data_products[0]['price'] * $data_code[0]['price_sale']) / 100;
+                $_SESSION['price_code'] = $sql_data_products[0]['price'] - $price_code;
+                $_SESSION['code'] = $data_code[0]['id'];
+
+                $_SESSION['success'] = "Sử dụng mã giảm giá thành công";
+
+            }  
+        
+        }
+        header("location: " . CLIENT_URL . 'san-pham/pay?id='. $sql_data_products[0]['id']);
+
+    }
+
+
+
     if(isset($_POST['btnAdd'])){
         
-        $price = $sql_data_products[0]['price'];
+        if(isset($_SESSION['price_code'])){
+
+            $price = $_SESSION['price_code'];
+
+        }else{
+
+            $price = $sql_data_products[0]['price'];
+        }
+        
         $name_account = $sql_data_products[0]['username'];
         $password_account = $sql_data_products[0]['password'];
-        $surplus = $data_pay[0]['balance'] - $sql_data_products[0]['price'];
+        $surplus = $data_pay[0]['balance'] - $price;
         $content = $sql_data_products[0]['category'];
         $id_ctv = $sql_data_products[0]['cp_ctv'];
         $name_product = $sql_data_products[0]['name_product'];
@@ -34,7 +100,7 @@ function pay(){
 
         $id_user = $_SESSION['user']['id'];
         $sql = "INSERT INTO account_purchase_history SET id_user='$id_user', price='$price', name_account='$name_account', password_account='$password_account', surplus='$surplus',
-                content='$content', id_ctv='$id_ctv', name_product='$name_product', id_product='$id_product',server='$server_tk'";
+        content='$content', id_ctv='$id_ctv', name_product='$name_product', id_product='$id_product',server='$server_tk'";
         executeQuery($sql);
         
         $sql = "UPDATE account SET balance='$surplus' WHERE id='$id_user'";
@@ -45,8 +111,22 @@ function pay(){
 
         $sql = "UPDATE products SET status='1' WHERE id='$id'";
         executeQuery($sql);
-        
+
+        if(isset($_SESSION['price_code'])){
+
+            $sql = "INSERT INTO code_details SET id_code='".$_SESSION['code']."', name_account='".$_SESSION['user']['username']."', price='".$sql_data_products[0]['price']."',
+            reduced_price='$price', id_products='".$sql_data_products[0]['id']."'";
+            executeQuery($sql);
+
+            $quantity = $data_code[0]['quantity'] - 1;
+            $sql = "UPDATE code SET quantity='$quantity' WHERE id='".$data_code[0]['id']."'";
+            executeQuery($sql);
+
+        }
+        unset($_SESSION['price_code']);
+        unset($_SESSION['code']);
         $_SESSION['success'] = "Thanh toán thành công";
+        
         header("location: " . CLIENT_URL . 'user/history');
     }
 }

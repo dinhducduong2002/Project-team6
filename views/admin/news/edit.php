@@ -11,13 +11,13 @@
 
                 <div class="form-group">
                     <label>Tiêu đề</label>
-                    <input class="form-control" type="text" name="title" placeholder="tiêu đề tin tức" value="<?= $news['title'] ?>">
+                    <input class="form-control" type="text" name="title" placeholder="tiêu đề tin tức" value="<?= $news['title'] ?>" required="">
                 </div>
 
                 <div class="form-group">
                     <label>Nội dung</label>
                     <br>
-                    <textarea name="content" id="" cols="75" rows="10"><?= $news['content'] ?></textarea>
+                    <textarea name="content" id="" cols="75" rows="10"><?= $news['content'] ?></textarea required="">
                 </div>
 
                 <div class="form-group">

@@ -69,7 +69,8 @@
                             <?php echo $_SESSION["user"]['username'];?><span>(<?php echo number_format( $_SESSION['user']['balance'], 0, '', '.'); ?> đ)</span></a>
 
                         <?php elseif($_SESSION['user']['permission'] == 1):?>
-                        <a href="<?= BASE_URL .'cp-admin/dashboard' ?>" class="btn border border-secondary me-2">QUẢN TRỊ</a>
+                        <a href="<?= BASE_URL .'cp-admin/dashboard' ?>" class="btn border border-secondary me-2"><i class="fas fa-users-cog"></i>
+                         QUẢN TRỊ</a>
                         <a href="<?= BASE_URL .'user/profile'?>"
                             class="btn border border-secondary me-2">
                             <i class="far fa-user"></i>

@@ -5,17 +5,18 @@ function manager_ctv(){
     } else {
         $page = $_GET['page'];
     }
-    $data = 2;
+    $data = 10;
     $sql = "SELECT * FROM account where permission=0 or permission=1";
     $result = executeQuery($sql);
     $number = count($result);
-    $page = ceil($number / $data);
+    $pagea = ceil($number / $data);
     $pages = ($page - 1) * $data;
     $sql = "SELECT * FROM account WHERE permission=0 or permission=1 ORDER BY create_at DESC LIMIT $pages,$data";
     $ds_ctv = executeQuery($sql);
     admin_render('account/manager-ctv.php', 
         [
             'ds_ctv' => $ds_ctv,
+            'pagea' => $pagea,
             
         ], 
         [
@@ -49,10 +50,23 @@ function edit_ctv(){
     }
 }
 function manager_client(){
+    if (!isset($_GET['page'])) {
+        $page = 1;
+    } else {
+        $page = $_GET['page'];
+    }
+    $data = 10;
     $sql = "SELECT * FROM account where permission=2";
-    $ds_ctv = executeQuery($sql);
+    $result = executeQuery($sql);
+    $number = count($result);
+    $pagea = ceil($number / $data);
+    $pages = ($page - 1) * $data;
+    $sql = "SELECT * FROM account WHERE permission=2 ORDER BY create_at DESC LIMIT $pages,$data";
+    $ds_client = executeQuery($sql);
+    
     admin_render('account/manager-client.php',[
-        'ds_client' => $ds_ctv,
+        'ds_client' => $ds_client,
+        'pagea' => $pagea,
     ]);
 }
 function delete_client(){

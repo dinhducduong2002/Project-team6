@@ -8,26 +8,46 @@
 
                 <div class="wrap-input100 validate-input m-b-23" data-validate="Tài Khoản Không Đúng">
                     <span class="label-input100">Tài Khoản</span>
-                    <input class="input100" type="text" name="username" placeholder="Tài Khoản Của Web">
+                    <input class="input100" type="text" name="username" placeholder="Tài Khoản Của Web" value="<?php if (isset($username)) {
+                                                                                                                    echo $username;
+                                                                                                                } ?>">
                     <span class="focus-input100" data-symbol="&#xf205;"></span>
+                    <?php if (!empty($error['username'])) : ?>
+                        <span style="color: red;"><?php echo $error['username'] ?></span><br>
+                    <?php endif; ?>
                 </div>
 
                 <div class="wrap-input100 validate-input m-b-23" data-validate="Email Không Đúng">
                     <span class="label-input100">EMAIL</span>
-                    <input class="input100" type="email" name="email" placeholder="Email Của Bạn">
+                    <input class="input100" type="email" name="email" placeholder="Email Của Bạn" value="<?php if (isset($email)) {
+                                                                                                                echo $email;
+                                                                                                            } ?>">
                     <span class="focus-input100" data-symbol="&#xf15a;"></span>
+                    <?php if (!empty($error['email'])) : ?>
+                        <span style="color: red;"><?php echo $error['email'] ?></span><br>
+                    <?php endif; ?>
                 </div>
 
                 <div class="wrap-input100 validate-input" data-validate="Mật Khẩu Không Đúng">
                     <span class="label-input100">Mật Khẩu</span>
-                    <input class="input100" type="password" name="password" placeholder="Mật Khẩu">
+                    <input class="input100" type="password" name="password" placeholder="Mật Khẩu" value="<?php if (isset($password)) {
+                                                                                                                echo $password;
+                                                                                                            } ?>">
                     <span class="focus-input100" data-symbol="&#xf190;"></span>
+                    <?php if (!empty($error['password'])) : ?>
+                        <span style="color: red;"><?php echo $error['password'] ?></span><br>
+                    <?php endif; ?>
                 </div>
 
                 <div class="wrap-input100 validate-input" data-validate="Mật Khẩu Không Đúng">
                     <span class="label-input100">Nhập Lại Mật Khẩu</span>
-                    <input class="input100" type="password" name="pass1" placeholder="Nhập Lại Mật Khẩu">
+                    <input class="input100" type="password" name="pass1" placeholder="Nhập Lại Mật Khẩu" value="<?php if (isset($confirm_password)) {
+                                                                                                                    echo $confirm_password;
+                                                                                                                } ?>">
                     <span class="focus-input100" data-symbol="&#xf191;"></span>
+                    <?php if (!empty($error['pass1'])) : ?>
+                        <span style="color: red;"><?php echo $error['pass1'] ?></span><br>
+                    <?php endif; ?>
                 </div>
 
                 <div class="text-right p-t-8 p-b-31">

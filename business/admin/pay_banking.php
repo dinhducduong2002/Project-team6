@@ -3,14 +3,43 @@
     function pay_banking(){
         
         if($_SESSION['user']['permission'] == 1){
-
+            if (!isset($_GET['page'])) {
+                $page = 1;
+            } else {
+                $page = $_GET['page'];
+            }
+            $data = 10;
             $sql = "SELECT * FROM pay_banking WHERE id_ctv='".$_SESSION['user']['id']."'";
+            $result = executeQuery($sql);
+            $number = count($result);
+            $pagea = ceil($number / $data);
+            $pages = ($page - 1) * $data;
+            $sql = "SELECT * FROM pay_banking WHERE id_ctv='".$_SESSION['user']['id']."' ORDER BY date_created DESC LIMIT $pages,$data";
             $pay_banking = executeQuery($sql);
+            admin_render('pay-banking/pay-banking.php',[
+                'pay_banking' => $pay_banking,
+                'pagea' => $pagea,
+            ]);
 
         }else{
 
+            if (!isset($_GET['page'])) {
+                $page = 1;
+            } else {
+                $page = $_GET['page'];
+            }
+            $data = 10;
             $sql = "SELECT * FROM pay_banking";
+            $result = executeQuery($sql);
+            $number = count($result);
+            $pagea = ceil($number / $data);
+            $pages = ($page - 1) * $data;
+            $sql = "SELECT * FROM pay_banking ORDER BY date_created DESC LIMIT $pages,$data";
             $pay_banking = executeQuery($sql);
+            admin_render('pay-banking/pay-banking.php',[
+                'pay_banking' => $pay_banking,
+                'pagea' => $pagea,
+            ]);
 
         }
 
@@ -64,39 +93,39 @@
 
             if( empty($money) || empty($banking) || empty($account_number) || empty($account_holder) || empty($bank_branch) )
             {
-                $_SESSION['error'] = "Nhập đầy đủ thông tin❗";
+                $_SESSION['error'] = "Nhập đầy đủ thông tin";
 
             }else if( preg_match($regex, $money) || preg_match($regex, $banking) || preg_match($regex, $account_number) || preg_match($regex, $account_holder) || preg_match($regex, $bank_branch)){
 
-                $_SESSION['error'] = "Không nhập kí tự đặc biệt❗";
+                $_SESSION['error'] = "Không nhập kí tự đặc biệt";
 
             }else if(empty($money)){
 
-                $_SESSION['error'] = "Bạn chưa nhập số tiền rút❗";
+                $_SESSION['error'] = "Bạn chưa nhập số tiền rút";
 
             }else if($money < 100000){
 
-                $_SESSION['error'] = "Số tiền chưa đủ 100k nhé❗";
+                $_SESSION['error'] = "Số tiền chưa đủ 100k nhé";
 
             }else if($money > $_SESSION['user']['balance']){
 
-                $_SESSION['error'] = "Số dư tài khoản của bạn không đủ❗";
+                $_SESSION['error'] = "Số dư tài khoản của bạn không đủ";
 
             }else if(empty($banking)){
 
-                $_SESSION['error'] = "Bạn chưa nhập Ngân Hàng của bạn❗";
+                $_SESSION['error'] = "Bạn chưa nhập Ngân Hàng của bạn";
 
             }else if(empty($account_number)){
 
-                $_SESSION['error'] = "Số tài khoản của bạn còn trống❗";
+                $_SESSION['error'] = "Số tài khoản của bạn còn trống";
 
             }else if(empty($account_holder)){
 
-                $_SESSION['error'] = "Tên chủ thẻ trống❗";
+                $_SESSION['error'] = "Tên chủ thẻ trống";
 
             }else if(empty($bank_branch)){
 
-                $_SESSION['error'] = "Vui lòng điền chi nhánh❗";
+                $_SESSION['error'] = "Vui lòng điền chi nhánh";
 
             }else{
 

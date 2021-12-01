@@ -1,23 +1,44 @@
 <?php
     function bill(){
         if($_SESSION['user']['permission'] == 0){
+            if (!isset($_GET['page'])) {
+                $page = 1;
+            } else {
+                $page = $_GET['page'];
+            }
+            $data = 10;
             $sql = "SELECT * FROM account_purchase_history";
+            $result = executeQuery($sql);
+            $number = count($result);
+            $pagea = ceil($number / $data);
+            $pages = ($page - 1) * $data;
+            $sql = "SELECT * FROM account_purchase_history ORDER BY created_at DESC LIMIT $pages,$data";
             $data_bill = executeQuery($sql);
-    
             admin_render('bill/manager-bill.php',[
-    
                 'data_bill' => $data_bill,
-    
+                'pagea' => $pagea,
             ]);
+
         }else if($_SESSION['user']['permission'] == 1){
-            $sql = "SELECT * FROM account_purchase_history where id_ctv='".$_SESSION['user']['id']."'";
+            if (!isset($_GET['page'])) {
+                $page = 1;
+            } else {
+                $page = $_GET['page'];
+            }
+            $data = 10;
+            $sql = "SELECT * FROM account_purchase_history";
+            $result = executeQuery($sql);
+            $number = count($result);
+            $pagea = ceil($number / $data);
+            $pages = ($page - 1) * $data;
+            $sql = "SELECT * FROM account_purchase_history where id_ctv='".$_SESSION['user']['id']."' ORDER BY created_at DESC LIMIT $pages,$data";
             $data_bill = executeQuery($sql);
-    
             admin_render('bill/manager-bill.php',[
-    
                 'data_bill' => $data_bill,
-    
+                'pagea' => $pagea,
             ]);
+
+            
         }
         
 

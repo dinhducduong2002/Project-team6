@@ -1,7 +1,9 @@
 <?php
 ob_start();
 session_start();
-
+require_once './vendor/PHPMailer/src/Exception.php';
+require_once './vendor/PHPMailer/src/PHPMailer.php';
+require_once './vendor/PHPMailer/src/SMTP.php';
 require_once './commons/app_config.php';
 require_once './commons/helpers.php';
 require_once './dao/system_dao.php';
@@ -116,17 +118,12 @@ switch ($url) {
         require_once "./business/admin/bill.php";
         delete_bill();
         break;
+    
+    case 'cp-admin/card':
+        require_once "./business/admin/card.php";
+        card();
+        break;
 
-    case 'cp-admin/manager-service':
-        require_once "./business/admin/service.php";
-        service();
-        break;
-    
-    case 'cp-admin/edit-service':
-        require_once "./business/admin/service.php";
-        edit_service();
-        break;
-    
     case 'cp-admin/manager-service':
         require_once "./business/admin/service.php";
         service();
@@ -146,7 +143,27 @@ switch ($url) {
         require_once "./business/admin/service.php";
         add_service();
         break;
+    //
+    case 'cp-admin/manager-category':
+        require_once "./business/admin/category.php";
+        category();
+        break;
     
+    case 'cp-admin/edit-category':
+        require_once "./business/admin/category.php";
+        edit_category();
+        break;
+    
+    case 'cp-admin/delete-category':
+        require_once "./business/admin/category.php";
+        delete_category();
+        break;
+    
+    case 'cp-admin/add-category':
+        require_once "./business/admin/category.php";
+        add_category();
+        break;
+    //
     case 'cp-admin/pay-banking':
         require_once "./business/admin/pay_banking.php";
         pay_banking();
@@ -187,6 +204,46 @@ switch ($url) {
         require_once "./business/admin/news.php";
         news_delete();
         break;
+    //
+    case 'cp-admin/card':
+        require_once "./business/admin/card.php";
+        card();
+        break;
+    //
+    case 'cp-admin/sp-index':
+        require_once "./business/admin/product.php";
+        sp_index();
+        break;
+    case 'cp-admin/delete-sp':
+        require_once "./business/admin/product.php";
+        sp_remove();
+        break;
+    case 'cp-admin/sp-add-form':
+        require_once "./business/admin/product.php";
+        sp_add_form();
+        break;
+    case 'cp-admin/sp-edit-form':
+        require_once "./business/admin/product.php";
+        sp_edit_form();
+        break;
+    //
+    case 'send-email':
+        require_once "./business/sendemail.php";
+        email_form();
+        break;
+    case 'send-email/submit':
+        require_once "./business/sendemail.php";
+        submit_email();
+        break;
+    case 'verification':
+        require_once "./business/auth.php";
+        verification_form();
+        break;
+    case 'reset-pass':
+        require_once './business/auth.php';
+        reset_password();
+        break;
+    //
     default:
         require_once "./business/error404.php";
         index();

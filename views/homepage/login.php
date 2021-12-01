@@ -5,7 +5,7 @@
                 <span class="login100-form-title p-b-40">
                     Đăng Nhập
                 </span>
-
+                <span style="color: green;"><?php if(isset($_SESSION['success'])){ echo $_SESSION['success'];} unset($_SESSION['success'])?></span>
                 <div class="wrap-input100 m-b-23">
                     <span class="label-input100">Tài Khoản</span>
                     <input class="input100" type="text" name="username" placeholder="Tài Khoản Của Web"
@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="text-right p-t-8 p-b-31">
-                    <a href="#">
+                <a href="<?= CLIENT_URL . 'send-email' ?>">
                         Quên Mật Khẩu
                     </a>
                 </div>

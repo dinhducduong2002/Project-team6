@@ -1,6 +1,8 @@
 <?php 
 
 include "dao/system_dao.php";
+
+
 if (isset($_GET['status']) && $_GET['code'] && $_GET['serial'] && $_GET['trans_id'] && $_GET['telco'] && $_GET['callback_sign']) {
 
 	$command = 'charging';  // Nap the

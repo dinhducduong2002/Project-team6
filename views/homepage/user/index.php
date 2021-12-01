@@ -65,7 +65,7 @@ if (!isset($_SESSION['user'])) {
                     <?php foreach($acc as $ac) :?>
                     <tr>
                         <th scope="row">ID của bạn:</th>
-                        <th><span class="c-font-uppercase"><?= $ac['id']?></span></th>
+                        <th><span class="c-font-uppercase">#<?= $ac['id']?></span></th>
                     </tr>
                     <tr>
                         <th scope="row">Tên tài khoản:</th>

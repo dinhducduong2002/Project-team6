@@ -33,18 +33,26 @@ if(!isset($_SESSION['user'])){
                                 <hr>
                                 <span>Giá tiền: </span><b name="price"><?php echo number_format($cate1['price'], 0, '', '.'); ?>đ</b><br>
                                 <hr>
-                                <span>Tổng tiền: </span><b><?php echo number_format($cate1['price'], 0, '', '.'); ?>đ</b><br><br>
+                                <span>Tổng tiền: </span><b>
+                                    <?php if(isset($_SESSION['price_code'])){ ?> 
+                                        <?php echo number_format($_SESSION['price_code'], 0, '', '.'); ?>đ (đã áp dụng mã giảm giá)      
+                                    <?php }else{ ?>
+                                        <?php echo number_format($cate1['price'], 0, '', '.'); ?>đ
+                                    <?php } ?>
+                                </b><br><br>
                             </div>
-
+                            <br>
                             <div class="form-row">
-                                <label class="form-row-inner">
-                                    <input type="password" name="comfirm_password" id="comfirm_password" class="input-text">
+                                <label class="form-row-inner">    
+                                    <span class="label" style="color: red; font-size: 15px;"><?php if(isset($_SESSION['error'])){echo $_SESSION['error'];} unset($_SESSION['error'])?></span>
+                                    <span class="label" style="color: green; font-size: 15px;"><?php if(isset($_SESSION['success'])){echo $_SESSION['success'];} unset($_SESSION['success'])?></span><br>
+                                    <input type="text" name="discount_code" id="comfirm_password" class="input-text">
                                     <span class="label">Nhập mã giảm giá: ( Nếu có )</span>
                                     <span class="border"></span>
                                 </label>
                             </div>
                             <div class="form-row-last">
-                                <input type="submit" name="register" class="register" value="Sử dụng"><br>
+                                <input type="submit" name="btn_code" class="register" value="Sử dụng"><br>
                                 <hr>
                             </div>
                             <?php if ($cate['balance'] < $cate1['price']) { ?>
@@ -94,7 +102,13 @@ if(!isset($_SESSION['user'])){
                             </span><b>Nick siêu phẩm</b><br>
                         <?php } ?>
                         <hr>
-                        <span>Tổng tiền: </span><b><?php echo number_format($cate1['price'], 0, '', '.'); ?>đ</b><br><br>
+                        <span>Tổng tiền: </span><b>
+                                    <?php if(isset($_SESSION['price_code'])){ ?> 
+                                        <?php echo number_format($_SESSION['price_code'], 0, '', '.'); ?>đ (đã áp dụng mã giảm giá)
+                                    <?php }else{ ?>
+                                        <?php echo number_format($cate1['price'], 0, '', '.'); ?>đ
+                                    <?php } ?>
+                                </b><br><br>    
                         </div>
                         <div class="form-row-last">
                         <?php foreach ($data_pay as $cate) : ?>

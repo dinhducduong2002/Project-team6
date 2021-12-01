@@ -1,4 +1,3 @@
-
 <div class="row">
     <div class="col-lg-12">
         <h2>Danh sách cộng tác viên</h2>
@@ -46,8 +45,7 @@
                                 <a class="btn btn-primary" href="<?= ADMIN_URL . 'edit-ctv?id=' . $key['id'] ?>">Sửa</a>
 
                                 <a onclick="confrim_remove('<?= ADMIN_URL . 'delete-ctv?id=' . $key['id'] ?>'
-                                ,'<?= $key['username'] ?>')" href="javascript:;"
-                                 class="btn btn-danger">Xóa</a>
+                                ,'<?= $key['username'] ?>')" href="javascript:;" class="btn btn-danger">Xóa</a>
 
                             </td>
                         </tr>
@@ -58,11 +56,11 @@
     </div>
 </div>
 <nav aria-label="...">
-  <ul class="pagination pagination-sm">
-    <li class="page-item">
-      <a class="page-link" href="#" tabindex="-1">1</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-  </ul>
+    <ul class="pagination pagination-sm">
+        <?php for ($i = 1; $i <= $pagea; $i++) : ?>
+            <li class="page-item">
+                <a class="page-link" href="manager-ctv?page=<?= $i ?>"><?= $i ?></a>
+            </li>
+        <?php endfor; ?>
+    </ul>
 </nav>

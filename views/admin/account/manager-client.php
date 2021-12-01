@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-12">
-        <h2>Danh sách cộng tác viên</h2>
+        <h2>Danh sách thành viên</h2>
         <?php if (isset($_SESSION['success'])) : ?>
             <div class="alert alert-success" role="alert">
                 <?php echo $_SESSION['success'];
@@ -57,11 +57,11 @@
     </div>
 </div>
 <nav aria-label="...">
-  <ul class="pagination pagination-sm">
-    <li class="page-item">
-      <a class="page-link" href="#" tabindex="-1">1</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-  </ul>
+    <ul class="pagination pagination-sm">
+        <?php for ($i = 1; $i <= $pagea; $i++) : ?>
+            <li class="page-item">
+                <a class="page-link" href="manager-client?page=<?= $i ?>"><?= $i ?></a>
+            </li>
+        <?php endfor; ?>
+    </ul>
 </nav>

@@ -1,10 +1,22 @@
 <?php 
 
 function service(){
+    if (!isset($_GET['page'])) {
+        $page = 1;
+    } else {
+        $page = $_GET['page'];
+    }
+    $data = 10;
     $sql = "SELECT * FROM services";
+    $result = executeQuery($sql);
+    $number = count($result);
+    $pagea = ceil($number / $data);
+    $pages = ($page - 1) * $data;
+    $sql = "SELECT * FROM services ORDER BY created_at DESC LIMIT $pages,$data";
     $ds_service = executeQuery($sql);
     admin_render('service/manager-service.php',[
         'ds_service' => $ds_service,
+        'pagea' => $pagea,
     ]);
 }
 function edit_service(){

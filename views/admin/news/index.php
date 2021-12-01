@@ -1,7 +1,9 @@
 <div class="row">
     <div class="col-lg-12">
-        <h2>Danh sách Sản Phẩm</h2>
+        <h2>Danh sách tin tức</h2>
+        <a href="<?= ADMIN_URL . 'news/add' ?>">Thêm tin tức</a>
         <hr>
+        
         <?php if (isset($_SESSION['success'])) : ?>
         <div class="alert alert-success" role="alert">
             <?php echo $_SESSION['success'];
@@ -9,7 +11,7 @@
         </div>
         <?php endif; ?>
         <div class="table-responsive">
-            <a href="<?= ADMIN_URL . 'news/add' ?>">add news</a>
+            
             <table class="table table-bordered table-hover table-striped">
                 <thead>
                     <tr>
@@ -41,7 +43,10 @@
                         <td><?= $key['created_at']?></td>
                         <td>
                             <a class="btn btn-primary" href="<?= ADMIN_URL . 'news/edit?id=' . $key['id'] ?>">Sửa</a>
-                            <a class="btn btn-danger" href="<?= ADMIN_URL . 'news/delete?id=' . $key['id'] ?>">Xóa</a>
+                            <a onclick="confrim_remove('<?= ADMIN_URL . 'news/delete?id=' . $key['id'] ?>'
+                                ,'<?= $key['title'] ?>')" href="javascript:;"
+                                 class="btn btn-danger">Xóa</a>
+                                 
                         </td>
                     </tr>
                     <?php endforeach;?>

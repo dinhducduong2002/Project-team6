@@ -1,6 +1,6 @@
 function confrim_remove(url, name) {
     Swal.fire({
-        title: `Bạn có muốn xóa tài khoản này  "${name}"?`,
+        title: `Bạn có muốn xóa "${name}"?`,
         showDenyButton: true,
         confirmButtonText: 'Đồng ý',
         denyButtonText: `Hủy bỏ`,
