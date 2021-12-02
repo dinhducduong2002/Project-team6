@@ -17,7 +17,7 @@
             <a href="<?= ADMIN_URL . 'manager-category' ?>"><i class="fa fa-fw fa-table"></i> Quản lý danh mục</a>
         </li>
         <li>
-            <a href="<?= ADMIN_URL . 'card' ?>"><i class="fa fa-fw fa-book"></i> Quản lý lịch sử nạp thẻ</a>
+            <a href="<?= ADMIN_URL . 'code' ?>"><i class="fa fa-fw fa-book"></i> Quản lý mã giảm giá</a>
         </li>
     <?php endif; ?>
     <?php if ($_SESSION['user']['permission'] == 1 || $_SESSION['user']['permission'] == 0) : ?>
