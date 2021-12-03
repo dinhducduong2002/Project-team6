@@ -55,6 +55,10 @@ function pay(){
 
                 $_SESSION['error'] = "Mã giảm giá đã hết lượt sử dụng";
     
+            }else if($_SESSION['user']['permission'] == 0 || $_SESSION['user']['permission'] == 1){
+
+                $_SESSION['error'] = "Tài khoản Admin và CTV không áp dụng mã giảm giá";
+    
             }else if($data_code_details[0]['name_account'] == $_SESSION['user']['username'] && $data_code[0]['id'] == $data_code_details[0]['id_code']){
 
                 $_SESSION['error'] = "Bạn đã sử dụng mã 1 lần";
@@ -103,11 +107,16 @@ function pay(){
         content='$content', id_ctv='$id_ctv', name_product='$name_product', id_product='$id_product',server='$server_tk'";
         executeQuery($sql);
         
-        $sql = "UPDATE account SET balance='$surplus' WHERE id='$id_user'";
-        executeQuery($sql);
+        if($id_user != $id_ctv){
 
-        $sql = "UPDATE account SET balance='$price_ctv' WHERE id='$cp_ctv'";
-        executeQuery($sql);
+            $sql = "UPDATE account SET balance='$surplus' WHERE id='$id_user'";
+            executeQuery($sql);
+
+            $sql = "UPDATE account SET balance='$price_ctv' WHERE id='$id_ctv'";
+            executeQuery($sql);
+
+        }
+
 
         $sql = "UPDATE products SET status='1' WHERE id='$id'";
         executeQuery($sql);
@@ -123,6 +132,7 @@ function pay(){
             executeQuery($sql);
 
         }
+
         unset($_SESSION['price_code']);
         unset($_SESSION['code']);
         $_SESSION['success'] = "Thanh toán thành công";
