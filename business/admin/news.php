@@ -1,5 +1,6 @@
 <?php
-function index()
+if($_SESSION['user']['permission'] == 0){
+    function index()
 {
     $sql = "select * from news";
     $news = executeQuery($sql);
@@ -86,4 +87,6 @@ function news_delete()
     $sql = " delete from news where id=$id";
     executeQuery($sql);
     header("location: " . ADMIN_URL . 'news');
+}
+
 }

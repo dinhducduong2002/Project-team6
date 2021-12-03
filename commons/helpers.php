@@ -27,17 +27,12 @@ function errors_render($viewpath, $data = []){
 function getUserBalance(){
     if(!isset($_SESSION['user'])){
         return 0;
-        //kiểm tra xem người dùng đăng nhập hay chưa
-    //nếu chưa đăng nhập thì return 0
+        
     }else{
         $sql = "SELECT * FROM account where id='".$_SESSION['user']['id']."'";
         $balances = executeQuery($sql);
         return $balances[0]['balance'];
     }
     
-    //nếu đăng nhập rồi thì lấy id user => session
-    //thực lực hiện lại câu lệnh lấy lại dữ liệu user
-    //dựa vào id
-    //return ra balance
 }
 ?>
