@@ -93,7 +93,7 @@
                         <td><?= $aph['server'] ?></td>
                         <td><?= $aph['price'] ?></td>
                         <td><?= $aph['surplus'] ?></td>
-                        <td><?= $aph['content'] ?></td>
+                        <td><span style="color: red;"><?= $aph['content'] ?></span></td>
                         <td>
                             <?php if ($aph['status'] == 0) : ?>
                                 <span style="color: green;"><?php echo "Đã thanh toán"; ?></span>

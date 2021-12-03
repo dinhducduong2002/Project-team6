@@ -94,7 +94,6 @@ function pay(){
         $name_account = $sql_data_products[0]['username'];
         $password_account = $sql_data_products[0]['password'];
         $surplus = $data_pay[0]['balance'] - $price;
-        $content = $sql_data_products[0]['category'];
         $id_ctv = $sql_data_products[0]['cp_ctv'];
         $name_product = $sql_data_products[0]['name_product'];
         $server_tk = $sql_data_products[0]['server'];
@@ -104,7 +103,7 @@ function pay(){
 
         $id_user = $_SESSION['user']['id'];
         $sql = "INSERT INTO account_purchase_history SET id_user='$id_user', price='$price', name_account='$name_account', password_account='$password_account', surplus='$surplus',
-        content='$content', id_ctv='$id_ctv', name_product='$name_product', id_product='$id_product',server='$server_tk'";
+         id_ctv='$id_ctv', name_product='$name_product', id_product='$id_product',server='$server_tk'";
         executeQuery($sql);
         
         if($id_user != $id_ctv){
