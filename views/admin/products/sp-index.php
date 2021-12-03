@@ -2,7 +2,7 @@
     <div class="col-lg-12">
         <h2>Danh sách Sản Phẩm</h2>
         <hr>
-        <span style="color: red;">Hiện đang có <?php echo count($ds_sp)?> sản phẩm</span>
+        <span style="color: red;">Hiện đang có <?php echo count($result_count)?> sản phẩm</span>
         <?php if (isset($_SESSION['success'])) : ?>
             <div class="alert alert-success" role="alert">
                 <?php echo $_SESSION['success'];
@@ -48,12 +48,15 @@
                                 } ?></td>
 
 
-                            <td><?php if ($key['category'] == 0) {
+                            <td><?php if ($key['category'] == 2) {
                                     echo "Nick Tầm Trung";
-                                } else if ($key['category'] == 1) {
+                                } else if ($key['category'] == 3) {
                                     echo "Nick VIP";
-                                } else if ($key['category'] == 2) {
-                                    echo "Nick VIP PRO";
+                                } else if ($key['category'] == 4) {
+                                    echo "Nick siêu phẩm";
+                                }
+                                 else if ($key['category'] == 1) {
+                                    echo "Nick Sơ sinh";
                                 }
                                 ?></td>
                             <td><img style="padding: 10px" width="80" height="80" src="<?= PUBLIC_ASSETS . $key['image_thumnail'] ?> " alt=""></td>
@@ -64,7 +67,13 @@
                                 } ?></td>
                             <td><?= $key['cp_ctv'] ?> </td>
                             <td><?= $key['description'] ?> </td>
-                            <td><?= $key['status'] ?> </td>
+                            <td>
+                                <?php if ($key['status'] == 0):?> 
+                                    <span style="color: red;">Đang bán</span>
+                                <?php elseif ($key['status'] == 1):?> 
+                                    <span style="color: green;">Đã bán</span>
+                                <?php endif;?>
+                             </td>
                             <td><?= $key['create_at'] ?></td>
                             <td><a class="btn btn-success" href="<?= ADMIN_URL . 'sp-edit-form?id=' . $key['id'] ?>">Sửa</a></td>
                             <td><a onclick="confrim_remove('<?= ADMIN_URL . 'delete-sp?id=' . $key['id'] ?>'

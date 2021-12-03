@@ -8,7 +8,7 @@
             </div>
             <div class="form-group">
                 <label>Ảnh</label>
-                <input type="hidden" name="hidden_image" value="<?= $list_cate['image_cate'] ?>" required="">
+                <input type="hidden" name="hidden_image" value="<?= $list_cate['image_cate'] ?>">
                 <input name="image_cate" type="file" class="form-control" placeholder="Ảnh" value="<?= $list_cate['image_cate']?>" >
                 <img style="border: 1px solid gray;" src="<?=PUBLIC_ASSETS. $list_cate['image_cate']?>" width="130" alt=""><br>
                 <?php if(isset($_SESSION['error'])):?>

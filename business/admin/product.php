@@ -10,6 +10,8 @@ function sp_index()
         $data = 10;
         $sql = "SELECT * FROM products";
         $result = executeQuery($sql);
+        $sql = "SELECT * FROM products";
+        $result_count = executeQuery($sql);
         $number = count($result);
         $pagea = ceil($number / $data);
         $pages = ($page - 1) * $data;
@@ -18,6 +20,7 @@ function sp_index()
         admin_render('products/sp-index.php', [
             'ds_sp' => $ds_sp,
             'pagea' => $pagea,
+            'result_count' => $result_count,
         ]);
     } else if ($_SESSION['user']['permission'] = 1) {
         if (!isset($_GET['page'])) {
@@ -26,6 +29,8 @@ function sp_index()
             $page = $_GET['page'];
         }
         $data = 10;
+        $sql = "SELECT * FROM products";
+        $result_count = executeQuery($sql);
         $sql = "SELECT * FROM products";
         $result = executeQuery($sql);
         $number = count($result);
@@ -36,6 +41,7 @@ function sp_index()
         admin_render('products/sp-index.php', [
             'ds_sp' => $ds_sp,
             'pagea' => $pagea,
+            'result_count' => $result_count,
         ]);
     }
 
@@ -49,7 +55,7 @@ function sp_remove()
     // thực thi câu lệnh xóa dựa vào id
     $sql = "delete from products where id = $id";
     executeQuery($sql);
-    $$_SESSION['success'] = "Thêm sản phẩm thành công";
+    $_SESSION['success'] = "Xóa sản phẩm thành công";
     header("location: " . ADMIN_URL . 'sp-index');
 }
 
@@ -145,7 +151,7 @@ function sp_add_form()
                 $sql = "INSERT INTO product_image SET product_id='$pro', img_url='$file_namess'";
                 executeQuery($sql);
             }
-            $$_SESSION['success'] = "Thêm mới sản phẩm thành công";
+            $_SESSION['success'] = "Thêm mới sản phẩm thành công";
             header("location: " . ADMIN_URL . 'sp-index');
         }
     }

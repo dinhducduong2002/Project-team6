@@ -3,16 +3,16 @@
         <div class="art-list">
             <?php foreach($news as $n): ?>
             <div class="a-item">
-                <div class="thumbnail-image img-thumbnail">
+                <div>
                     <a href="<?= CLIENT_URL . 'tin-tuc/detail?id=' . $n['id'] ?>">
                         <img src="<?=PUBLIC_ASSETS. $n['image']?>" alt="" width="200" height="120">
                     </a>
                 </div>
                 <div class="info">
                     <div class="article_title ">
-                        <h2>
+                        <h4>
                             <a href="<?= CLIENT_URL . 'tin-tuc/detail?id=' . $n['id'] ?>"><?= $n['title']?></a>
-                        </h2>
+                        </h4>
                     </div>
                     <div class="article_cat_date">
                         <div style="display: inline-block;margin-right: 15px">

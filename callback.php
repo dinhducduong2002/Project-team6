@@ -1,8 +1,7 @@
 <?php 
+session_start();
 
 include "dao/system_dao.php";
-
-
 if (isset($_GET['status']) && $_GET['code'] && $_GET['serial'] && $_GET['trans_id'] && $_GET['telco'] && $_GET['callback_sign']) {
 
 	$command = 'charging';  // Nap the
@@ -36,24 +35,39 @@ if (isset($_GET['status']) && $_GET['code'] && $_GET['serial'] && $_GET['trans_i
 	file_put_contents($open,$_GET['status'].'|'.$_GET['message'].'|'.$_GET['value'].'|'.$_GET['code'].'|'.$_GET['serial'].'|'.$_GET['telco'].'|'.$_GET['trans_id'].PHP_EOL, FILE_APPEND);
 
 	if ($status == 1) {
-		$id_user = $_SESSION['user']['id'];
-		$sql = "UPDATE loadcard SET status='Thẻ đúng' where code='$code'";//cập nhật trạng thái
+      	$sql = "UPDATE loadcard SET status='Thẻ đúng' where code='$code'";//cập nhật trạng thái
 		executeQuery($sql);
 
 		$sql = "SELECT * FROM loadcard where code='".$_GET['code']."'";//
 		$result_code = executeQuery($sql);
+      
 		$user = $result_code[0]['id_user'];
-		$sql = "SELECT * FROM account where id='$id_user'";//lấy thông tin user
+		$sql = "SELECT * FROM account where id='$user'";//lấy thông tin user
 		$result_user = executeQuery($sql);
 
-		$new_balance = $result_user['balance'] + $result_code['amount'];
-		$sql = "UPDATE account SET balance='2000' where id='$user'";//cập nhật lại trạng thái tiền cho khách hàng
+		$new_balance = $result_user[0]['balance'] + $result_code[0]['amount'];
+		$sql = "UPDATE account SET balance='$new_balance' where id='$user'";//cập nhật lại trạng thái tiền cho khách hàng
 		executeQuery($sql);
 		
+	
 
-	} else{
-		$sql = "UPDATE loadcard SET status='Thẻ lỗi' where code='$code'";
+	} else if($status == 2){
+      
+     	 $sql = "UPDATE loadcard SET status='Thẻ sai mệnh giá' where code='$code'";
 		executeQuery($sql);
+		
+		
+	}else if($status == 3){
+      
+     	 $sql = "UPDATE loadcard SET status='Thẻ lỗi' where code='$code'";
+		executeQuery($sql);
+		
+	}else if($status == 4){
+      
+     	 $sql = "UPDATE loadcard SET status='Bảo trì' where code='$code'";
+		executeQuery($sql);
+		
+		
 	}
 
 	} else {

@@ -2,7 +2,7 @@
     <div class="row d-flex p-4">
         <div class="col">
             <div class="col">
-                <span class="">Mã số: <?= $pro['id'] ?></span>
+                <span class="">Mã số: <span style="color: red;">#<?= $pro['id'] ?></span></span>
 
             </div>
         </div>
@@ -12,7 +12,7 @@
         <div class="col">
             <div class="col">
                 <a href="<?= CLIENT_URL . 'san-pham/pay?id=' . $pro['id'] ?>" class="btn btn-primary me-2">Mua ngay</a>
-                <a href="" class="btn btn-success me-2">Nạp thẻ cào</a>
+                <a href="<?= CLIENT_URL . 'user/brickcard' ?>" class="btn btn-success me-2">Nạp thẻ cào</a>
             </div>
         </div>
     </div>
@@ -61,7 +61,7 @@
     <div class="images text-center m-1">
         <?php foreach ($product_detail as $key) : ?>
             <div class="col m-4">
-                <img src="<?= PUBLIC_ASSETS . $key['img_url'] ?>" width="350" height="350">
+                <img src="<?= PUBLIC_ASSETS . $key['img_url'] ?>" height="350">
             </div>
         <?php endforeach; ?>
     </div>

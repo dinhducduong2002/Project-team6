@@ -1,16 +1,16 @@
-<div class="row">
+<div>
     <div class="title alert alert-success">
         DANH MỤC GAME NGỌC RỒNG
     </div>
     <form action="" method="post">
-        <div class="d-flex gap-2">
+        <div class="col-3">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Tìm kiếm</span>
                 </div>
                 <input type="text" class="form-control" placeholder="Tìm kiếm" name="keyword" aria-label="Tìm kiếm" aria-describedby="basic-addon1">
             </div>
-            
+
 
         </div>
         <div class="">
@@ -19,8 +19,9 @@
         </div>
     </form>
 </div>
-<span style="color: red;">Hiện đang có <?php echo count($dsSanPham);?> tài khoản</span>
-<div class="container d-flex flex-wrap gap-4 p-3">
+<span style="color: red;">Hiện đang có <?php echo count($dsSanPham); ?> tài khoản</span>
+<br>
+<div class="d-flex flex-wrap gap-4">
     <?php foreach ($dsSanPham as $pro) : ?>
         <div class="card" style="width: 18rem;">
             <img src="<?= PUBLIC_ASSETS . $pro['image_thumnail'] ?>" class="card-img-top" alt="...">
@@ -52,3 +53,13 @@
         </div>
     <?php endforeach; ?>
 </div>
+<br>
+<nav aria-label="...">
+    <ul class="pagination pagination-sm">
+        <?php for ($i = 1; $i <= $pagea; $i++) : ?>
+            <li class="page-item">
+                <a class="page-link" href="san-pham?id=<?= $_GET['id'] ?>&page=<?= $i ?>"><?= $i ?></a>
+            </li>
+        <?php endfor; ?>
+    </ul>
+</nav>

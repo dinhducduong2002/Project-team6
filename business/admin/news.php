@@ -1,5 +1,6 @@
 <?php
-function index(){
+function index()
+{
     $sql = "select * from news";
     $news = executeQuery($sql);
 
@@ -7,11 +8,13 @@ function index(){
 }
 
 // thêm tin tức
-function news_add(){
+function news_add()
+{
     admin_render('news/add.php');
 }
 // lưu thêm tin tức
-function news_save_add(){
+function news_save_add()
+{
     $title = $_POST['title'];
     $id_user = $_SESSION['user']['id'];
     $content = $_POST['content'];
@@ -19,7 +22,7 @@ function news_save_add(){
 
     $files = $_FILES['image'];
     $image = "";
-    
+
     $files_name = uniqid() . '-' . $files['name'];
     move_uploaded_file($files['tmp_name'], './public/uploads/avatars/' . $files_name);
     $image = "uploads/avatars/" . $files_name;
@@ -31,30 +34,39 @@ function news_save_add(){
 }
 
 //sửa tin tức
-function news_edit(){
+function news_edit()
+{
     $id = $_GET['id'];
     $sql = "select * from news where id='$id'";
     $news = executeQuery($sql, false);
-    
+
     admin_render('news/edit.php', ['news' => $news]);
 }
 //lư sửa tin tức
-function news_save_edit(){
+function news_save_edit()
+{
+    $file_img = ['jpg', 'PNG', 'gif', 'jpeg'];
     $id = $_GET['id'];
-    $sql = "select * from news where id='$id'";
-    $old_news = executeQuery($sql, false);
-    
     $title = $_POST['title'];
     $id_user = $_SESSION['user']['id'];
     $content = $_POST['content'];
     $status = $_POST['status'];
 
     $file = $_FILES['image'];
-    $image = $old_news['image'];
-    
-    $files_name = uniqid() . '-' . $file['name'];
-    move_uploaded_file($file['tmp_name'], './public/uploads/avatars/' . $files_name);
-    $image = "uploads/avatars/" . $files_name;
+
+
+    if ($file['size'] > 0 && $file['size'] < 2000000) {
+        $files_name = uniqid() . '-' . $file['name'];
+        $ext = pathinfo($files_name, PATHINFO_EXTENSION);
+        if (!in_array($ext, $file_img)) {
+            $_SESSION['error'] = "Bạn chỉ được nhập vào file ảnh";
+        } else {
+            move_uploaded_file($file['tmp_name'], './public/uploads/avatars/' . $files_name);
+            $image = "uploads/avatars/" . $files_name;
+        }
+    } else {
+        $image = $_POST['hidden_image'];
+    }
 
     $sql = "UPDATE news set 
                         id_user = '$id_user',
@@ -68,7 +80,8 @@ function news_save_edit(){
 }
 
 //xóa tin tức
-function news_delete(){
+function news_delete()
+{
     $id = $_GET['id'];
     $sql = " delete from news where id=$id";
     executeQuery($sql);

@@ -22,9 +22,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach($ds_category as $key):?>
+                    <?php foreach($ds_category as $index => $key):?>
                         <tr>
-                            <td><?= $key['id_cate'] ?></td>
+                        <td><?php echo $index + 1; ?></td>
                             <td><?= $key['name_cate'] ?></td>
                             <td><img src="<?=PUBLIC_ASSETS. $key['image_cate']?>" width="100"></td>
                             <td><?= $key['created_at'] ?></td>

@@ -1,17 +1,16 @@
-<?php 
-if(!isset($_SESSION['user'])){
+<?php
+if (!isset($_SESSION['user'])) {
     $_SESSION['error'] = "Vui lòng đăng nhập để tiếp tục";
-    header("location: ".BASE_URL."login");
-}else{
-    
+    header("location: " . BASE_URL . "login");
+} else {
 }
 ?>
 <div class="page-content">
     <div class="form-v8-content">
         <div class="form-left">
-        <?php foreach($sql_data_products as $key):?>
-            <img src="<?=PUBLIC_ASSETS. $key['image_thumnail']?>" width="450" height="300">
-            <?php endforeach;?>
+            <?php foreach ($sql_data_products as $key) : ?>
+                <img src="<?= PUBLIC_ASSETS . $key['image_thumnail'] ?>" width="450" height="300">
+            <?php endforeach; ?>
         </div>
         <div class="form-right">
             <div class="tab">
@@ -34,18 +33,24 @@ if(!isset($_SESSION['user'])){
                                 <span>Giá tiền: </span><b name="price"><?php echo number_format($cate1['price'], 0, '', '.'); ?>đ</b><br>
                                 <hr>
                                 <span>Tổng tiền: </span><b>
-                                    <?php if(isset($_SESSION['price_code'])){ ?> 
-                                        <?php echo number_format($_SESSION['price_code'], 0, '', '.'); ?>đ (đã áp dụng mã giảm giá)      
-                                    <?php }else{ ?>
+                                    <?php if (isset($_SESSION['price_code'])) { ?>
+                                        <?php echo number_format($_SESSION['price_code'], 0, '', '.'); ?>đ (đã áp dụng mã giảm giá)
+                                    <?php } else { ?>
                                         <?php echo number_format($cate1['price'], 0, '', '.'); ?>đ
                                     <?php } ?>
                                 </b><br><br>
                             </div>
                             <br>
                             <div class="form-row">
-                                <label class="form-row-inner">    
-                                    <span class="label" style="color: red; font-size: 15px;"><?php if(isset($_SESSION['error'])){echo $_SESSION['error'];} unset($_SESSION['error'])?></span>
-                                    <span class="label" style="color: green; font-size: 15px;"><?php if(isset($_SESSION['success'])){echo $_SESSION['success'];} unset($_SESSION['success'])?></span><br>
+                                <label class="form-row-inner">
+                                    <span class="label" style="color: red; font-size: 15px;"><?php if (isset($_SESSION['error'])) {
+                                                                                                    echo $_SESSION['error'];
+                                                                                                }
+                                                                                                unset($_SESSION['error']) ?></span>
+                                    <span class="label" style="color: green; font-size: 15px;"><?php if (isset($_SESSION['success'])) {
+                                                                                                    echo $_SESSION['success'];
+                                                                                                }
+                                                                                                unset($_SESSION['success']) ?></span><br>
                                     <input type="text" name="discount_code" id="comfirm_password" class="input-text">
                                     <span class="label">Nhập mã giảm giá: ( Nếu có )</span>
                                     <span class="border"></span>
@@ -71,7 +76,7 @@ if(!isset($_SESSION['user'])){
                             <?php } else { ?>
                                 <div class="form-row-last">
                                     <div class="row_top">
-                                        <button class="form-row-last-close" name="btnAdd" type="submit" onclick="return confirm('Bạn chắc chắn muốn thanh toán mã sản phẩm #<?= $cate1['id']?> không?')">Thanh Toán</button>
+                                        <button class="form-row-last-close" name="btnAdd" type="submit" onclick="return confirm('Bạn chắc chắn muốn thanh toán mã sản phẩm #<?= $cate1['id'] ?> không?')">Thanh Toán</button>
                                         <a class="form-row-last-close" href="<?= CLIENT_URL . 'san-pham/detail?id=' . $cate1['id'] ?>" onclick="return confirm('Bạn chắc chắn muốn thoát không?')">Thoát</a>
                                     </div>
                                 </div>
@@ -87,55 +92,66 @@ if(!isset($_SESSION['user'])){
                             <hr>
                             <span>Vũ trụ: </span><b><?= $cate['server'] ?> Sao</b><br>
                             <hr>
-                            <span>Hành tinh: </span><b><?= $cate['planet'] ?></b><br>
+                            <span>Hành tinh: </span>
+                                <?php if($cate['planet'] == 0):?>
+                                    <span>NAMEC</span>
+                                <?php elseif($cate['planet'] == 1):?>
+                                    <span>TRÁI ĐẤT</span>
+                                <?php elseif($cate['planet'] == 2):?>
+                                    <span>XAYDA</span>
+                                <?php endif;?>
+                            <br>
                             <hr>
                             <span>Danh mục:
-                                <?php if ($cate['category'] == 0) { ?>
-                            </span><b>Nick tầm trung</b><br>
-                        <?php } ?>
-
-                        <?php if ($cate['category'] == 1) { ?>
-                            </span><b>Nick vip</b><br>
+                                <?php if ($cate['category'] == 1) { ?>
+                            </span><b>Nick sơ sinh</b><br>
                         <?php } ?>
 
                         <?php if ($cate['category'] == 2) { ?>
+                            </span><b>Nick tầm trung</b><br>
+                        <?php } ?>
+
+                        <?php if ($cate['category'] == 3) { ?>
+                            </span><b>Nick vip</b><br>
+                        <?php } ?>
+                        <?php if ($cate['category'] == 4) { ?>
                             </span><b>Nick siêu phẩm</b><br>
                         <?php } ?>
                         <hr>
                         <span>Tổng tiền: </span><b>
-                                    <?php if(isset($_SESSION['price_code'])){ ?> 
-                                        <?php echo number_format($_SESSION['price_code'], 0, '', '.'); ?>đ (đã áp dụng mã giảm giá)
-                                    <?php }else{ ?>
-                                        <?php echo number_format($cate1['price'], 0, '', '.'); ?>đ
-                                    <?php } ?>
-                                </b><br><br>    
+                            <?php if (isset($_SESSION['price_code'])) { ?>
+                                <?php echo number_format($_SESSION['price_code'], 0, '', '.'); ?>đ (đã áp dụng mã giảm giá)
+                            <?php } else { ?>
+                                <?php echo number_format($cate1['price'], 0, '', '.'); ?>đ
+                            <?php } ?>
+                        </b><br><br>
                         </div>
                         <div class="form-row-last">
-                        <?php foreach ($data_pay as $cate) : ?>
-                        <?php if ($cate['balance'] < $cate1['price']) { ?>
-                                <div class="form-row-last">
-                                    <span class="label_1">Bạn không đủ số dư để mua tài khoản này. Bạn chọn hình thức nạp bằng cách click vào nút bên dưới.</span><br><br>
-                                    <hr>
-                                </div>
-                                <div class="form-row-last">
-                                    <div class="row_top">
-                                        <a class="form-row-last-close" href="<?= CLIENT_URL . 'user/brickcard' ?>">Thẻ Cào</a>
-                                        <a class="form-row-last-close" href="">MoMo</a>
-                                        <a class="form-row-last-close" href="">Ngân Hàng</a>
-                                        <a class="form-row-last-close" href="<?= CLIENT_URL . 'san-pham/detail?id=' . $cate1['id'] ?>" onclick="return confirm('Bạn chắc chắn muốn thoát không?')">Thoát</a>
+                            <?php foreach ($data_pay as $cate) : ?>
+                                <?php if ($cate['balance'] < $cate1['price']) { ?>
+                                    <div class="form-row-last">
+                                        <span class="label_1">Bạn không đủ số dư để mua tài khoản này. Bạn chọn hình thức nạp bằng cách click vào nút bên dưới.</span><br><br>
+                                        <hr>
                                     </div>
-                                </div>
-                            <?php } else { ?>
-                                <div class="form-row-last">
-                                    <div class="row_top">
-                                        <button class="form-row-last-close" name="btnAdd" type="submit" onclick="return confirm('Bạn chắc chắn muốn thanh toán mã sản phẩm #<?= $cate1['id']?> không?')">Thanh Toán</button>
-                                        <a class="form-row-last-close" href="<?= CLIENT_URL . 'san-pham/detail?id=' . $cate1['id'] ?>" onclick="return confirm('Bạn chắc chắn muốn thoát không?')">Thoát</a>
+                                    <div class="form-row-last">
+                                        <div class="row_top">
+                                            <a class="form-row-last-close" href="<?= CLIENT_URL . 'user/brickcard' ?>">Thẻ Cào</a>
+                                            <a class="form-row-last-close" href="">MoMo</a>
+                                            <a class="form-row-last-close" href="">Ngân Hàng</a>
+                                            <a class="form-row-last-close" href="<?= CLIENT_URL . 'san-pham/detail?id=' . $cate1['id'] ?>" onclick="return confirm('Bạn chắc chắn muốn thoát không?')">Thoát</a>
+                                        </div>
                                     </div>
-                                </div>
-                            <?php } ?>
-                        <?php endforeach; ?>
+                                <?php } else { ?>
+                                    <div class="form-row-last">
+                                        <div class="row_top">
+                                            <button class="form-row-last-close" name="btnAdd" type="submit" onclick="return confirm('Bạn chắc chắn muốn thanh toán mã sản phẩm #<?= $cate1['id'] ?> không?')">Thanh Toán</button>
+                                            <a class="form-row-last-close" href="<?= CLIENT_URL . 'san-pham/detail?id=' . $cate1['id'] ?>" onclick="return confirm('Bạn chắc chắn muốn thoát không?')">Thoát</a>
+                                        </div>
+                                    </div>
+                                <?php } ?>
+                            <?php endforeach; ?>
                         </div>
-                   
+
                     <?php endforeach; ?>
                 </div>
             </form>

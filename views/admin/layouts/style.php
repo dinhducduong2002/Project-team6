@@ -7,7 +7,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>SB Admin - Bootstrap Admin Template</title>
+<title>Trang quản trị</title>
 
 <!-- Bootstrap Core CSS -->
 <link href="<?= ADMIN_ASSETS ?>dist/css/bootstrap.min.css" rel="stylesheet">

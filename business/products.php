@@ -1,13 +1,46 @@
 <?php
 function products_index(){
-    $id = $_GET['id'];
-    $sql = "SELECT * from products where status=0 and category='$id'";
-    $products = executeQuery($sql);
-
-
-    client_render('product/index.php', [
-        'dsSanPham' => $products,
-    ]);
+    if(isset($_POST['btnSearch'])){
+        $id = $_GET['id'];
+        if (!isset($_GET['page'])) {
+            $page = 1;
+        } else {
+            $page = $_GET['page'];
+        }
+        $data = 12;
+        $sql = "SELECT * from products where status=0 and category='$id' and name_product LIKE '%" . $_POST['keyword'] . "%'";
+        $result = executeQuery($sql);
+        $number = count($result);
+        $pagea = ceil($number / $data);
+        $pages = ($page - 1) * $data;
+        $sql = "SELECT * from products where status=0 and category='$id' and name_product LIKE '%" . $_POST['keyword'] . "%' ORDER BY create_at DESC LIMIT $pages,$data";
+        $products = executeQuery($sql);
+        
+        client_render('product/index.php', [
+            'dsSanPham' => $products,
+            'pagea' => $pagea,
+        ]);
+    }else{
+        $id = $_GET['id'];
+        if (!isset($_GET['page'])) {
+            $page = 1;
+        } else {
+            $page = $_GET['page'];
+        }
+        $data = 12;
+        $sql = "SELECT * from products where status=0 and category='$id'";
+        $result = executeQuery($sql);
+        $number = count($result);
+        $pagea = ceil($number / $data);
+        $pages = ($page - 1) * $data;
+        $sql = "SELECT * from products where status=0 and category='$id' ORDER BY create_at DESC LIMIT $pages,$data";
+        $products = executeQuery($sql);
+        
+        client_render('product/index.php', [
+            'dsSanPham' => $products,
+            'pagea' => $pagea,
+        ]);
+    }
 }
 function products_detail(){
     $id = $_GET['id'];

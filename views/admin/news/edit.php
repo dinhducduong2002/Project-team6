@@ -5,6 +5,7 @@
 
                 <div class="form-group">
                     <label>Ảnh đại diện</label>
+                    <input type="hidden" name="hidden_image" value="<?= $news['image'] ?>">
                     <input class="form-control" type="file" name="image">
                     <img src="<?= PUBLIC_ASSETS . $news['image'] ?>" alt="" width="200">
                 </div>

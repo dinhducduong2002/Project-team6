@@ -1,26 +1,29 @@
 <?php 
 
 function service(){
-    if (!isset($_GET['page'])) {
-        $page = 1;
-    } else {
-        $page = $_GET['page'];
+    if($_SESSION['user']['permission'] ==0){
+        if (!isset($_GET['page'])) {
+            $page = 1;
+        } else {
+            $page = $_GET['page'];
+        }
+        $data = 10;
+        $sql = "SELECT * FROM services";
+        $result = executeQuery($sql);
+        $number = count($result);
+        $pagea = ceil($number / $data);
+        $pages = ($page - 1) * $data;
+        $sql = "SELECT * FROM services ORDER BY created_at DESC LIMIT $pages,$data";
+        $ds_service = executeQuery($sql);
+        admin_render('service/manager-service.php',[
+            'ds_service' => $ds_service,
+            'pagea' => $pagea,
+        ]);
     }
-    $data = 10;
-    $sql = "SELECT * FROM services";
-    $result = executeQuery($sql);
-    $number = count($result);
-    $pagea = ceil($number / $data);
-    $pages = ($page - 1) * $data;
-    $sql = "SELECT * FROM services ORDER BY created_at DESC LIMIT $pages,$data";
-    $ds_service = executeQuery($sql);
-    admin_render('service/manager-service.php',[
-        'ds_service' => $ds_service,
-        'pagea' => $pagea,
-    ]);
 }
 function edit_service(){
-    $file_img = ['jpg', 'PNG', 'gif', 'jpeg'];
+    if($_SESSION['user']['permission'] == 0){
+        $file_img = ['jpg', 'PNG', 'gif', 'jpeg'];
     $id = $_GET['id'];
     $sql = "SELECT * from services where id = $id";
     $list_service = executeQuery($sql, $getAll = false);
@@ -52,16 +55,20 @@ function edit_service(){
         }
         
     }
+    }
 }
 function delete_service(){
-    $id = $_GET['id'];
+    if($_SESSION['user']['permission'] == 0){
+        $id = $_GET['id'];
     $sql = "delete from services where id = $id";
     executeQuery($sql);
     $_SESSION['success'] = "Xóa thành công";
     header("location: " . ADMIN_URL . 'manager-service');
+    }
 }
 function add_service(){
-    admin_render('service/add-service.php');
+    if($_SESSION['user']['permission'] == 0){
+        admin_render('service/add-service.php');
     $file_img = ['jpg', 'PNG', 'gif', 'jpeg'];
     
     if(isset($_POST['btnEdit'])){
@@ -89,6 +96,7 @@ function add_service(){
         header("location: ".ADMIN_URL."manager-service");
         }
         
+    }
     }
 }
 ?>

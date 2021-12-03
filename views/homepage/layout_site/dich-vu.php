@@ -6,7 +6,7 @@
     <div class="product-device shadow-sm d-none d-md-block"></div>
     <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
 </div>
-<div" class="container d-flex flex-wrap gap-lg-5">
+<div" class="container d-flex flex-wrap gap-lg-4">
     <?php foreach($ser as $key):?>
         <a href="">
         <div class="card " style="width: 18rem;">

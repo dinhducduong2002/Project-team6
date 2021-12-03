@@ -1,5 +1,6 @@
 <?php
     function bill(){
+       
         if($_SESSION['user']['permission'] == 0){
             if (!isset($_GET['page'])) {
                 $page = 1;

@@ -50,11 +50,11 @@ function submit_email(){
         $mail->AltBody = $content;
 
         $mail->send();
-        header("location: " . CLIENT_URL . 'verification');
-
-        $_SESSION['success'] = "Một liên kết đã được gửi vào địa chỉ email bạn cung cấp";
-    } catch (Exception $e) {
         
+    } catch (Exception $e) {
+        header("location: " . CLIENT_URL . 'send-email');
+
+        $_SESSION['close'] = "Vui lòng nhập email";
     }     
         }
     
