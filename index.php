@@ -219,7 +219,32 @@ switch ($url) {
         require_once "./business/admin/card.php";
         card();
         break;
-    //
+
+    case 'cp-admin/code':
+        require_once "./business/admin/code.php";
+        code();
+        break;
+
+    case 'cp-admin/delete-code':
+        require_once "./business/admin/code.php";
+        delete_code();
+        break;
+    
+    case 'cp-admin/delete-manage-code':
+        require_once "./business/admin/code.php";
+        delete_manage_code();
+        break;
+
+    case 'cp-admin/manage-code':
+        require_once "./business/admin/code.php";
+        manage_code();
+        break;
+
+    case 'cp-admin/add-code':
+        require_once "./business/admin/code.php";
+        add_code();
+        break;
+
     case 'cp-admin/sp-index':
         require_once "./business/admin/product.php";
         sp_index();
