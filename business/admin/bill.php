@@ -8,12 +8,12 @@
                 $page = $_GET['page'];
             }
             $data = 10;
-            $sql = "SELECT * FROM account_purchase_history";
+            $sql = "SELECT * FROM tblhistory";
             $result = executeQuery($sql);
             $number = count($result);
             $pagea = ceil($number / $data);
             $pages = ($page - 1) * $data;
-            $sql = "SELECT * FROM account_purchase_history ORDER BY created_at DESC LIMIT $pages,$data";
+            $sql = "SELECT * FROM tblhistory ORDER BY created_at DESC LIMIT $pages,$data";
             $data_bill = executeQuery($sql);
             admin_render('bill/manager-bill.php',[
                 'data_bill' => $data_bill,
@@ -27,12 +27,12 @@
                 $page = $_GET['page'];
             }
             $data = 10;
-            $sql = "SELECT * FROM account_purchase_history";
+            $sql = "SELECT * FROM tblhistory";
             $result = executeQuery($sql);
             $number = count($result);
             $pagea = ceil($number / $data);
             $pages = ($page - 1) * $data;
-            $sql = "SELECT * FROM account_purchase_history where id_ctv='".$_SESSION['user']['id']."' ORDER BY created_at DESC LIMIT $pages,$data";
+            $sql = "SELECT * FROM tblhistory where id_ctv='".$_SESSION['user']['id']."' ORDER BY created_at DESC LIMIT $pages,$data";
             $data_bill = executeQuery($sql);
             admin_render('bill/manager-bill.php',[
                 'data_bill' => $data_bill,
@@ -47,8 +47,11 @@
 
             extract($_POST);
 
-            $sql = "SELECT * FROM account_purchase_history WHERE id='$btn_update'";
+            $sql = "SELECT * FROM tblhistory WHERE id='$btn_update'";
             $data_bill_one = executeQuery($sql);
+            $id_pros = $data_bill_one[0]['id_product'];
+            $sql = "SELECT * FROM products WHERE id='$id_pros'";
+            $data_price = executeQuery($sql);
 
             $id = $data_bill_one[0]['id'];
             $id_user = $data_bill_one[0]['id_user'];
@@ -61,9 +64,9 @@
             $data_account_ctv = executeQuery($sql);
 
             $surplus = $data_account_kh[0]['balance'] + $data_bill_one[0]['price'];
-            $price_ctv = $data_account_ctv[0]['balance'] - $data_bill_one[0]['price'];
+            $price_ctv = $data_account_ctv[0]['balance'] - $data_price[0]['price'];
 
-            $sql = "UPDATE account_purchase_history SET status='1' WHERE id='$id'";
+            $sql = "UPDATE tblhistory SET status='1' WHERE id='$id'";
             executeQuery($sql);
             
             $sql = "UPDATE account SET balance='$surplus' WHERE id='$id_user'";
@@ -82,7 +85,7 @@
     function delete_bill(){
 
         $id = $_GET['id'];
-        $sql = "DELETE FROM account_purchase_history WHERE id ='$id'";
+        $sql = "DELETE FROM tblhistory WHERE id ='$id'";
         executeQuery($sql);
         
         $_SESSION['success'] = "Xóa thành công";

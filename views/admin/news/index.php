@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-lg-12">
         <h2>Danh sách tin tức</h2>
-        <a href="<?= ADMIN_URL . 'news/add' ?>">Thêm tin tức</a>
+        <a class="btn btn-primary" href="<?= ADMIN_URL . 'news/add' ?>">Thêm tin tức</a>
         <hr>
         
         <?php if (isset($_SESSION['success'])) : ?>
@@ -34,10 +34,10 @@
                         <td><?= $key['content']?></td>
                         <td><?php 
                                 if($key['status'] == 0){
-                                    echo "hiện thị";
+                                    echo "Hiển thị";
                                 }
                                 else if($key['status'] == 1){
-                                    echo "không hiện thị";
+                                    echo "không hiển thị";
                                 }
                             ?></td>
                         <td><?= $key['created_at']?></td>

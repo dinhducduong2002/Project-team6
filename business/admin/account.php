@@ -1,4 +1,5 @@
 <?php
+
 function manager_ctv()
 {
     if ($_SESSION['user']['permission'] == 0) {
@@ -12,7 +13,7 @@ function manager_ctv()
         $result = executeQuery($sql);
         $number = count($result);
         $pagea = ceil($number / $data);
-        $pages = ($page - 1) * $data;
+        $pages = ($page-1) * $data;
         $sql = "SELECT * FROM account WHERE permission=0 or permission=1 ORDER BY create_at DESC LIMIT $pages,$data";
         $ds_ctv = executeQuery($sql);
         admin_render(
@@ -30,6 +31,7 @@ function manager_ctv()
 }
 function delete_ctv()
 {
+    
     if ($_SESSION['user']['permission'] == 0) {
         $id = $_GET['id'];
         $sql = "delete from account where id = $id";
@@ -97,9 +99,9 @@ function edit_client()
     if ($_SESSION['user']['permission'] == 0) {
         $id = $_GET['id'];
         $sql = "SELECT * from account where id = $id";
-        $user = executeQuery($sql);
+        $user_client = executeQuery($sql);
         admin_render('account/edit-client.php', [
-            'user_client' => $user
+            'user_client' => $user_client
         ]);
         if (isset($_POST['btnEdit'])) {
             $balance = $_POST['balance'];
@@ -113,3 +115,5 @@ function edit_client()
         }
     }
 }
+
+?>

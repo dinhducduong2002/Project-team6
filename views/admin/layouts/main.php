@@ -1,9 +1,9 @@
 <?php
 if (!isset($_SESSION['user'])) {
-    header("location: http://localhost/Project-team6/");
+    header("location: /");
 }else if(isset($_SESSION['user'])){
     if($_SESSION['user']['permission'] == 2){
-        header("location: http://localhost/Project-team6/");
+        header("location: /");
     }
 }
 ?>

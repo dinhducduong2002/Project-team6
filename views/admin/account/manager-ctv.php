@@ -24,6 +24,7 @@
                     </tr>
                 </thead>
                 <tbody>
+
                     <?php foreach ($ds_ctv as $index => $key) : ?>
                         <tr>
                             <td><?php echo $index + 1; ?></td>
@@ -42,14 +43,19 @@
                                 } ?></td>
                             <td><?= $key['create_at'] ?></td>
                             <td>
-                                <a class="btn btn-primary" href="<?= ADMIN_URL . 'edit-ctv?id=' . $key['id'] ?>">Sửa</a>
+                                <?php if ($key['username'] != $_SESSION['user']['username']) : ?>
+                                    <a class="btn btn-primary" href="<?= ADMIN_URL . 'edit-ctv?id=' . $key['id'] ?>">Sửa</a>
 
-                                <a onclick="confrim_remove('<?= ADMIN_URL . 'delete-ctv?id=' . $key['id'] ?>'
+                                    <a onclick="confrim_remove('<?= ADMIN_URL . 'delete-ctv?id=' . $key['id'] ?>'
                                 ,'<?= $key['username'] ?>')" href="javascript:;" class="btn btn-danger">Xóa</a>
+                                <?php else:?>
+                                    <span><?php echo "My Account"?></span>
+                                <?php endif; ?>
 
                             </td>
                         </tr>
                     <?php endforeach; ?>
+
                 </tbody>
             </table>
         </div>

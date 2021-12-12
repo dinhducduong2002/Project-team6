@@ -76,6 +76,4 @@ if (isset($_GET['status']) && $_GET['code'] && $_GET['serial'] && $_GET['trans_i
 	$open = "lognapthe.txt";
 	file_put_contents($open,'CHỮ KÝ MD5 KHÔNG HỢP LỆ'.PHP_EOL, FILE_APPEND);
 	}
-} 
-
-?>
+}

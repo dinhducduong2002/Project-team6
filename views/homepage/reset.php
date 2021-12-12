@@ -15,7 +15,7 @@
                                             echo $_SESSION['recceiver'];
                                         }
                                         unset($_SESSION['recceiver']) ?></span>
-            <span style="color: red;"><?php if(isset($_SESSION['close'])){ echo $_SESSION['close'];}?></span>
+            <span style="color: red;"><?php if(isset($_SESSION['close'])){ echo $_SESSION['close'];} unset($_SESSION['close'])?></span>
         </div>
         <br>
         <div class="d-flex justify-content-center">

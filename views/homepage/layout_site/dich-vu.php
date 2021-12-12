@@ -6,12 +6,12 @@
     <div class="product-device shadow-sm d-none d-md-block"></div>
     <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
 </div>
-<div" class="container d-flex flex-wrap gap-lg-4">
+<div class="col-md-12 col-xs-12 container d-flex gap-lg-4">
     <?php foreach($ser as $key):?>
         <a href="">
-        <div class="card " style="width: 18rem;">
+        <div class="card">
         
-        <img src="<?=PUBLIC_ASSETS. $key['image_service']?>" class="card-img-top" alt="...">
+        <img src="<?=PUBLIC_ASSETS. $key['image_service']?>" class="card-img-top" >
         </div>
         </a>
     <?php endforeach;?>

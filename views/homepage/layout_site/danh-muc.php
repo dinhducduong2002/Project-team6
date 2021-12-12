@@ -8,7 +8,7 @@
 <div class="container d-flex flex-wrap gap-lg-4 ">
     <?php foreach($categorys as $key):?>
     <div class="card" style="width: 18rem;">
-        <img src="<?=PUBLIC_ASSETS. $key['image_cate']?>" class="card-img-top" alt="...">
+        <img src="<?=PUBLIC_ASSETS. $key['image_cate']?>" class="card-img-top">
         <div class="card-body text-center">
             <h5 class="card-title p-1"><?= $key['name_cate']?></h5>
             <p class="card-text ">Tài khoản</p><br>

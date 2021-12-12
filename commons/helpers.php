@@ -2,9 +2,13 @@
 
 function admin_render($viewpath, $data = []){
 
+    //viewpath là màn hình mình cần gọi vào
+    //data[] là một mảng giá trị được gán bên hàm sử lý
+    //businessview sẽ được gọi bên giao diện
+    //bên layout sẽ include businessview vào
     extract($data);
     $businessView = "./views/admin/" . $viewpath;
-    include_once './views/admin/layouts/main.php';
+    include_once './views/admin/layouts/main.php';//sinh ra giao diện
 }
 function client_render($viewpath, $data = []){
     

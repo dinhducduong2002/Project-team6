@@ -14,16 +14,18 @@ switch ($url) {
         require_once './business/homepage.php';
         index();
         break;
-    
+
     case 'san-pham':
         require_once './business/products.php';
         products_index();
         break;
+        // khi nhận được  url lấy về từ trên đường dẫn ta sẽ quyết định
+        //  xem file nào trong business được gọi vào và phương thức nào sẽ được chạy để sử lý
     case 'san-pham/detail':
         require_once './business/products.php';
         products_detail();
         break;
-    
+
     case 'login':
         require_once './business/auth.php';
         login();
@@ -67,48 +69,48 @@ switch ($url) {
     case 'tin-tuc/detail':
         require_once './business/news.php';
         detail();
-    break;
+        break;
         ///////////////// ADMIN ///////////////////
     case 'cp-admin/dashboard':
         require_once './business/admin/dashboard.php';
         dashboard_info();
         break;
-    
+
     case 'cp-admin/manager-ctv':
         require_once "./business/admin/account.php";
         manager_ctv();
         break;
-    
+
     case 'cp-admin/manager-client':
         require_once "./business/admin/account.php";
         manager_client();
         break;
-    
+
     case 'cp-admin/chart':
         require_once "./business/admin/chart.php";
         chart();
         break;
-    
+
     case 'cp-admin/delete-ctv':
         require_once "./business/admin/account.php";
         delete_ctv();
         break;
-    
+
     case 'cp-admin/edit-ctv':
         require_once "./business/admin/account.php";
         edit_ctv();
         break;
-    
+
     case 'cp-admin/delete-client':
         require_once "./business/admin/account.php";
         delete_client();
         break;
-    
+
     case 'cp-admin/edit-client':
         require_once "./business/admin/account.php";
         edit_client();
         break;
-            
+
     case 'cp-admin/manager-bill':
         require_once "./business/admin/bill.php";
         bill();
@@ -118,7 +120,7 @@ switch ($url) {
         require_once "./business/admin/bill.php";
         delete_bill();
         break;
-    
+
     case 'cp-admin/card':
         require_once "./business/admin/card.php";
         card();
@@ -128,7 +130,7 @@ switch ($url) {
         require_once "./business/admin/service.php";
         service();
         break;
-    
+
     case 'cp-admin/card':
         require_once "./business/admin/card.php";
         card();
@@ -138,47 +140,47 @@ switch ($url) {
         require_once "./business/admin/service.php";
         service();
         break;
-    
+
     case 'cp-admin/edit-service':
         require_once "./business/admin/service.php";
         edit_service();
         break;
-    
+
     case 'cp-admin/delete-service':
         require_once "./business/admin/service.php";
         delete_service();
         break;
-    
+
     case 'cp-admin/add-service':
         require_once "./business/admin/service.php";
         add_service();
         break;
-    //
+        //
     case 'cp-admin/manager-category':
         require_once "./business/admin/category.php";
         category();
         break;
-    
+
     case 'cp-admin/edit-category':
         require_once "./business/admin/category.php";
         edit_category();
         break;
-    
+
     case 'cp-admin/delete-category':
         require_once "./business/admin/category.php";
         delete_category();
         break;
-    
+
     case 'cp-admin/add-category':
         require_once "./business/admin/category.php";
         add_category();
         break;
-    //
+        //
     case 'cp-admin/pay-banking':
         require_once "./business/admin/pay_banking.php";
         pay_banking();
         break;
-    
+
     case 'cp-admin/delete-pay-banking':
         require_once "./business/admin/pay_banking.php";
         delete_pay_banking();
@@ -188,8 +190,8 @@ switch ($url) {
         require_once "./business/admin/pay_banking.php";
         add_pay_banking();
         break;
-     //// quản trị tin tức ////
-     case 'cp-admin/news':
+        //// quản trị tin tức ////
+    case 'cp-admin/news':
         require_once "./business/admin/news.php";
         index();
         break;
@@ -214,7 +216,7 @@ switch ($url) {
         require_once "./business/admin/news.php";
         news_delete();
         break;
-    //
+        //
     case 'cp-admin/card':
         require_once "./business/admin/card.php";
         card();
@@ -229,7 +231,7 @@ switch ($url) {
         require_once "./business/admin/code.php";
         delete_code();
         break;
-    
+
     case 'cp-admin/delete-manage-code':
         require_once "./business/admin/code.php";
         delete_manage_code();
@@ -261,7 +263,7 @@ switch ($url) {
         require_once "./business/admin/product.php";
         sp_edit_form();
         break;
-    //
+        //
     case 'send-email':
         require_once "./business/sendemail.php";
         email_form();
@@ -278,9 +280,9 @@ switch ($url) {
         require_once './business/auth.php';
         reset_password();
         break;
-    //
+        //
     default:
         require_once "./business/error404.php";
         index();
-    break;
+        break;
 }

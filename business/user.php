@@ -15,12 +15,12 @@ function history()
         $page = $_GET['page'];
     }
     $data = 10;
-    $sql = "SELECT * FROM account_purchase_history where id_user='" . $_SESSION['user']['id'] . "'";
+    $sql = "SELECT * FROM tblhistory where id_user='" . $_SESSION['user']['id'] . "'";
     $result = executeQuery($sql);
     $number = count($result);
     $pagea = ceil($number / $data);
     $pages = ($page - 1) * $data;
-    $sql = "SELECT * FROM account_purchase_history where id_user='" . $_SESSION['user']['id'] . "' ORDER BY created_at DESC LIMIT $pages,$data";
+    $sql = "SELECT * FROM tblhistory where id_user='" . $_SESSION['user']['id'] . "' ORDER BY created_at DESC LIMIT $pages,$data";
     $aph = executeQuery($sql);
 
     client_render('user/history.php', [

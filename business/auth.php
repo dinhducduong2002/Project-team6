@@ -68,8 +68,8 @@ function register()
         if (empty($username)) {
             $error['username'] = "Bạn cần nhập vào tài khoản";
         }
-        if (strlen($username) < 10) {
-            $error['username'] = "Tài khoản quá ngắn";
+        if (strlen($username) < 6) {
+            $error['username'] = "Tài phải trên 5 kí tự";
         }
         $regexx = "/[\@\#\$\%\^\&\*\(\)\_\+\!\,\=\-\?]/";
         if (preg_match($regexx, $username)) {

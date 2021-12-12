@@ -36,10 +36,8 @@
                                 } else if ($key['status'] == 1) {
                                     echo "Hoạt động";
                                 } ?></td>
-                            <td><?php if ($key['permission'] == 0) {
-                                    echo "Admin";
-                                } else if ($key['permission'] == 1) {
-                                    echo "Cộng tác viên";
+                            <td><?php if ($key['permission'] == 2) {
+                                    echo "Thành viên";
                                 } ?></td>
                             <td><?= $key['create_at'] ?></td>
                             <td>

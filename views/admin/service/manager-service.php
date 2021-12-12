@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-lg-12">
         <h2>Danh sách dịch vụ</h2>
-        <span><a href="add-service">Thêm danh mục</a></span>
+        <a class="btn btn-primary" href="add-service">Thêm dịch vụ</a>
         <?php if (isset($_SESSION['success'])) : ?>
             <div class="alert alert-success" role="alert">
                 <?php echo $_SESSION['success'];

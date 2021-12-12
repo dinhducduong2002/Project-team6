@@ -102,8 +102,9 @@ function pay(){
         $price_ctv = $sql_data_ctv[0]['balance'] + $sql_data_products[0]['price'];
 
         $id_user = $_SESSION['user']['id'];
-        $sql = "INSERT INTO account_purchase_history SET id_user='$id_user', price='$price', name_account='$name_account', password_account='$password_account', surplus='$surplus',
+        $sql = "INSERT INTO tblhistory SET id_user='$id_user', price='$price', name_account='$name_account', password_account='$password_account', surplus='$surplus',
          id_ctv='$id_ctv', name_product='$name_product', id_product='$id_product',server='$server_tk'";
+         
         executeQuery($sql);
         
         if($id_user != $id_ctv){

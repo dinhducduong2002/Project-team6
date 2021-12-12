@@ -2,7 +2,8 @@
     <div class="col-lg-6">
 
         <form role="form" method="post">
-            <div class="form-group">
+            <?php foreach($user_client as $user):?>
+                <div class="form-group">
                 <label>Số dư</label>
                 <input name="balance" type="number" class="form-control" placeholder="Số dư" value="<?= $user['balance']?>">
             </div>
@@ -25,15 +26,15 @@
                 <label for="Phân quyền">Phân quyền</label>
                 <select name="permission" class="form-control">
                     <option selected disabled >Chọn</option>
-                    <?php if($user['permissiom'] == 0):?>
+                    <?php if($user['permission'] == 0):?>
                         <option selected value="0">Admin</option>
                         <option value="1">Cộng tác viên</option>
                         <option value="2">Thành viên</option>
-                    <?php elseif($user['permissiom'] == 1):?>
+                    <?php elseif($user['permission'] == 1):?>
                         <option value="0">Admin</option>
                         <option selected value="1">Cộng tác viên</option>
                         <option value="2">Thành viên</option>
-                    <?php elseif($user['permissiom'] == 2):?>
+                    <?php elseif($user['permission'] == 2):?>
                         <option value="0">Admin</option>
                         <option value="1">Cộng tác viên</option>
                         <option selected value="2">Thành viên</option>
@@ -42,6 +43,7 @@
             </div>
             <button type="submit" name="btnEdit" class="btn btn-success">Cập nhật</button>
             <button type="reset" name="btnEdit" class="btn btn-danger">Hủy</button>
+            <?php endforeach;?>
         </form>
 
     </div>

@@ -3,7 +3,7 @@
 
         <form role="form" method="post">
             <?php foreach($user as $key):?>
-            <div class="form-group">
+                    <div class="form-group">
                 <label>Số dư</label>
                 <input name="balance" type="number" class="form-control" placeholder="Số dư" value="<?= $key['balance']?>">
             </div>
@@ -27,21 +27,19 @@
                 <label for="Phân quyền">Phân quyền</label>
                 <select name="permission" class="form-control">
                     <option selected disabled >Chọn</option>
-                    <?php if($key['permissiom'] == 0):?>
-                        <option selected value="0">Admin</option>
-                        <option value="1">Cộng tác viên</option>
-                        <option value="2">Thành viên</option>
-                    <?php elseif($key['permissiom'] == 1):?>
-                        <option value="0">Admin</option>
-                        <option selected value="1">Cộng tác viên</option>
-                        <option value="2">Thành viên</option>
-                    <?php elseif($key['permissiom'] == 2):?>
+                    <?php if($key['permission'] == 2):?>
                         <option value="0">Admin</option>
                         <option value="1">Cộng tác viên</option>
                         <option selected value="2">Thành viên</option>
+                    <?php elseif($key['permission'] == 1):?>
+                        <option value="0">Admin</option>
+                        <option selected value="1">Cộng tác viên</option>
+                        <option value="2">Thành viên</option>
+                    <?php elseif($key['permission'] == 0):?>
+                        <option selected value="0">Admin</option>
+                        <option value="1">Cộng tác viên</option>
+                        <option value="2">Thành viên</option>
                     <?php endif;?>
-                    
-                    
                 </select>
             </div>
             <button type="submit" name="btnEdit" class="btn btn-success">Cập nhật</button>
