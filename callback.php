@@ -6,8 +6,8 @@ if (isset($_GET['status']) && $_GET['code'] && $_GET['serial'] && $_GET['trans_i
 
 	$command = 'charging';  // Nap the
         $url = 'https://thesieure.com/chargingws/v2';
-        $partner_id = '4963118361';
-        $partner_key = 'd176b200a03f6ff675163d595eadd459';
+        $partner_id = '4963114548361';
+        $partner_key = 'd176b200a03f6ff675163d595egadds459s';
 	// TRẠNG THÁI
 	$status = $_GET['status'];
 	// MÃ THẺ NẠP
